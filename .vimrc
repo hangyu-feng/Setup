@@ -10,93 +10,75 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
 
-" Python plugins
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8'
-let python_highlight_all=1
-syntax on
-
-" Plugin 'ycm-core/YouCompleteMe'
-
-
-" vim-ruby
-Plugin 'vim-ruby/vim-ruby'
-
-" gruvbox colorscheme
 Plugin 'morhetz/gruvbox'
 
-" ack for vim: a faster source code search
-Plugin 'mileszs/ack.vim'
-
-" support for emblem
-Bundle 'yalesov/vim-emblem'
-
-" nerdtree, you know what it is
-Plugin 'scrooloose/nerdtree'
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-" and toggle key for nerdtree
-map <C-N> :NERDTreeToggle<CR>
-" nerdtree git support
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-" NERD Commenter
-" <leader>c<space> to toggle
-" - to toggle
-Plugin 'scrooloose/nerdcommenter'
-let g:NERDSpaceDelims = 1
-let g:NERDTrimTrailingWhitespace = 1
-let g:NERDToggleCheckAllLines = 1  " check all selected lines is commented or not
-
-" search anything from vim
-Plugin 'kien/ctrlp.vim'
-" Plugin 'junegunn/fzf.vim'
-" map ; :Files<CR>
-
-" Asynchronous Lint Engine
-Plugin 'w0rp/ale'
-" let g:ale_completion_enabled=1
-
-" A Vim plugin which shows a git diff in the 'gutter' (sign column). It shows which lines
-" have been added, modified, or removed. You can also preview, stage, and undo individual
-" hunks. The plugin also provides a hunk text object.
-Plugin 'airblade/vim-gitgutter'
-
-" git integration
+" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
-" powerlined status bar
-" Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'zivyangll/git-blame.vim'
 
-" A vim plugin to display the indention levels with thin vertical lines
-Plugin 'Yggdroot/indentLine'
+Plugin 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
 
-" :BufOnly without an argument will unload all buffers but the current one
-Plugin 'vim-scripts/BufOnly.vim'
+Plugin 'scrooloose/nerdcommenter'
+map - <plug>NERDCommenterToggle
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
+" linter
+" w0rp has renamed himself to dense-analysis
+Plugin 'dense-analysis/ale'
+
+set rtp+=/usr/local/opt/fzf
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+nnoremap <silent> ; :FZF<CR>
+nnoremap <silent> ' :Rg<CR>
+
+Plugin 'yggdroot/indentline'
+
+Plugin 'vim-airline/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline_powerline_fonts = 1
+
+" python
+Plugin 'tmhedberg/simpylfold'
+Plugin 'nvie/vim-flake8'
+Plugin 'indentpython.vim'
+Plugin 'sirver/ultisnips'
+
+" ruby on rails
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-bundler'
+
+" javascript and ember.js
+Plugin 'pangloss/vim-javascript'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-filetype plugin on
+"filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -106,58 +88,40 @@ filetype plugin on
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" ==================================
-" This is the end of Vundle settings
-" ==================================
+" When your .vimrc file is sourced twice, the autocommands will appear twice.
+" To avoid this, put this command in your .vimrc file, before defining
+" autocommands:
+:autocmd!
 
-
-set nocompatible
 set number
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set smartindent
-set fdm=manual
-set iskeyword+=:
-set autoindent
-" use ack instead of grep
-set grepprg=ack\ -k
-" deletes every trailing whitespaces
-autocmd BufWritePre <buffer> %s/\s\+$//e
-set clipboard=unnamed " system clipboard
+set history=500
+set background=dark
 
-
-""""""""""""""""""""""""""""""""""""""
-" The ultimate vimrc
-""""""""""""""""""""""""""""""""""""""
+" Enable filetype plugins
+filetype plugin on
 filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Sets how many lines of history VIM has to remenber
-set history=500
-
-syntax on
-
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
+
+" mouse support!
+set mouse=a
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
@@ -176,11 +140,11 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-"Always show current position
+" Always show current position
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -223,10 +187,8 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-
-" Add a bit extra margin to the left
-set foldcolumn=1
-
+" if you want to add a bit extra margin to the left
+" set foldcolumn=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -234,25 +196,14 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
-
 try
-    colorscheme gruvbox
+  colorscheme gruvbox
 catch
 endtry
 
-set background=dark
-set cursorline
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+" Enable 256 colors palette in Gnome Terminal
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -261,7 +212,6 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -269,7 +219,6 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -280,10 +229,9 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
-" These are set previously
-" set shiftwidth=4
-" set tabstop=4
+" 1 tab == 2 spaces
+set shiftwidth=2
+set tabstop=2
 
 " Linebreak on 500 characters
 set lbr
@@ -293,24 +241,17 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
-"vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-"vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-"map <space> /  " I don't want that.
-"map <c-space> ?
-
-" Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
@@ -319,86 +260,26 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-
-" Close all the buffers
-map <leader>ba :bufdo bd<cr>
-
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-
-" Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
-
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
-
 " Delete trailing white space on save, useful for some filetypes ;)
-" fun! CleanExtraSpaces()
-"     let save_cursor = getpos(".")
-"     let old_query = getreg('/')
-"     silent! %s/\s\+$//e
-"     call setpos('.', save_cursor)
-"     call setreg('/', old_query)
-" endfun
+fun! CleanExtraSpaces()
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  silent! %s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfun
 
 if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+    autocmd BufWritePre * :call CleanExtraSpaces()
 endif
 
 
@@ -414,24 +295,22 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" yank to clipboard (this is not included in basic.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" yank to clipboard
+if has("clipboard")
+  set clipboard=unnamed " copy to the system clipboard
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
-
-" Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
-" Toggle comment
-map - <leader>c<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
