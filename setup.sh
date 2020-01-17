@@ -21,8 +21,6 @@ cp ./Setup/.vimrc ~/.vimrc &&
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &&
 vim +PluginInstall +qall &&
 
-echo "LS_COLORS='ow=01;36;40' && export LS_COLORS" >> ~/.bashrc &&
-
 sudo apt install zsh && chsh -s $(which zsh) &&
 
 curl -L git.io/antigen > antigen.zsh &&
