@@ -80,6 +80,8 @@ antigen apply
 
 source $ZSH/oh-my-zsh.sh
 
+LS_COLORS='ow=01;36;40' && export LS_COLORS
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
