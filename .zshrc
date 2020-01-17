@@ -79,7 +79,6 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
 
 source $ZSH/oh-my-zsh.sh
-source ~/.bashrc
 
 # User configuration
 
