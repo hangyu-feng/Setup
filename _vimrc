@@ -1,33 +1,29 @@
+
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+if has("win16") || has("win32")
+  set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe\ -ExecutionPolicy\ Bypass
+  set shellcmdflag=\ -NoLogo\ -ExecutionPolicy\ RemoteSigned\ -Command
+  set shellredir=\|\ Out-File\ -Encoding\ UTF8
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-" Keep Plugin commands between vundle#begin/end.
-
-Plugin 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 " Plugin 'lifepillar/vim-gruvbox8'
 
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " some defaults
-Plugin 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 runtime! 'plugin/sensible.vim'  " run this plugin earlier to override settings
 
-" Plugin 'zivyangll/git-blame.vim'
 
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 map - <plug>NERDCommenterToggle
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -46,63 +42,47 @@ let g:NERDToggleCheckAllLines = 1
 
 " linter
 " w0rp has renamed himself to dense-analysis
-Plugin 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 
-set rtp+=/usr/local/opt/fzf
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 nnoremap <silent> ; :FZF<CR>
 nnoremap <silent> ' :Rg<CR>
 
-Plugin 'yggdroot/indentline'
+Plug 'yggdroot/indentline'
 
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 " go to https://github.com/vim-airline/vim-airline#smarter-tab-line for all formatters
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 
-" python
-Plugin 'tmhedberg/simpylfold'
-Plugin 'nvie/vim-flake8'
-Plugin 'indentpython.vim'
-Plugin 'sirver/ultisnips'
+" " python
+Plug 'tmhedberg/simpylfold'
+Plug 'nvie/vim-flake8'
+Plug 'sirver/ultisnips'
 
 " ruby on rails
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-bundler'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-bundler'
 
 " javascript and ember.js
-Plugin 'pangloss/vim-javascript'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'elzr/vim-json'
-let g:vim_json_conceal=0
+Plug 'pangloss/vim-javascript'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'elzr/vim-json'
+" let g:vim_json_conceal=0
 
 " tmux
-Plugin 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" When your .vimrc file is sourced twice, the autocommands will appear twice.
-" To avoid this, put this command in your .vimrc file, before defining
-" autocommands:
+call plug#end()              " required
+packadd! matchit
 :autocmd!
+
 
 set number
 set history=500
@@ -129,10 +109,6 @@ map <leader>p :let @*=expand("%:p")<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
-
-" mouse support!
-set mouse=a
-set ttymouse=xterm2
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
@@ -181,6 +157,8 @@ set lazyredraw
 
 " For regular expressions turn magic on
 set magic
+
+set nobomb
 
 " Show matching brackets when text indicator is over them
 set showmatch
