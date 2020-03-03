@@ -13,9 +13,14 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 
 Plugin 'morhetz/gruvbox'
+" Plugin 'lifepillar/vim-gruvbox8'
 
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+
+" some defaults
+Plugin 'tpope/vim-sensible'
+runtime! 'plugin/sensible.vim'  " run this plugin earlier to override settings
 
 " Plugin 'zivyangll/git-blame.vim'
 
@@ -53,7 +58,8 @@ Plugin 'yggdroot/indentline'
 
 Plugin 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'default'
+" go to https://github.com/vim-airline/vim-airline#smarter-tab-line for all formatters
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 
 " python
@@ -73,12 +79,15 @@ Plugin 'tpope/vim-bundler'
 " javascript and ember.js
 Plugin 'pangloss/vim-javascript'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'elzr/vim-json'
+let g:vim_json_conceal=0
+
+" tmux
+Plugin 'tmux-plugins/vim-tmux'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -99,20 +108,21 @@ set number
 set history=500
 set background=dark
 
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
 " Set to auto read when a file is changed from the outside
 set autoread
 
 " With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
+let mapleader = " "
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
+
+" copy file path relative to current working directory.
+" see https://vim.fandom.com/wiki/Copy_filename_to_clipboard
+map <leader>c :let @*=expand("%:h")<cr>
+map <leader>p :let @*=expand("%:p")<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -122,6 +132,7 @@ set so=7
 
 " mouse support!
 set mouse=a
+set ttymouse=xterm2
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
@@ -241,6 +252,13 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+" shift using Tab and Shift-Tab
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
@@ -265,6 +283,17 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
+
+" actions on buffers: next, delete
+map <leader><Tab> :bn<cr>
+map <leader>d :bn<bar>bd#<cr>
+
+" Specify the behavior when switching between buffers
+try
+  set switchbuf=useopen,usetab,newtab
+  set stal=2
+catch
+endtry
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
