@@ -55,6 +55,7 @@ nnoremap <silent> ; :FZF<CR>
 nnoremap <silent> ' :Rg<CR>
 
 Plugin 'yggdroot/indentline'
+let g:indentLine_setConceal = 0
 
 Plugin 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
@@ -209,6 +210,7 @@ syntax enable
 
 try
   colorscheme gruvbox
+  " hi Normal guibg=NONE ctermbg=NONE
 catch
 endtry
 
@@ -251,6 +253,7 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+set conceallevel=0  " no concealing
 
 " shift using Tab and Shift-Tab
 nnoremap <Tab> >>_
