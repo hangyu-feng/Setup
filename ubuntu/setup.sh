@@ -17,7 +17,7 @@ echo "set git user name: Hangyu Feng"
 git config --global user.name "Hangyu Feng"
 
 # vim setup
-if [ -d "~/.vim/bundle/Vundle.vim" ]; then
+if [ -d ~/.vim/bundle/Vundle.vim ]; then
   echo "update Vundle repo"
   cd ~/.vim/bundle/Vundle.vim && git pull && cd ~
 else
@@ -28,11 +28,11 @@ echo "install vim plugins"
 vim +PluginInstall +qall
 
 # zsh setup
-if [ ! -d "~/.oh-my-zsh" ]; then
+if [ ! -d ~/.oh-my-zsh ]; then
   echo "~/.oh-my-zsh folder doesn't exist, install oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
-if [ ! -d "~/antigen.zsh" ]; then
+if [ ! -d ~/antigen.zsh ]; then
   echo "~/antigen.zsh folder doesn't exist, install antigen"
   curl -L git.io/antigen > ~/antigen.zsh  # zsh package manager
 fi
