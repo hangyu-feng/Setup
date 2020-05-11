@@ -3,8 +3,8 @@
 set -e  # exit whenever a command failed
 
 # install basic programs
-apt-get update
-sudo apt-get install curl wget zsh git vim
+sudo apt update
+sudo apt install curl wget zsh git vim
 
 # config files
 cp ./.vimrc ./.zshrc ~
