@@ -14,17 +14,9 @@ git config --global user.email "vailgrass@gmail.com"
 git config --global user.name "Hangyu Feng"
 
 # zsh setup
-chsh -s $(which zsh)
-if [[ ! $SHELL =~ zsh ]]; then
-  echo "zsh version:"
-  zsh --version
-  echo "either zsh isn't installed or isn't set as default"
-  exit 1
-fi
-
-# oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 curl -L git.io/antigen > antigen.zsh  # zsh package manager
+chsh -s $(which zsh) && zsh
 source ~/.zshrc
 
 # vim setup
