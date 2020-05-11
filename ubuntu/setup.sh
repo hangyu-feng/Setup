@@ -16,8 +16,7 @@ git config --global user.name "Hangyu Feng"
 # zsh setup
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 curl -L git.io/antigen > antigen.zsh  # zsh package manager
-chsh -s $(which zsh) && zsh
-source ~/.zshrc
+chsh -s $(which zsh)
 
 # vim setup
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
