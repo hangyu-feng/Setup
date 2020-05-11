@@ -3,7 +3,7 @@
 set -e  # exit whenever a command failed
 
 # install basic programs
-sudo apt update
+sudo apt update && sudo apt upgrade
 sudo apt install curl wget zsh git vim
 
 # config files
