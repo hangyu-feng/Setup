@@ -24,6 +24,7 @@ for existed in $(ls -a ~/.ssh); do
 done
 if [[ ! -v pub_key ]]; then
   ssh-keygen -t rsa -b 4096 -C $email
+  eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/id_rsa
   pub_key=~/.ssh/id_rsa.pub
 fi
