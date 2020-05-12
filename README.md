@@ -2,7 +2,7 @@
 
 #### setup ubuntu/debian:
 ```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/hangyu-feng/.setup/master/setup.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/hangyu-feng/.setup/master/setup.sh)"
 ```
 
 #### requirements:
