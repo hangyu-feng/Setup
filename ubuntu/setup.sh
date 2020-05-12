@@ -2,6 +2,8 @@
 
 set -e  # exit whenever a command failed
 
+email=vailgrass@gmail.com
+
 echo "install basic programs"
 sudo apt update && sudo apt upgrade
 # vim-gtk3 provides extended features like clipboard for ubuntu
@@ -19,15 +21,15 @@ for filename in $(ls -a ~/.ssh); do
   fi
 done
 if [[ ! -v pub_key ]]; then
-  ssh-keygen -t rsa -b 4096 -C "vailgrass@gmail.com"
+  ssh-keygen -t rsa -b 4096 -C $email
   ssh-add ~/.ssh/id_rsa
   pub_key=~/.ssh/id_rsa.pub
 fi
 echo "public key is stored in $pub_key"
 
 # git
-echo "set git user email: 'vailgrass@gmail.com'"
-git config --global user.email "vailgrass@gmail.com"
+echo "set git user email: $email"
+git config --global user.email $email
 echo "set git user name: Hangyu Feng"
 git config --global user.name "Hangyu Feng"
 
