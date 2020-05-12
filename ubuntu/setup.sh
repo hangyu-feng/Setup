@@ -11,9 +11,10 @@ programs=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
 sudo apt install ${programs[*]}
 
 echo "=== copy config files ==="
-cp ./.vimrc ./.zshrc ~
+cp $(dirname $0)/../configs/.vimrc .$(dirname $0)/../configs/.zshrc ~
 
 echo "=== detect / generate public key ==="
+pub_key=undefined
 filenames=( id_rsa.pub id_ecdsa.pub id_ed25519.pub )
 for existed in $(ls -a ~/.ssh); do
   for filename in ${filenames[*]}; do
@@ -22,7 +23,7 @@ for existed in $(ls -a ~/.ssh); do
     fi
   done
 done
-if [[ ! -v pub_key ]]; then
+if [[ $pub_key == undefined ]]; then
   ssh-keygen -t rsa -b 4096 -C $email
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/id_rsa

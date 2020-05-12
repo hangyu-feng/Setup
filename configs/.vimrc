@@ -109,6 +109,9 @@ set number
 set history=500
 set background=dark
 
+set splitbelow
+set splitright
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
