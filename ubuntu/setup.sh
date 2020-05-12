@@ -48,12 +48,19 @@ vim +PluginInstall +qall
 if [ ! -d ~/.oh-my-zsh ]; then
   echo "~/.oh-my-zsh folder doesn't exist, install oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  echo "oh-my-zsh already installed"
 fi
 if [ ! -f ~/antigen.zsh ]; then
   echo "~/antigen.zsh folder doesn't exist, install antigen"
   curl -L git.io/antigen > ~/antigen.zsh  # zsh package manager
+else
+  echo "antigen already installed"
 fi
 if [[ ! $SHELL =~ zsh ]]; then
+  echo "switch to zsh"
   chsh -s $(which zsh) && zsh
+else
+  echo "already in zsh"
 fi
 
