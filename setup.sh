@@ -3,7 +3,7 @@
 set -eu  # exit whenever a command failed and force var declaration
 
 email=vailgrass@gmail.com
-base_dir=$(dirname $0)/..
+base_dir=$(dirname $0)
 
 echo "=== install basic programs ==="
 sudo apt update && sudo apt upgrade
