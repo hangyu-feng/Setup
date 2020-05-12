@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e  # exit whenever a command failed
+set -eu  # exit whenever a command failed and force var declaration
 
 email=vailgrass@gmail.com
 
