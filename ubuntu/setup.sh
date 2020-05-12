@@ -15,10 +15,12 @@ cp ./.vimrc ./.zshrc ~
 
 # public keys
 filenames=( id_rsa.pub id_ecdsa.pub id_ed25519.pub )
-for filename in $(ls -a ~/.ssh); do
-  if [[ ${filenames[*]} =~ $filename ]]; then
-    pub_key=$filename
-  fi
+for existed in $(ls -a ~/.ssh); do
+  for filename in ${filenames[*]}; do
+    if [[ $existed == $filename ]]; then
+      pub_key=~/.ssh/$existed
+    fi
+  done
 done
 if [[ ! -v pub_key ]]; then
   ssh-keygen -t rsa -b 4096 -C $email
