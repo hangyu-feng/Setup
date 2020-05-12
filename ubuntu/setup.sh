@@ -53,5 +53,7 @@ if [ ! -f ~/antigen.zsh ]; then
   echo "~/antigen.zsh folder doesn't exist, install antigen"
   curl -L git.io/antigen > ~/antigen.zsh  # zsh package manager
 fi
-chsh -s $(which zsh) && zsh
+if [[ ! $SHELL =~ zsh ]]; then
+  chsh -s $(which zsh) && zsh
+fi
 
