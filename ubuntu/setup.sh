@@ -4,16 +4,16 @@ set -e  # exit whenever a command failed
 
 email=vailgrass@gmail.com
 
-echo "install basic programs"
+echo "=== install basic programs ==="
 sudo apt update && sudo apt upgrade
 # vim-gtk3 provides extended features like clipboard for ubuntu
 programs=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
 sudo apt install ${programs[*]}
 
-echo "copy config files"
+echo "=== copy config files ==="
 cp ./.vimrc ./.zshrc ~
 
-# public keys
+echo "=== detect / generate public key ==="
 filenames=( id_rsa.pub id_ecdsa.pub id_ed25519.pub )
 for existed in $(ls -a ~/.ssh); do
   for filename in ${filenames[*]}; do
@@ -29,13 +29,13 @@ if [[ ! -v pub_key ]]; then
 fi
 echo "public key is stored in $pub_key"
 
-# git
+echo "=== git configs ==="
 echo "set git user email: $email"
 git config --global user.email $email
 echo "set git user name: Hangyu Feng"
 git config --global user.name "Hangyu Feng"
 
-# vim setup
+echo "=== vim setup ==="
 if [ -d ~/.vim/bundle/Vundle.vim ]; then
   echo "update Vundle repo"
   cd ~/.vim/bundle/Vundle.vim && git pull && cd -
@@ -46,7 +46,7 @@ fi
 echo "install vim plugins"
 vim +PluginInstall +qall
 
-# zsh setup
+echo "=== zsh setup ==="
 if [ ! -d ~/.oh-my-zsh ]; then
   echo "~/.oh-my-zsh folder doesn't exist, install oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
