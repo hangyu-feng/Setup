@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eu  # exit whenever a command failed and force var declaration
+set -u  # force var declaration
 
 email="vailgrass@gmail.com"
 username="Hangyu Feng"
