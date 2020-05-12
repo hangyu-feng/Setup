@@ -80,7 +80,40 @@ antigen apply
 
 source $ZSH/oh-my-zsh.sh
 
+pull() {
+  origin=$(git branch --show-current) &&
+  stashed=false
+  if [[ `git status --porcelain` ]]; then
+    git stash &&
+    stashed=true
+  fi
+  if [[ $# -eq 0 ]]; then
+    git pull
+  else
+    for branch in $@; do  # can use { as well
+      git checkout $branch && git pull
+    done
+  fi
+  git checkout $origin &&
+  if $stashed; then  # -n checks if string is non-empty. opposite: -z
+    git stash pop
+  fi
+}
+
 LS_COLORS='ow=01;36;40' && export LS_COLORS
+
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_virtualenv
+  prompt_aws
+#   prompt_context
+  prompt_dir
+  prompt_git
+  prompt_bzr
+  prompt_hg
+  prompt_end
+}
 
 # User configuration
 
@@ -105,5 +138,17 @@ LS_COLORS='ow=01;36;40' && export LS_COLORS
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshrc="vi ~/.zshrc"
+alias vimrc="vi ~/.vimrc"
+alias reload="source ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+umask 002
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/home/linuxbrew/.linuxbrew/opt/mysql@5.7/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/imagemagick@6/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
