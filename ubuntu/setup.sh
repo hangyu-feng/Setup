@@ -2,13 +2,29 @@
 
 set -e  # exit whenever a command failed
 
-echo "install basic programs: curl, zsh, git, vim-gtk3"
+echo "install basic programs"
 sudo apt update && sudo apt upgrade
-sudo apt install curl wget zsh git vim-gtk3  # vim-gtk3 provides extended features like clipboard for ubuntu
+# vim-gtk3 provides extended features like clipboard for ubuntu
+programs=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
+sudo apt install ${programs[*]}
 
 echo "copy config files"
 cp ./.vimrc ./.zshrc ~
 cd ~
+
+# public keys
+filenames=( id_rsa.pub id_ecdsa.pub id_ed25519.pub )
+for filename in $(ls -a ~/.ssh); do
+  if [[ ${filenames[*]} =~ $filename ]]; then
+    pub_key=$filename
+  fi
+done
+if [[ ! -v pub_key ]]; then
+  ssh-keygen -t rsa -b 4096 -C "vailgrass@gmail.com"
+  ssh-add ~/.ssh/id_rsa
+  pub_key=~/.ssh/id_rsa.pub
+fi
+echo "public key is stored in $pub_key"
 
 # git
 echo "set git user email: 'vailgrass@gmail.com'"
