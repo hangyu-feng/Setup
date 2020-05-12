@@ -2,8 +2,8 @@
 
 set -eu  # exit whenever a command failed and force var declaration
 
-email=vailgrass@gmail.com
-username=Hangyu Feng
+email="vailgrass@gmail.com"
+username="Hangyu Feng"
 programs=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
 
 install_programs() {
