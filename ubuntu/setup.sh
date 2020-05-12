@@ -48,7 +48,7 @@ if [ ! -d ~/.oh-my-zsh ]; then
   echo "~/.oh-my-zsh folder doesn't exist, install oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
-if [ ! -d ~/antigen.zsh ]; then
+if [ ! -f ~/antigen.zsh ]; then
   echo "~/antigen.zsh folder doesn't exist, install antigen"
   curl -L git.io/antigen > ~/antigen.zsh  # zsh package manager
 fi
