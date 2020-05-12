@@ -10,7 +10,6 @@ sudo apt install ${programs[*]}
 
 echo "copy config files"
 cp ./.vimrc ./.zshrc ~
-cd ~
 
 # public keys
 filenames=( id_rsa.pub id_ecdsa.pub id_ed25519.pub )
@@ -35,7 +34,7 @@ git config --global user.name "Hangyu Feng"
 # vim setup
 if [ -d ~/.vim/bundle/Vundle.vim ]; then
   echo "update Vundle repo"
-  cd ~/.vim/bundle/Vundle.vim && git pull && cd ~
+  cd ~/.vim/bundle/Vundle.vim && git pull && cd -
 else
   echo "clone Vundle repo"
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
