@@ -113,9 +113,9 @@ ssh_key() {
 git_configs() {
   echo "=== git configs ==="
   echo "set git user email: $1"
-  git config --global user.email $1
+  git config --global user.email "$1"
   echo "set git user name: $2"
-  git config --global user.name $2
+  git config --global user.name "$2"
 }
 
 vim_setup() {
@@ -160,7 +160,7 @@ main() {
   install_programs ${programs[*]}
   download_configs
   ssh_key
-  git_configs $email $username
+  git_configs "$email" "$username"
   vim_setup
   zsh_setup
 }
