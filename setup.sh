@@ -4,7 +4,7 @@ set -u  # force var declaration
 
 email="vailgrass@gmail.com"
 username="Hangyu Feng"
-programs=undefined
+packages=undefined
 os=undefined
 pm=undefined
 upgrade=1
@@ -45,9 +45,9 @@ process_args() {
   # getopt supports long option. So none of them will be used for sake of
   # cross-platform compatibility.
   if [[ $pm =~ "apt" ]]; then
-    programs=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
+    packages=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
   else
-    programs=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
+    packages=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
   fi
   for arg in "$@"; do
     case $arg in
@@ -57,8 +57,8 @@ process_args() {
       "--email="*)
         email=${arg#"--email="}
         ;;
-      "--programs="*)
-        programs+=(${arg#"--programs="})
+      "--packages="*)
+        packages+=(${arg#"--packages="})
         ;;
       "--no-upgrade")
         upgrade=0
@@ -70,17 +70,17 @@ process_args() {
   done
 }
 
-install_programs() {
-  echo "=== install basic programs ==="
+install_packages() {
+  echo "=== install packages ==="
   if [[ $pm =~ "apt" ]]; then
     pm="sudo $pm"
   fi
   if $upgrade; then
     $pm upgrade && $pm install "$@"
   else
-    for $program in "$@"; do
-      if [[ $(which $program) =~ "not found" ]]; then
-        sudo $pm install $program
+    for $package in "$@"; do
+      if [[ $(which $package) =~ "not found" ]]; then
+        sudo $pm install $package
       fi
     done
   fi
@@ -166,7 +166,7 @@ main() {
   detect_os
   package_manager
   process_args "$@"
-  install_programs ${programs[*]}
+  install_packages ${packages[*]}
   download_configs
   ssh_key
   git_configs "$email" "$username"
