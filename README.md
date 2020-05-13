@@ -12,6 +12,6 @@
   Note that all three options are optional, and setting programs will only add to the list of programs to be installed.
 
 ### Requirements:
-  `bash`, `curl`, `apt`
+  `bash`, `curl`, `git`
 
   Support for mac and other linux distros using package managers other than apt will come soon.
