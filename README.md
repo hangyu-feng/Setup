@@ -19,7 +19,7 @@
     
   - `--email="you@e.mail"`
     
-  - `--packages="package-1 package-2`
+  - `--packages="package-1 package-2"`
     
     - This list will add to default package list
       
