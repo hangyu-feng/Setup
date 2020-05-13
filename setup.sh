@@ -68,7 +68,7 @@ process_args() {
 
 install_programs() {
   echo "=== install basic programs ==="
-  if [[ pm =~ "apt" ]]; then
+  if [[ $pm =~ "apt" ]]; then
     sudo $pm update && sudo $pm upgrade
     sudo $pm install "$@"
   else
