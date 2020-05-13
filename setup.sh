@@ -4,24 +4,50 @@ set -u  # force var declaration
 
 email="vailgrass@gmail.com"
 username="Hangyu Feng"
-programs=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
+programs=undefined
 os=undefined
+pm=undefined
 
 detect_os() {
   case $(uname) in
-    "Linux")
-      os="Linux"
-      ;;
     "Darwin")
       os="Mac"
       ;;
+    "Linux")
+      os="linux"
+      ;;
+    *)
+      echo "WARN: this script can only run on Mac or Linux systems!" 1>&2
+      exit 1
+      ;;
   esac
+}
+
+package_manager() {
+  # apt is the preferred package manager for Linux, and brew for macOS. If
+  # the linux distro does not have apt, it will install brew instead to
+  # avoid permission issues. Only apt and brew are supported since each
+  # package manager has slightly different package names.
+  # In future I might consider to switch to brew for every Unix system.
+  if [[ ! $(which apt) =~ "not found" ]] && [[ $os == "linux" ]]; then
+    pm=$(which apt)
+  else
+    if [[ $(which brew) =~ "not found" ]]; then
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    fi
+    pm=$(which brew)
+  fi
 }
 
 process_args() {
   # getopts (bash) and getopt (mac) does not support long option, only GNU
   # getopt supports long option. So none of them will be used for sake of
   # cross-platform compatibility.
+  if [[ $pm =~ "apt" ]]; then
+    programs=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
+  else
+    programs=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
+  fi
   for arg in "$@"; do
     case $arg in
       "--user="*)
@@ -33,14 +59,22 @@ process_args() {
       "--programs="*)
         programs+=(${arg#"--programs="})
         ;;
+      *)
+        echo "the argument $arg is not valid"
+        ;;
     esac
   done
 }
 
 install_programs() {
   echo "=== install basic programs ==="
-  sudo apt update && sudo apt upgrade
-  sudo apt install "$@"
+  if [[ pm =~ "apt" ]]; then
+    sudo $pm update && sudo $pm upgrade
+    sudo $pm install "$@"
+  else
+    $pm update && $pm upgrade
+    $pm install "$@"
+  fi
 }
 
 download_configs() {
@@ -50,7 +84,8 @@ download_configs() {
 }
 
 ssh_key() {
-  echo "=== detect / generate public key ==="
+  echo "=== detect / generate ssh key ==="
+  # check for existing ssh key
   pub_key=undefined
   pub_key_names=( id_rsa.pub id_ecdsa.pub id_ed25519.pub )
   for filename in $(ls -a ~/.ssh); do
@@ -60,10 +95,16 @@ ssh_key() {
       fi
     done
   done
+  # generage ssh key if none exists
   if [[ $pub_key == undefined ]]; then
     ssh-keygen -t rsa -b 4096 -C $email
     eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_rsa
+    if [[ $os == "mac" ]]; then
+      [[ ! -f ~/.ssh/config ]] && touch ~/.ssh/config
+      ssh-add -K ~/.ssh/id_rsa
+    else
+      ssh-add ~/.ssh/id_rsa
+    fi
     pub_key=~/.ssh/id_rsa.pub
   fi
   echo "public key is stored in $pub_key"
@@ -114,6 +155,7 @@ zsh_setup() {
 
 main() {
   detect_os
+  package_manager
   process_args "$@"
   install_programs ${programs[*]}
   download_configs
