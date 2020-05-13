@@ -82,6 +82,15 @@ zsh_setup() {
 }
 
 main() {
+  for arg in $*; do
+    if [[ $arg =~ ^--user= ]]; then
+      username=${arg#"--user="}
+    elif [[ $arg =~ ^--email= ]]; then
+      email=${arg#"--email="}
+    elif [[ $arg =~ ^--programs= ]]; then
+      programs+=${arg#"--programs="}
+    fi
+  done
   install_programs ${programs[*]}
   download_configs
   ssh_key
