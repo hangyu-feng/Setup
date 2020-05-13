@@ -88,8 +88,7 @@ process_args() {
   for arg in "$@"; do
     case $arg in
       "--user="*)
-        username=${arg#"--user="}
-        echo $username;;
+        username=${arg#"--user="};;
       "--email"*)
         email=${arg#"--email="};;
       "--programs"*)
@@ -100,12 +99,12 @@ process_args() {
 
 main() {
   process_args "$@"
-  # install_programs ${programs[*]}
-  # download_configs
-  # ssh_key
-  # git_configs $email $username
-  # vim_setup
-  # zsh_setup
+  install_programs ${programs[*]}
+  download_configs
+  ssh_key
+  git_configs $email $username
+  vim_setup
+  zsh_setup
 }
 
 main "$@"
