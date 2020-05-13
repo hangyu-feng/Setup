@@ -9,7 +9,7 @@ programs=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
 install_programs() {
   echo "=== install basic programs ==="
   sudo apt update && sudo apt upgrade
-  sudo apt install $*
+  sudo apt install "$@"
 }
 
 download_configs() {
@@ -81,23 +81,32 @@ zsh_setup() {
   fi
 }
 
-main() {
-  for arg in $*; do
-    if [[ $arg =~ ^--user= ]]; then
-      username=${arg#"--user="}
-    elif [[ $arg =~ ^--email= ]]; then
-      email=${arg#"--email="}
-    elif [[ $arg =~ ^--programs= ]]; then
-      programs+=${arg#"--programs="}
-    fi
+process_args() {
+  # getopts (bash) and getopt (mac) does not support long option, only GNU
+  # getopt supports long option. So none of them will be used for sake of
+  # cross-platform compatibility.
+  for arg in "$@"; do
+    case $arg in
+      "--user="*)
+        username=${arg#"--user="}
+        echo $username;;
+      "--email"*)
+        email=${arg#"--email="};;
+      "--programs"*)
+        programs+=(${arg#"--programs="});;
+    esac
   done
-  install_programs ${programs[*]}
-  download_configs
-  ssh_key
-  git_configs $email $username
-  vim_setup
-  zsh_setup
 }
 
-main $*
+main() {
+  process_args "$@"
+  # install_programs ${programs[*]}
+  # download_configs
+  # ssh_key
+  # git_configs $email $username
+  # vim_setup
+  # zsh_setup
+}
+
+main "$@"
 
