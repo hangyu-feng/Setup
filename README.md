@@ -15,17 +15,17 @@
   
   Available Options:
   
-    - `--name="Your Name"`
+  - `--name="Your Name"`
     
-    - `--email="you@e.mail`
+  - `--email="you@e.mail"`
     
-    - `--packages="package-1 package-2`:
+  - `--packages="package-1 package-2`:
     
-      - This list will add to default package list
+    - This list will add to default package list
       
-      - Be sure to check package name. If you are on Ubuntu or Linux system that uses apt, you should search apt package name. Otherwise search for brew package name. A good example is that `ag` is called `silversearcher-ag` in apt and `the_silver_search` in brew.
+    - Be sure to check package name. If you are on Ubuntu or Linux system that uses apt, you should search apt package name. Otherwise search for brew package name. A good example is that `ag` is called `silversearcher-ag` in apt and `the_silver_search` in brew.
       
-    - `--upgrade`: This script do not upgrade all packages managed by the selected package manager by default. Pass in `--upgrade` to upgrade them
+  - `--upgrade`: This script do not upgrade all packages managed by the selected package manager by default. Pass in `--upgrade` to upgrade them
 
 ### Requirements:
   `bash`, `curl`, `git`
