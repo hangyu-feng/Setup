@@ -91,7 +91,7 @@ ssh_key() {
   for filename in $(ls -a ~/.ssh); do
     for pub_key_name in ${pub_key_names[*]}; do
       if [[ $filename == $pub_key_name ]]; then
-        pub_key=~/.ssh/$existed
+        pub_key=~/.ssh/$filename
       fi
     done
   done
