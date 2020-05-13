@@ -1,6 +1,6 @@
 # Setup
 
-#### setup ubuntu/debian:
+### setup on ubuntu/debian:
   ```sh
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/hangyu-feng/.setup/master/setup.sh)"
   ```
@@ -11,7 +11,7 @@
   ```
   note that all three options are optional, and setting programs will only add to the list of programs to be installed/
 
-#### requirements:
+### requirements:
   `bash`, `curl`, `apt`
 
   support for mac and other linux distros using package managers other than apt will come soon.
