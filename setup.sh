@@ -31,7 +31,7 @@ package_manager() {
   # package manager has slightly different package names.
   # In future I might consider to switch to brew for every Unix system.
   if [[ ! $(which apt) =~ "not found" ]] && [[ $os == "linux" ]]; then
-    pm=$(which apt)
+    pm="sudo $(which apt)"
   else
     if [[ $(which brew) =~ "not found" ]]; then
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -72,15 +72,12 @@ process_args() {
 
 install_packages() {
   echo "=== install packages ==="
-  if [[ $pm =~ "apt" ]]; then
-    pm="sudo $pm"
-  fi
   if $upgrade; then
     $pm upgrade && $pm install "$@"
   else
     for $package in "$@"; do
       if [[ $(which $package) =~ "not found" ]]; then
-        sudo $pm install $package
+        $pm install $package
       fi
     done
   fi
