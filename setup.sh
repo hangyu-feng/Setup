@@ -75,7 +75,7 @@ install_packages() {
   if [[ $upgrade -gt 0 ]]; then
     $pm upgrade && $pm install "$@"
   else
-    for $package in "$@"; do
+    for package in "$@"; do
       if [[ $(which $package) =~ "not found" ]]; then
         $pm install $package
       fi
