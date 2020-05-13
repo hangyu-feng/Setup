@@ -7,6 +7,7 @@ username="Hangyu Feng"
 programs=undefined
 os=undefined
 pm=undefined
+upgrade=1
 
 detect_os() {
   case $(uname) in
@@ -59,6 +60,9 @@ process_args() {
       "--programs="*)
         programs+=(${arg#"--programs="})
         ;;
+      "--no-upgrade")
+        upgrade=0
+        ;;
       *)
         echo "the argument $arg is not valid"
         ;;
@@ -69,11 +73,16 @@ process_args() {
 install_programs() {
   echo "=== install basic programs ==="
   if [[ $pm =~ "apt" ]]; then
-    sudo $pm update && sudo $pm upgrade
-    sudo $pm install "$@"
+    pm="sudo $pm"
+  fi
+  if $upgrade; then
+    $pm upgrade && $pm install "$@"
   else
-    $pm update && $pm upgrade
-    $pm install "$@"
+    for $program in "$@"; do
+      if [[ $(which $program) =~ "not found" ]]; then
+        sudo $pm install $program
+      fi
+    done
   fi
 }
 
