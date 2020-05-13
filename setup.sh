@@ -7,7 +7,7 @@ username="Hangyu Feng"
 packages=undefined
 os=undefined
 pm=undefined
-upgrade=1
+upgrade=0
 
 detect_os() {
   case $(uname) in
@@ -60,8 +60,8 @@ process_args() {
       "--packages="*)
         packages+=(${arg#"--packages="})
         ;;
-      "--no-upgrade")
-        upgrade=0
+      "--upgrade")
+        upgrade=1
         ;;
       *)
         echo "the argument $arg is not valid"
