@@ -21,10 +21,10 @@ download_configs() {
 ssh_key() {
   echo "=== detect / generate public key ==="
   pub_key=undefined
-  filenames=( id_rsa.pub id_ecdsa.pub id_ed25519.pub )
-  for existed in $(ls -a ~/.ssh); do
-    for filename in ${filenames[*]}; do
-      if [[ $existed == $filename ]]; then
+  pub_key_names=( id_rsa.pub id_ecdsa.pub id_ed25519.pub )
+  for filename in $(ls -a ~/.ssh); do
+    for pub_key_name in ${pub_key_names[*]}; do
+      if [[ $filename == $pub_key_name ]]; then
         pub_key=~/.ssh/$existed
       fi
     done
