@@ -6,6 +6,22 @@ email="vailgrass@gmail.com"
 username="Hangyu Feng"
 programs=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
 
+process_args() {
+  # getopts (bash) and getopt (mac) does not support long option, only GNU
+  # getopt supports long option. So none of them will be used for sake of
+  # cross-platform compatibility.
+  for arg in "$@"; do
+    case $arg in
+      "--user="*)
+        username=${arg#"--user="};;
+      "--email="*)
+        email=${arg#"--email="};;
+      "--programs="*)
+        programs+=(${arg#"--programs="});;
+    esac
+  done
+}
+
 install_programs() {
   echo "=== install basic programs ==="
   sudo apt update && sudo apt upgrade
@@ -79,22 +95,6 @@ zsh_setup() {
   else
     echo "already in zsh"
   fi
-}
-
-process_args() {
-  # getopts (bash) and getopt (mac) does not support long option, only GNU
-  # getopt supports long option. So none of them will be used for sake of
-  # cross-platform compatibility.
-  for arg in "$@"; do
-    case $arg in
-      "--user="*)
-        username=${arg#"--user="};;
-      "--email"*)
-        email=${arg#"--email="};;
-      "--programs"*)
-        programs+=(${arg#"--programs="});;
-    esac
-  done
 }
 
 main() {
