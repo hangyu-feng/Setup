@@ -72,7 +72,7 @@ process_args() {
 
 install_packages() {
   echo "=== install packages ==="
-  if $upgrade; then
+  if [[ $upgrade -gt 0 ]]; then
     $pm upgrade && $pm install "$@"
   else
     for $package in "$@"; do
