@@ -5,6 +5,18 @@ set -u  # force var declaration
 email="vailgrass@gmail.com"
 username="Hangyu Feng"
 programs=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
+os=undefined
+
+detect_os() {
+  case $(uname) in
+    "Linux")
+      os="Linux"
+      ;;
+    "Darwin")
+      os="Mac"
+      ;;
+  esac
+}
 
 process_args() {
   # getopts (bash) and getopt (mac) does not support long option, only GNU
@@ -13,11 +25,14 @@ process_args() {
   for arg in "$@"; do
     case $arg in
       "--user="*)
-        username=${arg#"--user="};;
+        username=${arg#"--user="}
+        ;;
       "--email="*)
-        email=${arg#"--email="};;
+        email=${arg#"--email="}
+        ;;
       "--programs="*)
-        programs+=(${arg#"--programs="});;
+        programs+=(${arg#"--programs="})
+        ;;
     esac
   done
 }
@@ -98,6 +113,7 @@ zsh_setup() {
 }
 
 main() {
+  detect_os
   process_args "$@"
   install_programs ${programs[*]}
   download_configs
