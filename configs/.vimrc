@@ -292,7 +292,7 @@ map <leader>t<leader> :tabnext
 
 " actions on buffers: next, delete
 map <leader><Tab> :bn<cr>
-map <leader>d :bn<bar>bd#<cr>
+map <leader>w :bn<bar>bd#<cr>
 
 " Specify the behavior when switching between buffers
 try
