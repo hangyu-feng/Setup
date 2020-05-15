@@ -47,6 +47,7 @@ let g:NERDToggleCheckAllLines = 1
 " linter
 " w0rp has renamed himself to dense-analysis
 Plugin 'dense-analysis/ale'
+Plugin 'vim-syntastic/syntastic'
 
 set rtp+=/usr/local/opt/fzf
 Plugin 'junegunn/fzf'
@@ -59,6 +60,7 @@ let g:indentLine_setConceal = 0
 
 Plugin 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
+" TODO: figure out how to show buffer number in tabline
 " go to https://github.com/vim-airline/vim-airline#smarter-tab-line for all formatters
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
@@ -86,6 +88,20 @@ let g:vim_json_conceal=0
 " tmux
 Plugin 'tmux-plugins/vim-tmux'
 
+" markdown
+Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
+" Uncomment to override defaults:
+" let g:instant_markdown_slow = 1
+" let g:instant_markdown_autostart = 0
+" let g:instant_markdown_open_to_the_world = 1
+" let g:instant_markdown_allow_unsafe_content = 1
+" let g:instant_markdown_allow_external_content = 0
+" let g:instant_markdown_mathjax = 1
+" let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+" let g:instant_markdown_autoscroll = 0
+" let g:instant_markdown_port = 8888
+" let g:instant_markdown_python = 1
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -99,6 +115,8 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+packadd! matchit
 
 " When your .vimrc file is sourced twice, the autocommands will appear twice.
 " To avoid this, put this command in your .vimrc file, before defining
@@ -124,7 +142,7 @@ command W w !sudo tee % > /dev/null
 
 " copy file path relative to current working directory.
 " see https://vim.fandom.com/wiki/Copy_filename_to_clipboard
-map <leader>c :let @*=expand("%:h")<cr>
+map <leader>c :let @*=expand("%")<cr>
 map <leader>p :let @*=expand("%:p")<cr>
 
 
