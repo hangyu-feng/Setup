@@ -79,6 +79,7 @@ install_packages() {
   else
     for package in "$@"; do
       if [[ $(which $package) =~ "not found" ]]; then
+        echo "install $package"
         $pm install $package
       fi
     done
