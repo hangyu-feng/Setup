@@ -99,7 +99,13 @@ install_casks() {
 download_configs() {
   echo "=== download config files ==="
   [ ! -f ~/.vimrc ] && curl -o ~/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
-  [ ! -f ~/.zshrc ] && curl -a ~/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
+  if [[ -f ~/.zshrc ]] && [[ ! -f ~/.zshrc-backup ]]; then
+    mv ~/.zshrc ~/.zshrc-backup
+  else
+    echo "zshrc-backup already exists!"
+    exit 1
+  fi
+  curl -o ~/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
 }
 
 ssh_key() {

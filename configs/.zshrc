@@ -1,3 +1,9 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="~/.oh-my-zsh"
+
 ZSH_THEME="agnoster"
 
 plugins=(git colorize colored-man-pages command-not-found ssh-agent)
@@ -84,3 +90,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/home/linuxbrew/.linuxbrew/opt/mysql@5.7/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/opt/imagemagick@6/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
+
