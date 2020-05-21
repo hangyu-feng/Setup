@@ -34,6 +34,7 @@ package_manager() {
     pm="sudo $(which apt)"
   else
     if [[ $(which brew) =~ "not found" ]]; then
+      echo "brew not found, install homebrew"
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     fi
     pm=$(which brew)
