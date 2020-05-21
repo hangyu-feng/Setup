@@ -22,6 +22,7 @@ detect_os() {
       exit 1
       ;;
   esac
+  echo "current OS is $os"
 }
 
 package_manager() {
@@ -30,15 +31,18 @@ package_manager() {
   # avoid permission issues. Only apt and brew are supported since each
   # package manager has slightly different package names.
   # In future I might consider to switch to brew for every Unix system.
-  if [[ ! $(which apt) =~ "not found" ]] && [[ $os == "linux" ]]; then
+  which apt
+  if [[ $? == 1 ]] && [[ $os == "linux" ]]; then
     pm="sudo $(which apt)"
   else
-    if [[ $(which brew) =~ "not found" ]]; then
+    which brew
+    if [[ $? == 1 ]]; then
       echo "brew not found, install homebrew"
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     fi
     pm=$(which brew)
   fi
+  echo "package manager is set to $pm"
 }
 
 process_args() {
@@ -78,7 +82,8 @@ install_packages() {
     $pm upgrade && $pm install "$@"
   else
     for package in "$@"; do
-      if [[ $(which $package) =~ "not found" ]]; then
+      which package
+      if [[ $? == 1 ]]; then
         echo "install $package"
         $pm install $package
       fi
@@ -183,10 +188,10 @@ main() {
   ssh_key
   git_configs "$email" "$username"
   vim_setup
-  zsh_setup
   if [[ $os == "mac" ]]; then
     iterm2_setup
   fi
+  zsh_setup  # zsh setup should always be the last since it switch to zsh and pauses the script
 }
 
 main "$@"
