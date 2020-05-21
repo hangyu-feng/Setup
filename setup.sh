@@ -46,8 +46,9 @@ process_args() {
   # cross-platform compatibility.
   if [[ $pm =~ "apt" ]]; then
     packages=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
-  else
+  else  # using brew
     packages=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
+    casks=( visual-studio-code iterm2 microsoft-edge firefox spotify homebrew/cask-fonts/font-fira-mono-for-powerline wechat )
   fi
   for arg in "$@"; do
     case $arg in
@@ -81,6 +82,11 @@ install_packages() {
       fi
     done
   fi
+}
+
+install_casks() {
+  echo "=== install casks ==="
+  $pm cask install ${casks[@]}
 }
 
 download_configs() {
@@ -159,16 +165,24 @@ zsh_setup() {
   fi
 }
 
+iterm2_setup() {
+  echo "remember to load iterm2 config at configs/iterm2 (General -> Preferences -> Load preferences from a custom folder or URL)"
+}
+
 main() {
   detect_os
   package_manager
   process_args "$@"
   install_packages ${packages[*]}
+  if [[ $pm =~ "brew" ]]; then
+    install_casks
+  fi
   download_configs
   ssh_key
   git_configs "$email" "$username"
   vim_setup
   zsh_setup
+  iterm2_setup
 }
 
 main "$@"
