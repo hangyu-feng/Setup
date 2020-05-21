@@ -99,7 +99,7 @@ install_casks() {
 download_configs() {
   echo "=== download config files ==="
   [ ! -f ~/.vimrc ] && curl -o ~/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
-  [ ! -f ~/.zshrc ] && curl -o ~/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
+  [ ! -f ~/.zshrc ] && curl -a ~/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
 }
 
 ssh_key() {
