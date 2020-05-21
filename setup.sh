@@ -182,7 +182,9 @@ main() {
   git_configs "$email" "$username"
   vim_setup
   zsh_setup
-  iterm2_setup
+  if [[ $os == "mac" ]]; then
+    iterm2_setup
+  fi
 }
 
 main "$@"
