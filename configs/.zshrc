@@ -16,7 +16,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 antigen apply
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 pull() {
   origin=$(git branch --show-current) &&
@@ -90,4 +90,3 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/home/linuxbrew/.linuxbrew/opt/mysql@5.7/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/opt/imagemagick@6/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
-
