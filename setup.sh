@@ -53,7 +53,7 @@ process_args() {
     packages=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep )
   else  # using brew
     packages=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
-    casks=( visual-studio-code iterm2 microsoft-edge firefox spotify homebrew/cask-fonts/font-fira-mono-for-powerline wechat )
+    casks=( visual-studio-code iterm2 microsoft-edge firefox spotify homebrew/cask-fonts/font-fira-mono-for-powerline )
   fi
   for arg in "$@"; do
     case $arg in
@@ -193,9 +193,12 @@ main() {
   vim_setup
   if [[ $os == "mac" ]]; then
     iterm2_setup
+    echo ""
+    echo "Here are some optional programs that can be installed:"
+    echo "    brew cask install docker macs-fan-control turbo-boost-switcher fanny wechat"
+    echo ""
   fi
   zsh_setup  # zsh setup should always be the last since it switch to zsh and pauses the script
 }
 
 main "$@"
-
