@@ -2,11 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="agnoster"
 
 plugins=(git colorize colored-man-pages command-not-found ssh-agent)
+
+source "${ZSH}/oh-my-zsh.sh"
 
 source ~/antigen.zsh
 antigen use oh-my-zsh
@@ -15,8 +17,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
 antigen apply
-
-source "$ZSH/oh-my-zsh.sh"
 
 pull() {
   origin=$(git branch --show-current) &&
