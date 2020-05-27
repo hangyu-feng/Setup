@@ -154,17 +154,17 @@ vim_setup() {
 
 zsh_setup() {
   echo "=== zsh setup ==="
-  if [ ! -d ~/.oh-my-zsh ]; then
-    echo "~/.oh-my-zsh folder doesn't exist, install oh-my-zsh"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  else
-    echo "oh-my-zsh already installed"
-  fi
   if [ ! -f ~/antigen.zsh ]; then
     echo "~/antigen.zsh folder doesn't exist, install antigen"
     curl -L git.io/antigen > ~/antigen.zsh  # zsh package manager
   else
     echo "antigen already installed"
+  fi
+  if [ ! -d ~/.oh-my-zsh ]; then # this will switch to zsh, so put it after antigen install
+    echo "~/.oh-my-zsh folder doesn't exist, install oh-my-zsh"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  else
+    echo "oh-my-zsh already installed"
   fi
   if [[ ! $SHELL =~ zsh ]]; then
     echo "switch to zsh"
