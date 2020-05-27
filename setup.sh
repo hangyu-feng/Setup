@@ -79,16 +79,15 @@ process_args() {
 install_packages() {
   echo "=== install packages ==="
   if [[ $upgrade -gt 0 ]]; then
-    $pm upgrade && $pm install "$@"
-  else
-    for package in "$@"; do
-      which package
-      if [[ $? == 1 ]]; then
-        echo "install $package"
-        $pm install $package
-      fi
-    done
+    $pm upgrade
   fi
+  for package in "$@"; do
+    which package
+    if [[ $? == 1 ]]; then
+      echo "install $package $pm install $package"
+      $pm install $package
+    fi
+  done
 }
 
 install_casks() {
