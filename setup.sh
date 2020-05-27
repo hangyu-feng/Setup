@@ -9,6 +9,10 @@ os=undefined
 pm=undefined
 upgrade=0
 
+err() {
+  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
+}
+
 detect_os() {
   case $(uname) in
     "Darwin")
@@ -18,7 +22,7 @@ detect_os() {
       os="linux"
       ;;
     *)
-      echo "WARN: this script can only run on Mac or Linux systems!" 1>&2
+      err "WARN: this script can only run on Mac or Linux systems!"
       exit 1
       ;;
   esac
