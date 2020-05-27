@@ -32,7 +32,7 @@ package_manager() {
   # package manager has slightly different package names.
   # In future I might consider to switch to brew for every Unix system.
   which apt
-  if [[ $? == 1 ]] && [[ $os == "linux" ]]; then
+  if [[ $? == 0 ]] && [[ $os == "linux" ]]; then
     pm="sudo $(which apt)"
   else
     which brew
@@ -84,7 +84,7 @@ install_packages() {
   for package in "$@"; do
     which package
     if [[ $? == 1 ]]; then
-      echo "install $package $pm install $package"
+      echo "installing $package: `$pm install $package`"
       $pm install $package
     fi
   done
