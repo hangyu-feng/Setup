@@ -84,7 +84,7 @@ install_packages() {
   for package in "$@"; do
     which package
     if [[ $? == 1 ]]; then
-      echo "installing $package: `$pm install $package`"
+      echo "installing $package: \`$pm install $package\`"
       $pm install $package
     fi
   done
