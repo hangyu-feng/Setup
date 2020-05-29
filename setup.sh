@@ -9,6 +9,7 @@ casks=()
 os=undefined
 pm=undefined
 upgrade=0
+no_package_install=false
 
 err() {
   echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
@@ -53,6 +54,9 @@ process_args() {
         ;;
       "--brew")
         pm=brew
+        ;;
+      "--no-packages")
+        no_package_install=true
         ;;
       *)
         echo "the argument $arg is not valid"
@@ -213,10 +217,12 @@ iterm2_setup() {
 main() {
   detect_os
   process_args "$@"
-  set_package_manager
-  install_packages ${packages[*]}
-  if [[ $pm =~ "brew" ]]; then
-    install_casks
+  if [[ ${no_package_install} == false ]]; then
+    set_package_manager
+    install_packages ${packages[*]}
+    if [[ $pm =~ "brew" ]]; then
+      install_casks
+    fi
   fi
   download_configs
   ssh_key
