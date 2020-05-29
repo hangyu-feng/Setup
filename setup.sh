@@ -133,7 +133,8 @@ download_configs() {
   if [[ -f ~/.zshrc ]]; then
     mv ~/.zshrc "~/.old/zsh/.zshrc-$(date +'%Y-%m-%d_%H-%M-%S')"
   fi
-  curl -o ~/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
+  # because installing oh-my-zsh will override .zshrc, so mv .zshrc_new to .zshrc later
+  curl -o ~/.zshrc_new https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
 }
 
 ssh_key() {
@@ -204,6 +205,7 @@ zsh_setup() {
   else
     echo "oh-my-zsh already installed"
   fi
+  if [[ -f ~/.zshrc_new ]]; then; mv ~/.zshrc_new ~/.zshrc; fi
   if [[ ! $SHELL =~ zsh ]]; then
     echo "switching to zsh"
     chsh -s $(which zsh) && zsh
