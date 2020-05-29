@@ -72,6 +72,10 @@ set_package_manager() {
   which apt
   if [[ $? == 0 ]] && [[ $os == "linux" ]] && [[ $pm == undefined ]]; then
     pm="sudo $(which apt)"
+    if [[ ! $pm =~ 'apt' ]]; then
+      err 'apt not found'
+      exit 1
+    fi
   else
     which brew
     if [[ $? == 1 ]]; then
@@ -79,8 +83,13 @@ set_package_manager() {
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     fi
     pm=$(which brew)
+    if [[ ! $pm =~ brew ]]; then
+      err "package manager ${pm} is not set to brew"
+      exit 1
+    fi
   fi
-  echo "package manager is set to $pm"
+
+  echo "package manager is set to ${pm}"
 }
 
 install_packages() {
