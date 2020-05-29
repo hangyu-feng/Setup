@@ -97,7 +97,9 @@ set_package_manager() {
 
 install_packages() {
   echo "=== install packages ==="
-  if [[ $pm =~ "apt" ]]; then
+  if [[ ${no_package_install} == true ]]; then
+    packages=( zsh )
+  elif [[ $pm =~ "apt" ]]; then
     packages+=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep fonts-powerline )
   else  # using brew
     packages+=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
@@ -217,12 +219,10 @@ iterm2_setup() {
 main() {
   detect_os
   process_args "$@"
-  if [[ ${no_package_install} == false ]]; then
-    set_package_manager
-    install_packages ${packages[*]}
-    if [[ $pm =~ "brew" ]]; then
-      install_casks
-    fi
+  set_package_manager
+  install_packages ${packages[*]}
+  if [[ $pm =~ "brew" ]] || [[ $os == mac ]]; then
+    install_casks
   fi
   download_configs
   ssh_key
