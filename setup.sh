@@ -4,7 +4,8 @@ set -u  # force var declaration
 
 email="vailgrass@gmail.com"
 username="Hangyu Feng"
-packages=undefined
+packages=()
+casks=()
 os=undefined
 pm=undefined
 upgrade=0
@@ -33,12 +34,6 @@ process_args() {
   # getopts (bash) and getopt (mac) does not support long option, only GNU
   # getopt supports long option. So none of them will be used for sake of
   # cross-platform compatibility.
-  if [[ $pm =~ "apt" ]]; then
-    packages=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep fonts-powerline )
-  else  # using brew
-    packages=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
-    casks=( visual-studio-code iterm2 microsoft-edge firefox spotify homebrew/cask-fonts/font-fira-mono-for-powerline )
-  fi
   for arg in "$@"; do
     case $arg in
       "--user="*)
@@ -49,6 +44,9 @@ process_args() {
         ;;
       "--packages="*)
         packages+=(${arg#"--packages="})
+        ;;
+      "--casks="*)
+        casks+=(${arg#"--casks="})
         ;;
       "--upgrade")
         upgrade=1
@@ -95,6 +93,12 @@ set_package_manager() {
 
 install_packages() {
   echo "=== install packages ==="
+  if [[ $pm =~ "apt" ]]; then
+    packages+=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep fonts-powerline )
+  else  # using brew
+    packages+=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
+    casks+=( visual-studio-code iterm2 microsoft-edge firefox spotify homebrew/cask-fonts/font-fira-mono-for-powerline )
+  fi
   if [[ $upgrade -gt 0 ]]; then
     $pm upgrade
   fi
