@@ -79,8 +79,9 @@ set_package_manager() {
   else
     which brew
     if [[ $? == 1 ]]; then
-      echo "brew not found, install homebrew"
+      echo "brew not found, installing homebrew"
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      eval $(~/.linuxbrew/bin/brew shellenv)  # add brew to environment
     fi
     pm=$(which brew)
     if [[ ! $pm =~ brew ]]; then
@@ -113,9 +114,14 @@ install_casks() {
 
 download_configs() {
   echo "=== download config files ==="
-  [ ! -f ~/.vimrc ] && curl -o ~/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
+
+  if [[ -f ~/.vimrc ]]; then
+    mv ~/.vimrc "~/.old/vim/.vimrc-$(date +'%Y-%m-%d_%H-%M-%S')"
+  fi
+  curl -o ~/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
+
   if [[ -f ~/.zshrc ]]; then
-    mv ~/.zshrc "~/.old-zshrc/.zshrc-$(date +'%Y-%m-%d_%H-%M-%S')"
+    mv ~/.zshrc "~/.old/zsh/.zshrc-$(date +'%Y-%m-%d_%H-%M-%S')"
   fi
   curl -o ~/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
 }
@@ -149,22 +155,27 @@ ssh_key() {
 
 git_configs() {
   echo "=== git configs ==="
-  echo "set git user email: $1"
-  git config --global user.email "$1"
-  echo "set git user name: $2"
+  current_email=$(git config --global user.email)
+  if [[ ${current_email} =~ @ ]]; then
+    echo "git email is already set to ${current_email}"
+  else
+    echo "setting git user email to $1"
+    git config --global user.email "$1"
+  fi
+  echo "setting git user name to $2"
   git config --global user.name "$2"
 }
 
 vim_setup() {
   echo "=== vim setup ==="
   if [ -d ~/.vim/bundle/Vundle.vim ]; then
-    echo "update Vundle repo"
+    echo "updating Vundle repo"
     cd ~/.vim/bundle/Vundle.vim && git pull && cd -
   else
-    echo "clone Vundle repo"
+    echo "cloning Vundle repo"
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   fi
-  echo "install vim plugins"
+  echo "installing vim plugins"
   vim +PluginInstall +qall
 }
 
@@ -177,13 +188,13 @@ zsh_setup() {
     echo "antigen already installed"
   fi
   if [ ! -d ~/.oh-my-zsh ]; then # this will switch to zsh, so put it after antigen install
-    echo "~/.oh-my-zsh folder doesn't exist, install oh-my-zsh"
+    echo "~/.oh-my-zsh folder doesn't exist, installing oh-my-zsh"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   else
     echo "oh-my-zsh already installed"
   fi
   if [[ ! $SHELL =~ zsh ]]; then
-    echo "switch to zsh"
+    echo "switching to zsh"
     chsh -s $(which zsh) && zsh
   else
     echo "already in zsh"
