@@ -7,11 +7,12 @@
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.zoomLevel": 0,
-  "editor.fontFamily": "Fira Mono for Powerline",
+  "editor.fontFamily": "Fira Mono",
   "debug.console.fontFamily": "Hack",
   "debug.console.fontSize": 12,
-  "terminal.integrated.fontFamily": "Fira Mono for Powerline",
+  "terminal.integrated.fontFamily": "Cascadia Code PL",
   "terminal.external.windowsExec": "",
+  "terminal.integrated.fontSize": 13,
   "terminal.integrated.lineHeight": 1.1,
   "workbench.colorCustomizations" : {
     // More colors available in https://glitchbone.github.io/vscode-base16-term/#/
