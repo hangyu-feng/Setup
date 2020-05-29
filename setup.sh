@@ -221,7 +221,7 @@ main() {
   process_args "$@"
   set_package_manager
   install_packages ${packages[*]}
-  if [[ $pm =~ "brew" ]] || [[ $os == mac ]]; then
+  if [[ $pm =~ "brew" ]] && [[ $os == mac ]]; then
     install_casks
   fi
   download_configs
