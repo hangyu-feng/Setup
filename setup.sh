@@ -84,12 +84,12 @@ set_package_manager() {
     fi
     pm=$(which brew)
     if [[ ! $pm =~ brew ]]; then
-      err "package manager ${pm} is not set to brew"
+      err "package manager '${pm}' is not set to brew"
       exit 1
     fi
   fi
 
-  echo "package manager is set to ${pm}"
+  echo "package manager is set to '${pm}'"
 }
 
 install_packages() {
