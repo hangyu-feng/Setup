@@ -1,3 +1,5 @@
+# Set config file: alacritty --config-file <file-path>
+
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Any items in the `env` entry below will be added as
@@ -165,7 +167,7 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  use_thin_strokes: true
+  # use_thin_strokes: true
 
 # Colors
 # https://github.com/alacritty/alacritty/wiki/Color-schemes
@@ -244,7 +246,7 @@ draw_bold_text_with_bright_colors: false
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-# background_opacity: 0.9
+background_opacity: 0.96
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -280,10 +282,10 @@ draw_bold_text_with_bright_colors: false
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+shell:
+  program: wsl.exe ~ -d Ubuntu
+args:
+  - -d Ubuntu
 
 # Startup directory
 #
@@ -340,7 +342,7 @@ draw_bold_text_with_bright_colors: false
   # If this is `true`, the cursor is temporarily hidden when typing.
   #hide_when_typing: false
 
-  #url:
+  # url:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
@@ -352,7 +354,7 @@ draw_bold_text_with_bright_colors: false
     #   - (macOS) open
     #   - (Linux/BSD) xdg-open
     #   - (Windows) explorer
-    #launcher:
+    # launcher:
     #  program: xdg-open
     #  args: []
 
@@ -490,7 +492,7 @@ draw_bold_text_with_bright_colors: false
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
-key_bindings:
+# key_bindings:
   # (Windows, Linux, and BSD only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
   #- { key: C,        mods: Control|Shift, action: Copy             }
@@ -505,26 +507,26 @@ key_bindings:
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
 
   # (macOS only)
-  - { key: Key0,   mods: Command,         action: ResetFontSize    }
-  - { key: Equals, mods: Command,         action: IncreaseFontSize }
+  # - { key: Key0,   mods: Command,         action: ResetFontSize    }
+  # - { key: Equals, mods: Command,         action: IncreaseFontSize }
   # - { key: Add,    mods: Command,         action: IncreaseFontSize }
-  - { key: Minus,  mods: Command,         action: DecreaseFontSize }
-  #- { key: K,      mods: Command,         action: ClearHistory     }
-  #- { key: K,      mods: Command,         chars: "\x0c"            }
-  - { key: V,      mods: Command,         action: Paste            }
-  - { key: C,      mods: Command,         action: Copy             }
+  # - { key: Minus,  mods: Command,         action: DecreaseFontSize }
+  # - { key: K,      mods: Command,         action: ClearHistory     }
+  # - { key: K,      mods: Command,         chars: "\x0c"            }
+  # - { key: V,      mods: Command,         action: Paste            }
+  # - { key: C,      mods: Command,         action: Copy             }
   # - { key: H,      mods: Command,         action: Hide             }
-  #- { key: M,      mods: Command,         action: Minimize         }
-  #- { key: Q,      mods: Command,         action: Quit             }
-  - { key: W,      mods: Command,         action: Quit             }
-  - { key: F,      mods: Command|Control, action: ToggleFullscreen }
-  - { key: N,      mods: Command,         action: SpawnNewInstance }
+  # - { key: M,      mods: Command,         action: Minimize         }
+  # - { key: Q,      mods: Command,         action: Quit             }
+  # - { key: W,      mods: Command,         action: Quit             }
+  # - { key: F,      mods: Command|Control, action: ToggleFullscreen }
+  # - { key: N,      mods: Command,         action: SpawnNewInstance }
 
-  #- { key: Paste,                    action: Paste                            }
-  #- { key: Copy,                     action: Copy                             }
-  #- { key: L,         mods: Control, action: ClearLogNotice                   }
-  #- { key: L,         mods: Control, chars: "\x0c"                            }
-  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
-  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
-  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
-  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+  # - { key: Paste,                    action: Paste                            }
+  # - { key: Copy,                     action: Copy                             }
+  # - { key: L,         mods: Control, action: ClearLogNotice                   }
+  # - { key: L,         mods: Control, chars: "\x0c"                            }
+  # - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
+  # - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
+  # - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
+  # - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
