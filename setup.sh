@@ -29,26 +29,6 @@ detect_os() {
   echo "current OS is $os"
 }
 
-package_manager() {
-  # apt is the preferred package manager for Linux, and brew for macOS. If
-  # the linux distro does not have apt, it will install brew instead to
-  # avoid permission issues. Only apt and brew are supported since each
-  # package manager has slightly different package names.
-  # In future I might consider to switch to brew for every Unix system.
-  which apt
-  if [[ $? == 0 ]] && [[ $os == "linux" ]]; then
-    pm="sudo $(which apt)"
-  else
-    which brew
-    if [[ $? == 1 ]]; then
-      echo "brew not found, install homebrew"
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    fi
-    pm=$(which brew)
-  fi
-  echo "package manager is set to $pm"
-}
-
 process_args() {
   # getopts (bash) and getopt (mac) does not support long option, only GNU
   # getopt supports long option. So none of them will be used for sake of
@@ -73,11 +53,34 @@ process_args() {
       "--upgrade")
         upgrade=1
         ;;
+      "--brew")
+        pm=brew
+        ;;
       *)
         echo "the argument $arg is not valid"
         ;;
     esac
   done
+}
+
+set_package_manager() {
+  # apt is the preferred package manager for Linux, and brew for macOS. If
+  # the linux distro does not have apt, it will install brew instead to
+  # avoid permission issues. Only apt and brew are supported since each
+  # package manager has slightly different package names.
+  # In future I might consider to switch to brew for every Unix system.
+  which apt
+  if [[ $? == 0 ]] && [[ $os == "linux" ]] && [[ $pm == undefined ]]; then
+    pm="sudo $(which apt)"
+  else
+    which brew
+    if [[ $? == 1 ]]; then
+      echo "brew not found, install homebrew"
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    fi
+    pm=$(which brew)
+  fi
+  echo "package manager is set to $pm"
 }
 
 install_packages() {
@@ -184,8 +187,8 @@ iterm2_setup() {
 
 main() {
   detect_os
-  package_manager
   process_args "$@"
+  set_package_manager
   install_packages ${packages[*]}
   if [[ $pm =~ "brew" ]]; then
     install_casks
