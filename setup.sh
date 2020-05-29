@@ -156,7 +156,8 @@ ssh_key() {
 git_configs() {
   echo "=== git configs ==="
   current_email=$(git config --global user.email)
-  if [[ ${current_email} =~ @ ]]; then
+  emails=( 'vailgrass@gmail.com' 'hangyu.feng@mail.utoronto.ca' 'hfeng@financeit.io' )
+  if [[ ${emails[@]} =~ ${current_email} ]] ; then
     echo "git email is already set to ${current_email}"
   else
     echo "setting git user email to $1"
