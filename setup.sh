@@ -208,12 +208,20 @@ zsh_setup() {
   if [[ -f ~/.zshrc_new ]]; then
     mv ~/.zshrc_new ~/.zshrc
   fi
-  if [[ ! $SHELL =~ zsh ]]; then
-    echo "switching to zsh"
-    chsh -s $(which zsh)
-    zsh
+  if [[ $SHELL =~ zsh ]]; then
+    echo "default shell is zsh already"
   else
-    echo "already in zsh"
+    echo "changing default shell to zsh"
+    chsh -s $(which zsh)
+    if [[ ! $SHELL =~ zsh ]]; then
+      echo 'change default shell failed. it can be switched manually by adding `export SHELL=$(which zsh)` or `zsh` to .bashrc'
+    fi
+  fi
+  if [[ $0 =~ zsh ]]; then
+    echo "already running in zsh"
+  else
+    echo "switching to zsh"
+    zsh
   fi
 }
 
