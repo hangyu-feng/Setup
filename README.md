@@ -20,6 +20,10 @@
   - `--email="you@e.mail"`
     
   - `--packages="package-1 package-2"`
+  
+  - `--brew`: Use brew regardless of OS.
+  
+  - `--no-packages`: Only install zsh.
     
     - This list will add to default package list
       
