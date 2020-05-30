@@ -128,13 +128,14 @@ download_configs() {
   if [[ -f ~/.vimrc ]]; then
     mv ~/.vimrc "~/.old/vim/.vimrc-$(date +'%Y-%m-%d_%H-%M-%S')"
   fi
-  curl -o ~/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
+  curl -o ~/setup/configs/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
+  echo 'source ~/setup/configs/.zshrc' > ~/.zshrc
 
   if [[ -f ~/.zshrc ]]; then
     mv ~/.zshrc "~/.old/zsh/.zshrc-$(date +'%Y-%m-%d_%H-%M-%S')"
   fi
   # because installing oh-my-zsh will override .zshrc, so mv .zshrc_new to .zshrc later
-  curl -o ~/.zshrc_new https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
+  curl -o ~/setup/configs/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
 }
 
 ssh_key() {
@@ -205,9 +206,9 @@ zsh_setup() {
   else
     echo "~/.oh-my-zsh folder existed. To reinstall oh-my-zsh, remove ~/.oh-my-zsh folder before running the script."
   fi
-  if [[ -f ~/.zshrc_new ]]; then
-    mv ~/.zshrc_new ~/.zshrc
-  fi
+
+  echo 'source ~/setup/configs/.zshrc' > ~/.zshrc
+
   if [[ $SHELL =~ zsh ]]; then
     echo "default shell is zsh already"
   else
