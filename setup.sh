@@ -201,14 +201,17 @@ zsh_setup() {
   fi
   if [ ! -d ~/.oh-my-zsh ]; then # this will switch to zsh, so put it after antigen install
     echo "~/.oh-my-zsh folder doesn't exist, installing oh-my-zsh"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   else
-    echo "oh-my-zsh already installed"
+    echo "~/.oh-my-zsh folder existed. To reinstall oh-my-zsh, remove ~/.oh-my-zsh folder before running the script."
   fi
-  if [[ -f ~/.zshrc_new ]]; then; mv ~/.zshrc_new ~/.zshrc; fi
+  if [[ -f ~/.zshrc_new ]]; then
+    mv ~/.zshrc_new ~/.zshrc
+  fi
   if [[ ! $SHELL =~ zsh ]]; then
     echo "switching to zsh"
-    chsh -s $(which zsh) && zsh
+    chsh -s $(which zsh)
+    zsh
   else
     echo "already in zsh"
   fi
