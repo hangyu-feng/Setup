@@ -7,8 +7,7 @@
   
   If you need to set different username, email, or add programs to install, you can download the script and run it by hand with arguments:
   ```sh
-  curl -ofsSL ~/setup.sh "https://raw.githubusercontent.com/hangyu-feng/.setup/master/setup.sh"
-  ~/.setup.sh --name="Your Name" --email="you@e.mail" --packages="package-1 package-2" --upgrade
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/hangyu-feng/.setup/master/setup.sh)" "" --flag1 --flag2
   ```
   
   Note that all three options are optional
