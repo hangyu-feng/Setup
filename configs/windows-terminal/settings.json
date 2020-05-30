@@ -16,7 +16,7 @@
       "closeOnExit": true,
       "colorScheme": "Nord",
       "cursorShape": "bar",
-      "fontFace": "Fira Mono for Powerline",
+      "fontFace": "Cascadia Code PL",
       "fontSize": 10,
       "historySize": 9001,
       "padding": "10, 6",
@@ -26,16 +26,37 @@
       { "name": "Powershell 7",
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
-        "fontFace": "Cascadia Code PL",  // https://github.com/microsoft/cascadia-code
+        "fontFace": "Cascadia Mono PL",  // https://github.com/microsoft/cascadia-code
         "source": "Windows.Terminal.PowershellCore",
         "startingDirectory": "%USERPROFILE%"
       },
       { "name": "Windows PowerShell",
         "commandline": "powershell.exe",
-        "fontFace": "Cascadia Code PL",  // https://github.com/microsoft/cascadia-code
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png",
         "startingDirectory": "%USERPROFILE%"
+      },
+      { "name": "Ubuntu",
+        "commandline": "wsl.exe ~ -d Ubuntu",
+        "fontFace": "Source Code Pro for Powerline",
+        "icon": "C:/Program Files/WindowsApps/CanonicalGroupLimited.UbuntuonWindows_2004.2020.424.0_x64__79rhkp1fndgsc/Assets/Square44x44Logo.altform-unplated_targetsize-256.png",
+        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}"
+      },
+      { "name": "Debian",
+        "commandline": "wsl.exe ~ -d Debian",
+        "fontFace": "Source Code Pro for Powerline",
+        "icon": "C:/Program Files/WindowsApps/TheDebianProject.DebianGNULinux_1.1.8.0_x64__76v4gfsz19hv4/Assets/Square44x44Logo.altform-unplated_targetsize-256.png",
+        "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}"
+      },
+      { "name": "Teaching Lab",
+        "commandline": "ssh fenghang@teach.cs.toronto.edu",
+        "icon": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1280px-Utoronto_coa.svg.png",
+        "guid": "{0a0403ef-0b42-4188-932a-9c6f49d3b478}"
+      },
+      { "name": "Git Bash",
+        "commandline": "%PROGRAMFILES%/Git/bin/bash.exe --cd-to-home",
+        "icon": "https://gitforwindows.org/img/gwindows_logo.png",
+        "guid": "{bfb159f6-2409-48b5-9793-609d3c69f439}"
       },
       { "name": "cmd",
         "commandline": "cmd.exe",
@@ -53,18 +74,6 @@
         "icon": "ms-appx:///ProfileIcons/{b453ae62-4e3d-5e58-b989-0a998ec441b8}.png",
         "startingDirectory": "%USERPROFILE%",
         "hidden": true
-      },
-      { "name": "Ubuntu",
-        "commandline": "wsl.exe ~ -d Ubuntu",
-        "fontFace": "Source Code Pro for Powerline",
-        "icon": "C:/Program Files/WindowsApps/CanonicalGroupLimited.UbuntuonWindows_2004.2020.424.0_x64__79rhkp1fndgsc/Assets/Square44x44Logo.altform-unplated_targetsize-256.png",
-        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}"
-      },
-      { "name": "Debian",
-        "commandline": "wsl.exe ~ -d Debian",
-        "fontFace": "Source Code Pro for Powerline",
-        "icon": "C:/Program Files/WindowsApps/TheDebianProject.DebianGNULinux_1.1.8.0_x64__76v4gfsz19hv4/Assets/Square44x44Logo.altform-unplated_targetsize-256.png",
-        "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}"
       }
     ]
   },
