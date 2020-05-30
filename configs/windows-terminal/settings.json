@@ -49,7 +49,7 @@
         "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}"
       },
       { "name": "Teaching Lab",
-        "commandline": "ssh fenghang@teach.cs.toronto.edu",
+        "commandline": "wsl.exe ~ -d Ubuntu -e ssh fenghang@teach.cs.toronto.edu",  // This allows vim mouse support!
         "icon": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1280px-Utoronto_coa.svg.png",
         "guid": "{0a0403ef-0b42-4188-932a-9c6f49d3b478}"
       },
