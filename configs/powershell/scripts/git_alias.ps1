@@ -19,7 +19,7 @@ function gcpc {	git cherry-pick --continue }
 function gd { git diff }
 function gf { git fetch }
 function gfa { git fetch --all --prune }
-function gl { git pull }
+function gpull { git pull }
 function gm { git merge }
 function gmom { git merge origin/master }
 function gma { git merge --abort }
