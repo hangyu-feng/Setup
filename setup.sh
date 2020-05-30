@@ -4,10 +4,12 @@ set -u  # force var declaration
 
 email="vailgrass@gmail.com"
 username="Hangyu Feng"
-packages=undefined
+packages=()
+casks=()
 os=undefined
 pm=undefined
 upgrade=0
+no_package_install=false
 
 err() {
   echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
@@ -29,36 +31,10 @@ detect_os() {
   echo "current OS is $os"
 }
 
-package_manager() {
-  # apt is the preferred package manager for Linux, and brew for macOS. If
-  # the linux distro does not have apt, it will install brew instead to
-  # avoid permission issues. Only apt and brew are supported since each
-  # package manager has slightly different package names.
-  # In future I might consider to switch to brew for every Unix system.
-  which apt
-  if [[ $? == 0 ]] && [[ $os == "linux" ]]; then
-    pm="sudo $(which apt)"
-  else
-    which brew
-    if [[ $? == 1 ]]; then
-      echo "brew not found, install homebrew"
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    fi
-    pm=$(which brew)
-  fi
-  echo "package manager is set to $pm"
-}
-
 process_args() {
   # getopts (bash) and getopt (mac) does not support long option, only GNU
   # getopt supports long option. So none of them will be used for sake of
   # cross-platform compatibility.
-  if [[ $pm =~ "apt" ]]; then
-    packages=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep fonts-powerline )
-  else  # using brew
-    packages=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
-    casks=( visual-studio-code iterm2 microsoft-edge firefox spotify homebrew/cask-fonts/font-fira-mono-for-powerline )
-  fi
   for arg in "$@"; do
     case $arg in
       "--user="*)
@@ -70,8 +46,17 @@ process_args() {
       "--packages="*)
         packages+=(${arg#"--packages="})
         ;;
+      "--casks="*)
+        casks+=(${arg#"--casks="})
+        ;;
       "--upgrade")
         upgrade=1
+        ;;
+      "--brew")
+        pm=brew
+        ;;
+      "--no-packages")
+        no_package_install=true
         ;;
       *)
         echo "the argument $arg is not valid"
@@ -80,8 +65,46 @@ process_args() {
   done
 }
 
+set_package_manager() {
+  # apt is the preferred package manager for Linux, and brew for macOS. If
+  # the linux distro does not have apt, it will install brew instead to
+  # avoid permission issues. Only apt and brew are supported since each
+  # package manager has slightly different package names.
+  # In future I might consider to switch to brew for every Unix system.
+  which apt
+  if [[ $? == 0 ]] && [[ $os == "linux" ]] && [[ $pm == undefined ]]; then
+    pm="sudo $(which apt)"
+    if [[ ! $pm =~ 'apt' ]]; then
+      err 'apt not found'
+      exit 1
+    fi
+  else
+    which brew
+    if [[ $? == 1 ]]; then
+      echo "brew not found, installing homebrew"
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      eval $(~/.linuxbrew/bin/brew shellenv)  # add brew to environment
+    fi
+    pm=$(which brew)
+    if [[ ! $pm =~ brew ]]; then
+      err "package manager '${pm}' is not set to brew"
+      exit 1
+    fi
+  fi
+
+  echo "package manager is set to '${pm}'"
+}
+
 install_packages() {
   echo "=== install packages ==="
+  if [[ ${no_package_install} == true ]]; then
+    packages=( zsh )
+  elif [[ $pm =~ "apt" ]]; then
+    packages+=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep fonts-powerline )
+  else  # using brew
+    packages+=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
+    casks+=( visual-studio-code iterm2 microsoft-edge firefox spotify homebrew/cask-fonts/font-fira-mono-for-powerline )
+  fi
   if [[ $upgrade -gt 0 ]]; then
     $pm upgrade
   fi
@@ -101,11 +124,17 @@ install_casks() {
 
 download_configs() {
   echo "=== download config files ==="
-  [ ! -f ~/.vimrc ] && curl -o ~/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
-  if [[ -f ~/.zshrc ]]; then
-    mv ~/.zshrc "~/.old-zshrc/.zshrc-$(date +'%Y-%m-%d_%H-%M-%S')"
+
+  if [[ -f ~/.vimrc ]]; then
+    mv ~/.vimrc "~/.old/vim/.vimrc-$(date +'%Y-%m-%d_%H-%M-%S')"
   fi
-  curl -o ~/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
+  curl -o ~/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
+
+  if [[ -f ~/.zshrc ]]; then
+    mv ~/.zshrc "~/.old/zsh/.zshrc-$(date +'%Y-%m-%d_%H-%M-%S')"
+  fi
+  # because installing oh-my-zsh will override .zshrc, so mv .zshrc_new to .zshrc later
+  curl -o ~/.zshrc_new https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
 }
 
 ssh_key() {
@@ -137,22 +166,28 @@ ssh_key() {
 
 git_configs() {
   echo "=== git configs ==="
-  echo "set git user email: $1"
-  git config --global user.email "$1"
-  echo "set git user name: $2"
+  current_email=$(git config --global user.email)
+  emails=( 'vailgrass@gmail.com' 'hangyu.feng@mail.utoronto.ca' 'hfeng@financeit.io' )
+  if [[ ${emails[@]} =~ ${current_email} ]] ; then
+    echo "git email is already set to ${current_email}"
+  else
+    echo "setting git user email to $1"
+    git config --global user.email "$1"
+  fi
+  echo "setting git user name to $2"
   git config --global user.name "$2"
 }
 
 vim_setup() {
   echo "=== vim setup ==="
   if [ -d ~/.vim/bundle/Vundle.vim ]; then
-    echo "update Vundle repo"
+    echo "updating Vundle repo"
     cd ~/.vim/bundle/Vundle.vim && git pull && cd -
   else
-    echo "clone Vundle repo"
+    echo "cloning Vundle repo"
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   fi
-  echo "install vim plugins"
+  echo "installing vim plugins"
   vim +PluginInstall +qall
 }
 
@@ -165,13 +200,14 @@ zsh_setup() {
     echo "antigen already installed"
   fi
   if [ ! -d ~/.oh-my-zsh ]; then # this will switch to zsh, so put it after antigen install
-    echo "~/.oh-my-zsh folder doesn't exist, install oh-my-zsh"
+    echo "~/.oh-my-zsh folder doesn't exist, installing oh-my-zsh"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   else
     echo "oh-my-zsh already installed"
   fi
+  if [[ -f ~/.zshrc_new ]]; then; mv ~/.zshrc_new ~/.zshrc; fi
   if [[ ! $SHELL =~ zsh ]]; then
-    echo "switch to zsh"
+    echo "switching to zsh"
     chsh -s $(which zsh) && zsh
   else
     echo "already in zsh"
@@ -184,10 +220,10 @@ iterm2_setup() {
 
 main() {
   detect_os
-  package_manager
   process_args "$@"
+  set_package_manager
   install_packages ${packages[*]}
-  if [[ $pm =~ "brew" ]]; then
+  if [[ $pm =~ "brew" ]] && [[ $os == mac ]]; then
     install_casks
   fi
   download_configs
