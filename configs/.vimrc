@@ -9,8 +9,8 @@ else
 endif
 
 " automated vim-plug download
-if empty(glob(vim-plug-dir))
-  silent !curl -fLo vim-plug-dir --create-dirs
+if empty(glob(vimplugdir))
+  silent !curl -fLo vimplugdir --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
