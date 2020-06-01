@@ -1,33 +1,32 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" automated vim-plug download
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/bundle')
 
-" Keep Plugin commands between vundle#begin/end.
+Plug 'junegunn/vim-plug'
 
-Plugin 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 " Plugin 'lifepillar/vim-gruvbox8'
 
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " some defaults
-Plugin 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 runtime! 'plugin/sensible.vim'  " run this plugin earlier to override settings
 
 " Plugin 'zivyangll/git-blame.vim'
 
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 map - <plug>NERDCommenterToggle
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -46,19 +45,19 @@ let g:NERDToggleCheckAllLines = 1
 
 " linter
 " w0rp has renamed himself to dense-analysis
-Plugin 'dense-analysis/ale'
-Plugin 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
+Plug 'vim-syntastic/syntastic'
 
 set rtp+=/usr/local/opt/fzf
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 nnoremap <silent> ; :FZF<CR>
 nnoremap <silent> ' :Rg<CR>
 
-Plugin 'yggdroot/indentline'
+Plug 'yggdroot/indentline'
 let g:indentLine_setConceal = 0
 
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 " TODO: figure out how to show buffer number in tabline
 " go to https://github.com/vim-airline/vim-airline#smarter-tab-line for all formatters
@@ -66,30 +65,30 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 
 " python
-Plugin 'tmhedberg/simpylfold'
-Plugin 'nvie/vim-flake8'
-Plugin 'indentpython.vim'
-Plugin 'sirver/ultisnips'
+Plug 'tmhedberg/simpylfold'
+Plug 'nvie/vim-flake8'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'sirver/ultisnips'
 
 " ruby on rails
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-bundler'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-bundler'
 
 " javascript and ember.js
-Plugin 'pangloss/vim-javascript'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'elzr/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'elzr/vim-json'
 let g:vim_json_conceal=0
 
 " tmux
-Plugin 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux'
 
 " markdown
-Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
+Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
 " Uncomment to override defaults:
 " let g:instant_markdown_slow = 1
 " let g:instant_markdown_autostart = 0
@@ -102,19 +101,7 @@ Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
 " let g:instant_markdown_port = 8888
 " let g:instant_markdown_python = 1
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#end()
 
 packadd! matchit
 
