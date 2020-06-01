@@ -1,3 +1,7 @@
+" This is kind of a legacy config file for windows when I didn't fully moved from Vundle to vim-plug.
+" It is mostly the save as the new vimrc.
+" Since I've changed to vim-plug, _vimrc can just source .vimrc in setup repository
+
 
 set nocompatible              " be iMproved, required
 
