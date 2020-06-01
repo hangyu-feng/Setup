@@ -3,13 +3,13 @@ set nocompatible              " be iMproved, required
 
 if has("win16") || has("win32")
   set shell=pwsh
-  let vimplugdir = "~/vimfiles/autoload/plug.vim"
+  let vimplugdir = "$home/vimfiles/autoload/plug.vim"
 elseif has("unix")
   let vimplugdir = "~/.vim/autoload/plug.vim"
 endif
 
 " automated vim-plug download
-if has("unix") && empty(glob(vimplugdir))
+if empty(glob(vimplugdir))
   execute 'silent !curl --create-dirs -fLo ' . vimplugdir . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif

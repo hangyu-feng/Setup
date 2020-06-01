@@ -128,14 +128,14 @@ download_configs() {
   if [[ -f ~/.vimrc ]]; then
     mv ~/.vimrc "~/.old/vim/.vimrc-$(date +'%Y-%m-%d_%H-%M-%S')"
   fi
-  curl -o ~/setup/configs/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
+  curl --create-dir -o ~/setup/configs/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
   echo 'source ~/setup/configs/.zshrc' > ~/.zshrc
 
   if [[ -f ~/.zshrc ]]; then
     mv ~/.zshrc "~/.old/zsh/.zshrc-$(date +'%Y-%m-%d_%H-%M-%S')"
   fi
   # because installing oh-my-zsh will override .zshrc, so mv .zshrc_new to .zshrc later
-  curl -o ~/setup/configs/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
+  curl --create-dir -o ~/setup/configs/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
 }
 
 ssh_key() {
