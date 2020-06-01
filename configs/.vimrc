@@ -4,7 +4,7 @@ set nocompatible              " be iMproved, required
 if has("win16") || has("win32")
   set shell=pwsh
   let vimplugdir = "~/vimfiles/autoload/plug.vim"
-else
+elseif has("unix")
   let vimplugdir = "~/.vim/autoload/plug.vim"
 endif
 
