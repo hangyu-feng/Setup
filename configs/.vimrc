@@ -154,7 +154,11 @@ set so=7
 
 " mouse support!
 set mouse=a
-set ttymouse=xterm2
+if has("mouse_sgr")
+  set ttymouse=sgr  " SGR protocol
+else
+  set ttymouse=xterm2
+endif
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'

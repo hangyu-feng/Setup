@@ -76,8 +76,8 @@ build_prompt() {
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshrc="vi ~/.zshrc"
-alias vimrc="vi ~/.vimrc"
+alias zshrc="vi ~/setup/configs/.zshrc"
+alias vimrc="vi ~/setup/configs/.vimrc"
 alias reload="source ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 umask 002
