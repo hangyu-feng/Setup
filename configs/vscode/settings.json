@@ -8,7 +8,7 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.zoomLevel": 0,
   "editor.fontFamily": "Fira Mono",
-  "debug.console.fontFamily": "Hack",
+  "debug.console.fontFamily": "Cascadia Code PL",
   "debug.console.fontSize": 12,
   "terminal.integrated.fontFamily": "Cascadia Code PL",
   "terminal.external.windowsExec": "",

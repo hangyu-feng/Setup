@@ -181,15 +181,8 @@ git_configs() {
 
 vim_setup() {
   echo "=== vim setup ==="
-  if [ -d ~/.vim/bundle/Vundle.vim ]; then
-    echo "updating Vundle repo"
-    cd ~/.vim/bundle/Vundle.vim && git pull && cd -
-  else
-    echo "cloning Vundle repo"
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  fi
   echo "installing vim plugins"
-  vim +PluginInstall +qall
+  vim +PlugInstall +qall
 }
 
 zsh_setup() {
