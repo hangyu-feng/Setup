@@ -75,7 +75,9 @@ let g:airline_powerline_fonts = 1
 Plug 'tmhedberg/simpylfold'
 Plug 'nvie/vim-flake8'
 Plug 'vim-scripts/indentpython.vim'
-Plug 'sirver/ultisnips'
+if has('python3')
+  Plug 'sirver/ultisnips'
+endif
 
 " ruby on rails
 Plug 'vim-ruby/vim-ruby'
