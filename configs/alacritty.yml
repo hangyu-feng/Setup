@@ -281,9 +281,8 @@ background_opacity: 0.96
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: wsl.exe ~ -d Ubuntu
-args:
-  - -d Ubuntu
+  program:
+    pwsh -wd ~
 
 # Startup directory
 #
