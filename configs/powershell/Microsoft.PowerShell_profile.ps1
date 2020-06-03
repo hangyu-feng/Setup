@@ -9,5 +9,6 @@ Set-Theme Agnoster  # More themes at https://github.com/JanDeDobbeleer/oh-my-pos
 . $PSScriptRoot/scripts/git_alias.ps1
 
 # Some other aliases
-function reload { . ${profile} }
 function scst { scoop update && scoop status }
+
+Set-Alias -Name vi -Value vim
