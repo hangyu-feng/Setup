@@ -10,6 +10,7 @@ endif
 
 " automated vim-plug download
 if empty(glob(vimplugdir))
+  " `.` for string concatenation
   execute 'silent !curl --create-dirs -fLo ' . vimplugdir . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
