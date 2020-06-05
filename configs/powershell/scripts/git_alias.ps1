@@ -24,7 +24,8 @@ function gm { git merge }
 function gmom { git merge origin/master }
 function gma { git merge --abort }
 function gp { git push }
-function grhh { git reset --hard }
+function grhh { git reset HEAD }
+function grhh { git reset --hard HEAD }
 function grs { git restore }
 function gst { git status }
 function gstc { git stash clear }
