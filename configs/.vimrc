@@ -18,6 +18,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 Plug 'junegunn/vim-plug'
+Plug 'junegunn/goyo.vim'
 
 Plug 'morhetz/gruvbox'
 " Plugin 'lifepillar/vim-gruvbox8'
