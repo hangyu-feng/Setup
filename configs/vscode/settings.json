@@ -38,7 +38,6 @@
     "terminal.ansiWhite":"#D5C4A1",
     "terminal.ansiYellow":"#FABD2F"
   },
-  "workbench.colorTheme": "Gruvbox Dark (Medium)",
   "diffEditor.ignoreTrimWhitespace": false,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
@@ -56,5 +55,6 @@
   "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
   "files.associations": {
     "_vimrc": "viml"
-  }
+  },
+  "workbench.colorTheme": "Mayukai Mirage Gruvbox Darktooth"
 }
