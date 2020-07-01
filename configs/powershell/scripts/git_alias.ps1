@@ -2,6 +2,9 @@
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
 
 set-alias -name g -value git
+
+function current_branch { git rev-parse --abbrev-ref HEAD }
+set-alias -name git_current_branch -value current_branch
 function ga { git add }
 function gaa { git add --all }
 function gav { git add --verbose }
@@ -19,6 +22,7 @@ function gcpc {	git cherry-pick --continue }
 function gd { git diff }
 function gf { git fetch }
 function gfa { git fetch --all --prune }
+function ggsup { git branch --set-upstream-to=origin/$(current_branch) }
 function gpull { git pull }
 function gm { git merge }
 function gmom { git merge origin/master }
