@@ -22,7 +22,8 @@ function gcpc {	git cherry-pick --continue }
 function gd { git diff }
 function gf { git fetch }
 function gfa { git fetch --all --prune }
-function ggsup { git branch --set-upstream-to=origin/$(current_branch) }
+function ggu { git pull --rebase origin $(current_branch) }
+function gpsup { git push --set-upstream origin $(current_branch) }
 function gpull { git pull }
 function gm { git merge }
 function gmom { git merge origin/master }
