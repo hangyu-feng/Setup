@@ -12,10 +12,10 @@ function gb { git branch }
 function gc { git commit -v }
 function gc! {  git commit --amend }
 function gcam { git commit -a -m $args }
-function gcb { git checkout -b }
+function gcb { git checkout -b $args }
 function gcf { git config --list }
 function gcm { git checkout master }
-function gco { git checkout }
+function gco { git checkout $args }
 function gcp { git cherry-pick }
 function gcpa {	git cherry-pick --abort }
 function gcpc {	git cherry-pick --continue }
