@@ -74,7 +74,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 
 " python
-Plug 'tmhedberg/simpylfold'
+" Plug 'tmhedberg/simpylfold'
 Plug 'nvie/vim-flake8'
 Plug 'vim-scripts/indentpython.vim'
 if has('python3')
