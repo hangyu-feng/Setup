@@ -16,7 +16,7 @@
       "closeOnExit": true,
       "colorScheme": "Nord",
       "cursorShape": "bar",
-      "fontFace": "Cascadia Code PL",
+      "fontFace": "Cascadia Mono PL", // https://github.com/microsoft/cascadia-code
       "fontSize": 10,
       "historySize": 9001,
       "padding": "10, 6",
@@ -26,7 +26,6 @@
       { "name": "Powershell 7",
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
-        "fontFace": "Cascadia Mono PL",  // https://github.com/microsoft/cascadia-code
         "source": "Windows.Terminal.PowershellCore",
         "startingDirectory": "%USERPROFILE%"
       },
