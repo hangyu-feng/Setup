@@ -6,6 +6,11 @@ Import-Module oh-my-posh
 
 Set-Theme Agnoster  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
 
+Set-PSReadLineOption -Colors @{
+  Parameter = 'Cyan'  # parameters were unreadable for Nord colorscheme
+  Operator = 'Cyan'
+}
+
 . $PSScriptRoot/scripts/git_alias.ps1
 
 # Some other aliases
