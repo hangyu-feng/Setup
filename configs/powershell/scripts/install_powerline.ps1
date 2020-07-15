@@ -10,3 +10,5 @@ Install-Module oh-my-posh -Scope CurrentUser
 Install-Module -Name PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck
 
 # Here I installed both posh-git and PSReadline because there is nothing wrong.
+
+. $profile
