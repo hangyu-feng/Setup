@@ -54,7 +54,7 @@
       },
       { "name": "Ali Cloud: Silvia Dev",
         "commandline": "wsl.exe ~ -d Ubuntu -e ssh root@47.103.13.7",  // This allows vim mouse support!
-        "icon": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1280px-Utoronto_coa.svg.png",
+        "icon": "https://avatars0.githubusercontent.com/u/941070?s=400&v=4",
         "guid": "{1fb20b7a-88d9-41ef-8aeb-27e4ca60d47e}"
       },
       { "name": "Git Bash",
