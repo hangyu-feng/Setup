@@ -52,6 +52,11 @@
         "icon": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1280px-Utoronto_coa.svg.png",
         "guid": "{0a0403ef-0b42-4188-932a-9c6f49d3b478}"
       },
+      { "name": "Ali Cloud: Silvia Dev",
+        "commandline": "wsl.exe ~ -d Ubuntu -e ssh root@47.103.13.7",  // This allows vim mouse support!
+        "icon": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1280px-Utoronto_coa.svg.png",
+        "guid": "{1fb20b7a-88d9-41ef-8aeb-27e4ca60d47e}"
+      },
       { "name": "Git Bash",
         "commandline": "%PROGRAMFILES%/Git/bin/bash.exe --cd-to-home",
         "icon": "https://gitforwindows.org/img/gwindows_logo.png",
