@@ -6,7 +6,7 @@ export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="agnoster"
 
-plugins=(git colorize colored-man-pages command-not-found ssh-agent)
+plugins=(git colorize colored-man-pages command-not-found)
 
 source "${ZSH}/oh-my-zsh.sh"
 
