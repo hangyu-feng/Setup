@@ -36,7 +36,7 @@
     "terminal.ansiMagenta":"#D3869B",
     "terminal.ansiRed":"#FB4934",
     "terminal.ansiWhite":"#D5C4A1",
-    "terminal.ansiYellow":"#FABD2F"
+    "terminal.ansiYellow":"#FABD2F",
   },
   "diffEditor.ignoreTrimWhitespace": false,
   "files.trimTrailingWhitespace": true,
@@ -56,5 +56,12 @@
   "files.associations": {
     "_vimrc": "viml"
   },
-  "workbench.colorTheme": "Mayukai Mirage Gruvbox Darktooth"
+  "remote.SSH.remotePlatform": {
+    "ut": "linux",
+    "192.168.2.48": "macOS",
+    "my_mac": "macOS"
+  },
+  "latex-workshop.view.pdf.viewer": "tab",
+  "python.pythonPath": "C:\\Users\\VailG\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+  "terminal.integrated.automationShell.windows": "C:/Users/VailG/scoop/apps/pwsh/current/pwsh.exe",
 }
