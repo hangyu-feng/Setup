@@ -52,7 +52,6 @@
   "editor.tabSize": 2,
   "editor.minimap.enabled": false,
   "breadcrumbs.enabled": true,
-  "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
   "files.associations": {
     "_vimrc": "viml"
   },
@@ -62,6 +61,8 @@
     "my_mac": "macOS"
   },
   "latex-workshop.view.pdf.viewer": "tab",
-  "python.pythonPath": "C:\\Users\\VailG\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+  "terminal.integrated.shell.windows": "C:/Users/VailG/scoop/apps/pwsh/current/pwsh.exe",
   "terminal.integrated.automationShell.windows": "C:/Users/VailG/scoop/apps/pwsh/current/pwsh.exe",
+  "python.languageServer": "Microsoft",
+  "python.defaultInterpreterPath": "C:\\Users\\VailG\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
 }
