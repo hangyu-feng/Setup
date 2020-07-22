@@ -79,6 +79,7 @@ build_prompt() {
 alias zshrc="vi ~/setup/configs/.zshrc"
 alias vimrc="vi ~/setup/configs/.vimrc"
 alias reload="source ~/.zshrc"
+alias upsetup="cd ~/setup && pull && cd -"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 umask 002
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
