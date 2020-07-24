@@ -14,6 +14,8 @@ Set-PSReadLineOption -Colors @{
 . $PSScriptRoot/scripts/git_alias.ps1
 
 # Some other aliases
-function scst { scoop update && scoop status }
+function scst { scoop update; scoop status }
 
 Set-Alias -Name vi -Value vim
+
+$desktop = "~/OneDrive/桌面"
