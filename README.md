@@ -34,3 +34,7 @@
   `bash`, `curl`, `git`
 
   Support for mac and other linux distros using package managers other than apt will come soon.
+  
+### Tricks and Techniques
+
+  - [Job Control in ZSH and Bash](https://gist.github.com/CMCDragonkai/6084a504b6a7fee270670fc8f5887eb4)
