@@ -16,6 +16,14 @@ Set-PSReadLineOption -Colors @{
 # Some other aliases
 function scst { scoop update; scoop status }
 
+function rename-ext {
+  $ext = $args[0]
+  $offset = $args[1]
+  foreach ($file in (ls *.$ext)) {
+    Rename-Item -Path $file -NewName $file.Name.SubString($offset)
+  }
+}
+
 Set-Alias -Name vi -Value vim
 
 $desktop = "~/OneDrive/桌面"
