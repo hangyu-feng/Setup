@@ -62,6 +62,14 @@
         "icon": "https://gitforwindows.org/img/gwindows_logo.png",
         "guid": "{bfb159f6-2409-48b5-9793-609d3c69f439}"
       },
+      {
+        "name": "Win-KeX",
+        "guid": "{6634efc9-58fa-4f5d-bed0-e89d6e4f96dd}",
+        "hidden": false,
+        "icon": "https://gitlab.com/kalilinux/packages/kali-menu/-/raw/kali/master/menu-icons/48x48/apps/kali-menu.png",
+        "commandline": "wsl kex wtstart",
+        "startingDirectory" : "%USERPROFILE%"
+      },
       { "name": "cmd",
         "commandline": "cmd.exe",
         "cursorShape": "bar",
