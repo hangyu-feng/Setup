@@ -35,7 +35,8 @@
         "commandline": "powershell.exe",
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png",
-        "startingDirectory": "%USERPROFILE%"
+        "startingDirectory": "%USERPROFILE%",
+        "hidden": true
       },
       {
         "name": "Ubuntu",
@@ -67,14 +68,15 @@
         "name": "Git Bash",
         "commandline": "%PROGRAMFILES%/Git/bin/bash.exe --cd-to-home",
         "icon": "https://gitforwindows.org/img/gwindows_logo.png",
-        "guid": "{bfb159f6-2409-48b5-9793-609d3c69f439}"
+        "guid": "{bfb159f6-2409-48b5-9793-609d3c69f439}",
+        "hidden": true
       },
       {
         "name": "Win-KeX",
         "guid": "{6634efc9-58fa-4f5d-bed0-e89d6e4f96dd}",
         "hidden": false,
         "icon": "https://gitlab.com/kalilinux/packages/kali-menu/-/raw/kali/master/menu-icons/48x48/apps/kali-menu.png",
-        "commandline": "wsl -d kali-linux kex wtstart --sl  -s", // Seamless mode with sound
+        "commandline": "wsl -d kali-linux kex wtstart --sl -s", // Seamless mode with sound
         "startingDirectory": "//wsl$/kali-linux/home/hangyu-feng"
       },
       {
