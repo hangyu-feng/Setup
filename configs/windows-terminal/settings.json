@@ -23,41 +23,48 @@
       "snapOnInput": true
     },
     "list": [
-      { "name": "Powershell 7",
+      {
+        "name": "Powershell 7",
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
         "source": "Windows.Terminal.PowershellCore",
         "startingDirectory": "%USERPROFILE%"
       },
-      { "name": "Windows PowerShell",
+      {
+        "name": "Windows PowerShell",
         "commandline": "powershell.exe",
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png",
         "startingDirectory": "%USERPROFILE%"
       },
-      { "name": "Ubuntu",
+      {
+        "name": "Ubuntu",
         "commandline": "wsl.exe ~ -d Ubuntu",
         "fontFace": "Source Code Pro for Powerline",
-        "icon": "C:/Program Files/WindowsApps/CanonicalGroupLimited.UbuntuonWindows_2004.2020.424.0_x64__79rhkp1fndgsc/Assets/Square44x44Logo.altform-unplated_targetsize-256.png",
+        "icon": "https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png",
         "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}"
       },
-      { "name": "Debian",
+      {
+        "name": "Debian",
         "commandline": "wsl.exe ~ -d Debian",
         "fontFace": "Source Code Pro for Powerline",
-        "icon": "C:/Program Files/WindowsApps/TheDebianProject.DebianGNULinux_1.1.8.0_x64__76v4gfsz19hv4/Assets/Square44x44Logo.altform-unplated_targetsize-256.png",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Openlogo-debianV2.svg/1200px-Openlogo-debianV2.svg.png",
         "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}"
       },
-      { "name": "Teaching Lab",
-        "commandline": "wsl.exe ~ -d Ubuntu -e ssh fenghang@teach.cs.toronto.edu",  // This allows vim mouse support!
+      {
+        "name": "Teaching Lab",
+        "commandline": "wsl.exe ~ -d Ubuntu -e ssh fenghang@teach.cs.toronto.edu", // This allows vim mouse support!
         "icon": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1280px-Utoronto_coa.svg.png",
         "guid": "{0a0403ef-0b42-4188-932a-9c6f49d3b478}"
       },
-      { "name": "Ali Cloud: Silvia Dev",
-        "commandline": "wsl.exe ~ -d Ubuntu -e ssh root@47.103.13.7",  // This allows vim mouse support!
+      {
+        "name": "Ali Cloud: Silvia Dev",
+        "commandline": "wsl.exe ~ -d Ubuntu -e ssh root@47.103.13.7", // This allows vim mouse support!
         "icon": "https://avatars0.githubusercontent.com/u/941070?s=400&v=4",
         "guid": "{1fb20b7a-88d9-41ef-8aeb-27e4ca60d47e}"
       },
-      { "name": "Git Bash",
+      {
+        "name": "Git Bash",
         "commandline": "%PROGRAMFILES%/Git/bin/bash.exe --cd-to-home",
         "icon": "https://gitforwindows.org/img/gwindows_logo.png",
         "guid": "{bfb159f6-2409-48b5-9793-609d3c69f439}"
@@ -67,18 +74,18 @@
         "guid": "{6634efc9-58fa-4f5d-bed0-e89d6e4f96dd}",
         "hidden": false,
         "icon": "https://gitlab.com/kalilinux/packages/kali-menu/-/raw/kali/master/menu-icons/48x48/apps/kali-menu.png",
-        "commandline": "wsl kex wtstart",
-        "startingDirectory" : "%USERPROFILE%"
+        "commandline": "wsl -d kali-linux kex wtstart --sl  -s", // Seamless mode with sound
+        "startingDirectory": "//wsl$/kali-linux/home/hangyu-feng"
       },
-      { "name": "cmd",
-        "commandline": "cmd.exe",
-        "cursorShape": "bar",
-        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-        "icon": "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png",
-        "startingDirectory": "%USERPROFILE%",
-        "hidden": true
+      {
+        "name": "kali-linux",
+        "guid": "{46ca431a-3a87-5fb3-83cd-11ececc031d2}",
+        "hidden": false,
+        "source": "Windows.Terminal.Wsl",
+        "startingDirectory": "//wsl$/kali-linux/home/hangyu-feng"
       },
-      { "name": "Azure Cloud Shell",
+      {
+        "name": "Azure Cloud Shell",
         "commandline": "Azure",
         // "connectionType": "{d9fcfdfa-a479-412c-83b7-c5640e61cd62}",
         "cursorShape": "bar",
@@ -90,7 +97,8 @@
     ]
   },
   "schemes": [
-    { "name": "Campbell",
+    {
+      "name": "Campbell",
       "background": "#0C0C0C",
       "black": "#0C0C0C",
       "blue": "#0037DA",
@@ -110,7 +118,8 @@
       "white": "#CCCCCC",
       "yellow": "#C19C00"
     },
-    { "name": "Vintage",
+    {
+      "name": "Vintage",
       "background": "#000000",
       "black": "#000000",
       "blue": "#000080",
@@ -130,7 +139,8 @@
       "white": "#C0C0C0",
       "yellow": "#808000"
     },
-    { "name": "One Half Dark",
+    {
+      "name": "One Half Dark",
       "background": "#282C34",
       "black": "#282C34",
       "blue": "#61AFEF",
@@ -150,7 +160,8 @@
       "white": "#DCDFE4",
       "yellow": "#E5C07B"
     },
-    { "name": "One Half Light",
+    {
+      "name": "One Half Light",
       "background": "#FAFAFA",
       "black": "#383A42",
       "blue": "#0184BC",
@@ -170,7 +181,8 @@
       "white": "#FAFAFA",
       "yellow": "#C18301"
     },
-    { "name": "Solarized Dark",
+    {
+      "name": "Solarized Dark",
       "background": "#002B36",
       "black": "#073642",
       "blue": "#268BD2",
@@ -190,7 +202,8 @@
       "white": "#EEE8D5",
       "yellow": "#B58900"
     },
-    { "name": "Solarized Light",
+    {
+      "name": "Solarized Light",
       "background": "#FDF6E3",
       "black": "#073642",
       "blue": "#268BD2",
@@ -210,27 +223,29 @@
       "white": "#EEE8D5",
       "yellow": "#B58900"
     },
-    { "name" : "Dracula",
-      "background" : "#282A36",
-      "black" : "#21222C",
-      "blue" : "#BD93F9",
-      "brightBlack" : "#6272A4",
-      "brightBlue" : "#D6ACFF",
-      "brightCyan" : "#A4FFFF",
-      "brightGreen" : "#69FF94",
-      "brightPurple" : "#FF92DF",
-      "brightRed" : "#FF6E6E",
-      "brightWhite" : "#FFFFFF",
-      "brightYellow" : "#FFFFA5",
-      "cyan" : "#8BE9FD",
-      "foreground" : "#F8F8F2",
-      "green" : "#50FA7B",
-      "purple" : "#FF79C6",
-      "red" : "#FF5555",
-      "white" : "#F8F8F2",
-      "yellow" : "#F1FA8C"
+    {
+      "name": "Dracula",
+      "background": "#282A36",
+      "black": "#21222C",
+      "blue": "#BD93F9",
+      "brightBlack": "#6272A4",
+      "brightBlue": "#D6ACFF",
+      "brightCyan": "#A4FFFF",
+      "brightGreen": "#69FF94",
+      "brightPurple": "#FF92DF",
+      "brightRed": "#FF6E6E",
+      "brightWhite": "#FFFFFF",
+      "brightYellow": "#FFFFA5",
+      "cyan": "#8BE9FD",
+      "foreground": "#F8F8F2",
+      "green": "#50FA7B",
+      "purple": "#FF79C6",
+      "red": "#FF5555",
+      "white": "#F8F8F2",
+      "yellow": "#F1FA8C"
     },
-    { "name": "Gruvbox Dark",
+    {
+      "name": "Gruvbox Dark",
       "black": "#282828",
       "red": "#cc241d",
       "green": "#98971a",
@@ -250,7 +265,8 @@
       "background": "#282828",
       "foreground": "#ebdbb2"
     },
-    { "name": "Twilight",
+    {
+      "name": "Twilight",
       "black": "#141414",
       "red": "#c06d44",
       "green": "#afb97a",
@@ -270,7 +286,8 @@
       "background": "#141414",
       "foreground": "#ffffd4"
     },
-    { "name": "Monokai Remastered",
+    {
+      "name": "Monokai Remastered",
       "black": "#1a1a1a",
       "red": "#f4005f",
       "green": "#98e024",
@@ -290,7 +307,8 @@
       "background": "#0c0c0c",
       "foreground": "#d9d9d9"
     },
-    { "name": "MaterialDark",
+    {
+      "name": "MaterialDark",
       "black": "#212121",
       "red": "#b7141f",
       "green": "#457b24",
@@ -310,9 +328,10 @@
       "background": "#232322",
       "foreground": "#e5e5e5"
     },
-    { "name" : "Nord",
-      "background" : "#2e3440",
-      "foreground" : "#d8dee9",
+    {
+      "name": "Nord",
+      "background": "#2e3440",
+      "foreground": "#d8dee9",
       "black": "#3b4252",
       "blue": "#81a1c1",
       "brightBlack": "#4c566a",
