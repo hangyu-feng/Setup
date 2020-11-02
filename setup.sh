@@ -125,16 +125,12 @@ install_casks() {
 download_configs() {
   echo "=== download config files ==="
 
-  if [[ -f ~/.vimrc ]]; then
-    mv ~/.vimrc "~/.old/vim/.vimrc-$(date +'%Y-%m-%d_%H-%M-%S')"
-  fi
+  for config in .vimrc .zshrc .zprofile; do
+    if [[ -f $config ]]; then
+      mv $config "~/.old/${config#.}/${config}-$(date +'%Y-%m-%d_%H-%M-%S')"
+    fi
+  done
   curl --create-dir -o ~/setup/configs/.vimrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.vimrc
-  echo 'source ~/setup/configs/.zshrc' > ~/.zshrc
-
-  if [[ -f ~/.zshrc ]]; then
-    mv ~/.zshrc "~/.old/zsh/.zshrc-$(date +'%Y-%m-%d_%H-%M-%S')"
-  fi
-  # because installing oh-my-zsh will override .zshrc, so mv .zshrc_new to .zshrc later
   curl --create-dir -o ~/setup/configs/.zshrc https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/.zshrc
 }
 
@@ -201,6 +197,7 @@ zsh_setup() {
   fi
 
   echo 'source ~/setup/configs/.zshrc' > ~/.zshrc
+  echo 'source ~/setup/configs/.zprofile' > ~/.zprofile
 
   if [[ $SHELL =~ zsh ]]; then
     echo "default shell is zsh already"
