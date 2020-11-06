@@ -103,7 +103,7 @@ install_packages() {
     packages+=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep fonts-powerline )
   else  # using brew
     packages+=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
-    casks+=( visual-studio-code iterm2 microsoft-edge firefox spotify homebrew/cask-fonts/font-fira-mono-for-powerline )
+    casks+=( visual-studio-code iterm2 homebrew/cask-fonts/font-fira-mono-for-powerline )
   fi
   if [[ $upgrade -gt 0 ]]; then
     $pm upgrade
