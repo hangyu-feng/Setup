@@ -145,6 +145,9 @@ command W w !sudo tee % > /dev/null
 map <leader>c :let @*=expand("%")<cr>
 map <leader>p :let @*=expand("%:p")<cr>
 
+" close terminal
+tnoremap <ESC> <C-w>:q!<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
