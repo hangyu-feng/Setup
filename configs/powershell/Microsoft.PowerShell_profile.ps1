@@ -4,7 +4,7 @@
 Import-Module posh-git
 Import-Module oh-my-posh
 
-Set-Theme Agnoster  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
+Set-Theme Robbyrussell  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
 
 Set-PSReadLineOption -Colors @{
   Parameter = 'Cyan'  # parameters were unreadable for Nord colorscheme
@@ -25,5 +25,3 @@ function rename-ext {
 }
 
 Set-Alias -Name vi -Value vim
-
-$desktop = "~/OneDrive/桌面"
