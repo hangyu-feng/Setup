@@ -25,3 +25,6 @@ function rename-ext {
 }
 
 Set-Alias -Name vi -Value vim
+
+Set-Alias -Name python3 -Value python
+
