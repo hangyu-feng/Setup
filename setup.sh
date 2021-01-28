@@ -217,6 +217,7 @@ zsh_setup() {
 }
 
 iterm2_setup() {
+  curl --create-dir -o ~/setup/configs/iterm2/com.googlecode.iterm2.plist https://raw.githubusercontent.com/hangyu-feng/.setup/master/configs/iterm2/com.googlecode.iterm2.plist
   echo "remember to load iterm2 config at configs/iterm2 (General -> Preferences -> Load preferences from a custom folder or URL)"
 }
 
