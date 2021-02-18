@@ -3,7 +3,7 @@
 # for Git commands, parameters, remotes, and branch names. Oh-My-Posh provides
 # theme capabilities for your PowerShell prompt.
 Install-Module posh-git -Scope CurrentUser
-Install-Module oh-my-posh -Scope CurrentUser
+Install-Module oh-my-posh -Scope CurrentUser -AllowPrerelease
 
 # If you are using PowerShell Core, install PSReadline.
 # PSReadline lets you customize the command line editing environment in PowerShell.

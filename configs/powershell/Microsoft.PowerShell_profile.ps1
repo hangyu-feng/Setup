@@ -4,7 +4,9 @@
 Import-Module posh-git
 Import-Module oh-my-posh
 
-Set-Theme Robbyrussell  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
+# see https://ohmyposh.dev/
+Set-Theme agnosterplus  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
+# Set-PoshPrompt -Theme agnosterplus
 
 Set-PSReadLineOption -Colors @{
   Parameter = 'Cyan'  # parameters were unreadable for Nord colorscheme
