@@ -89,6 +89,13 @@
         "icon": "ms-appx:///ProfileIcons/{b453ae62-4e3d-5e58-b989-0a998ec441b8}.png",
         "startingDirectory": "%USERPROFILE%",
         "hidden": true
+      },
+      {
+        "name": "Oracle Cloud",
+        "icon": "https://external-content.duckduckgo.com/ip3/cloud.oracle.com.ico",
+        "hidden": false,
+        "commandline": "wsl.exe ~ -d Ubuntu -e ssh -i ~/codes/talky/.ssh/oracle/ssh-key-2021-03-16.key opc@129.146.246.9", // This allows vim mouse support!
+        "guid": "{c1ca1673-660a-493c-a472-567a1cb16ab3}"
       }
     ]
   },
