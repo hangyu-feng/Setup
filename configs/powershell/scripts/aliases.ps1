@@ -26,6 +26,16 @@ function networth($buyback) {
   ($buyback - 200) * 13
 }
 
-function nvenc($inputPath, $outPath) {
-  ffmpeg -i $inputPath -vcodec hevc_nvenc $outPath
+function nvenc() {
+  foreach ($arg in $args) {
+    foreach ($filename in $arg) {
+      if (Test-Path $filename) {
+        $file = (Get-Item $filename)
+        $dirName = $file.DirectoryName
+        $baseName = $file.BaseName
+        $outpath = "${dirName}\nvenc-${baseName}.mp4"
+        ffmpeg -i $filename -vcodec hevc_nvenc $outPath
+      }
+    }
+  }
 }
