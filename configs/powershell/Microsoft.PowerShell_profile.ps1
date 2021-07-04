@@ -5,7 +5,7 @@ Import-Module posh-git
 Import-Module oh-my-posh
 
 # see https://ohmyposh.dev/
-Set-Theme agnosterplus  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
+Set-PoshPrompt -Theme agnosterplus  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
 # Set-PoshPrompt -Theme agnosterplus
 
 Set-PSReadLineOption -Colors @{
