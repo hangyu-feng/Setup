@@ -1,6 +1,9 @@
 
 " ======================== Plugin Related ========================
 
+" >>> gruvbox
+" https://github.com/morhetz/gruvbox/wiki/Configuration
+
 " >>> Nerd Commenter
 
 let g:NERDSpaceDelims = 1
