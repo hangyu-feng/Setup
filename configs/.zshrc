@@ -80,6 +80,9 @@ alias zshrc="vi ~/setup/configs/.zshrc"
 alias vimrc="vi ~/setup/configs/.vimrc"
 alias reload="source ~/.zshrc"
 alias upsetup="cd ~/setup && pull && cd -"
+if [ -x $( command -v vimx) ]; then
+  alias vim="vimx"
+fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 umask 002
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
