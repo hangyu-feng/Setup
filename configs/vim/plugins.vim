@@ -16,7 +16,6 @@ endif
 call plug#begin('~/.vim/bundle')
 
 Plug 'junegunn/vim-plug'
-Plug 'junegunn/goyo.vim'
 
 Plug 'morhetz/gruvbox'
 " Plugin 'lifepillar/vim-gruvbox8'
@@ -32,10 +31,8 @@ runtime! 'plugin/sensible.vim'  " run this plugin earlier to override settings
 
 Plug 'scrooloose/nerdtree'
 let NERDTreeShowHidden=1
-map <C-n> :NERDTreeToggle<CR>
 
 Plug 'scrooloose/nerdcommenter'
-map - <plug>NERDCommenterToggle
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
@@ -59,8 +56,7 @@ Plug 'vim-syntastic/syntastic'
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-nnoremap <silent> ; :FZF<CR>
-nnoremap <silent> ' :Rg<CR>
+
 
 Plug 'yggdroot/indentline'
 let g:indentLine_setConceal = 0
@@ -84,17 +80,17 @@ endif
 
 " ruby on rails
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-cucumber'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-bundler'
+" Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-cucumber'
+" Plug 'tpope/vim-rake'
+" Plug 'tpope/vim-bundler'
 
 " javascript and ember.js
 Plug 'pangloss/vim-javascript'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'elzr/vim-json'
-let g:vim_json_conceal=0
+" Plug 'mustache/vim-mustache-handlebars'
+" Plug 'elzr/vim-json'
+" let g:vim_json_conceal=0
 
 " tmux
 Plug 'tmux-plugins/vim-tmux'

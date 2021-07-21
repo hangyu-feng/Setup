@@ -1,3 +1,13 @@
+" ============================= Plugin shortcuts ===============================
+
+map <C-n> :NERDTreeToggle<CR>
+
+map - <plug>NERDCommenterToggle
+
+nnoremap <silent> ; :FZF<CR>
+nnoremap <silent> ' :Rg<CR>
+
+
 " With a map leader it's possible to do extra key combinations
 let mapleader = " "
 
