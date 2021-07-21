@@ -6,3 +6,4 @@ execute "source " . currDir . "/plugins.vim"
 execute "source " . currDir . "/keymappings.vim"
 execute "source " . currDir . "/helpers.vim"
 execute "source " . currDir . "/settings.vim"
+
