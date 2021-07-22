@@ -56,6 +56,7 @@ Plug 'vim-syntastic/syntastic'
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 
 Plug 'yggdroot/indentline'
