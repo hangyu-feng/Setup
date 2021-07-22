@@ -16,12 +16,12 @@ let mapleader = " "
 map <leader>c :let @*=expand("%")<cr>
 map <leader>p :let @*=expand("%:p")<cr>
 
-" shift using Tab and Shift-Tab
-nnoremap <Tab> >>_
-nnoremap <S-Tab> <<_
-inoremap <S-Tab> <C-D>
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
+" shift using Tab and Shift-Tab (disabled)
+" nnoremap <Tab> >>_
+" nnoremap <S-Tab> <<_
+" inoremap <S-Tab> <C-D>
+" vnoremap <Tab> >gv
+" vnoremap <S-Tab> <gv
 
 """"""""""""""""""""""""""""""
 " => Visual mode related

@@ -71,6 +71,9 @@ let g:airline_powerline_fonts = 1
 
 Plug 'mhinz/vim-startify'
 
+" autocomplete
+Plug 'ackyshake/VimCompletesMe'
+
 " python
 " Plug 'tmhedberg/simpylfold'
 Plug 'nvie/vim-flake8'
@@ -109,6 +112,9 @@ Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
 " let g:instant_markdown_autoscroll = 0
 " let g:instant_markdown_port = 8888
 " let g:instant_markdown_python = 1
+
+" Latex
+Plug 'lervag/vimtex'
 
 Plug 'https://github.com/adelarsq/vim-matchit'
 
