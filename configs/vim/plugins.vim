@@ -19,6 +19,7 @@ Plug 'junegunn/vim-plug'
 
 Plug 'morhetz/gruvbox'
 " Plugin 'lifepillar/vim-gruvbox8'
+" junegunn/seoul256.vim
 
 " plugin on GitHub repo
 Plug 'tpope/vim-fugitive'
@@ -58,6 +59,8 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
+" syntax highlighting for many languages
+Plug 'sheerun/vim-polyglot'
 
 Plug 'yggdroot/indentline'
 let g:indentLine_setConceal = 0
