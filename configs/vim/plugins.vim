@@ -77,13 +77,14 @@ Plug 'mhinz/vim-startify'
 " autocomplete
 Plug 'ackyshake/VimCompletesMe'
 
+Plug 'sirver/ultisnips'
+let g:UltiSnipsExpandTrigger="<c-s>"  " solving key conflict with VimCompletesMe, see https://github.com/ackyshake/VimCompletesMe/issues/33
+
 " python
 " Plug 'tmhedberg/simpylfold'
 Plug 'nvie/vim-flake8'
 Plug 'vim-scripts/indentpython.vim'
-if has('python3')
-  Plug 'sirver/ultisnips'
-endif
+" Plug 'davidhalter/jedi-vim'  " powerful but little too much. useful when full-IDE experience needed. see https://github.com/davidhalter/jedi-vim
 
 " ruby on rails
 Plug 'vim-ruby/vim-ruby'
@@ -118,6 +119,11 @@ Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
 
 " Latex
 Plug 'lervag/vimtex'
+augroup vimtex
+  autocmd FileType tex noremap <F5> :VimtexCompile<CR>
+  " autocmd BufNewFile,BufRead *.tex :VimtexCompile
+augroup end
+
 
 Plug 'https://github.com/adelarsq/vim-matchit'
 
