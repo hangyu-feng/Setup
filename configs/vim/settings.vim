@@ -110,6 +110,9 @@ try
 catch
 endtry
 
+" transparent background
+hi Normal guibg=NONE ctermbg=NONE
+
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
