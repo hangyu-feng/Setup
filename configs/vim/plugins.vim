@@ -119,10 +119,6 @@ Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
 
 " Latex
 Plug 'lervag/vimtex'
-augroup vimtex
-  autocmd FileType tex noremap <F5> :VimtexCompile<CR>
-  " autocmd BufNewFile,BufRead *.tex :VimtexCompile
-augroup end
 
 
 Plug 'https://github.com/adelarsq/vim-matchit'

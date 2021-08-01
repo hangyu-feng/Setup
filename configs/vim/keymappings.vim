@@ -16,6 +16,13 @@ let mapleader = " "
 map <leader>c :let @*=expand("%")<cr>
 map <leader>p :let @*=expand("%:p")<cr>
 
+" Latex autocompile
+augroup vimtex
+  autocmd FileType tex noremap <F5> :VimtexCompile<CR>
+  " autocmd BufNewFile,BufRead *.tex :VimtexCompile
+augroup end
+
+
 " shift using Tab and Shift-Tab (disabled)
 " nnoremap <Tab> >>_
 " nnoremap <S-Tab> <<_
@@ -70,6 +77,16 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" python F5 Compiling
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+augroup python
+  autocmd FileType python noremap <F5> :term python3 % <CR>
+  " autocmd BufNewFile,BufRead *.tex :VimtexCompile
+augroup end
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
