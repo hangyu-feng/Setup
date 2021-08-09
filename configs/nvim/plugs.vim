@@ -27,12 +27,22 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'vim-airline/vim-airline'
 
+Plug 'mhinz/vim-startify'
+
+Plug 'ackyshake/VimCompletesMe'
+
+Plug 'lervag/vimtex'
+
+Plug 'https://github.com/adelarsq/vim-matchit'
+
 " ======================== Language Plugins ========================
 
 " python
+Plug 'nvie/vim-flake8'
 Plug 'vim-scripts/indentpython.vim'
 if has('python3')
   Plug 'sirver/ultisnips'
+  let g:UltiSnipsExpandTrigger="<c-s>"
 endif
 
 

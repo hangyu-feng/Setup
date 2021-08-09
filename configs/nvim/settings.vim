@@ -152,3 +152,8 @@ if has("clipboard")
     set clipboard+=unnamedplus
   endif
 endif
+
+" ============================== Terminal ================================
+if has("win16") || has("win32")
+  set shell=pwsh
+endif

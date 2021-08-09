@@ -1,15 +1,17 @@
 
-if has("win16") || has("win32")
+if has('nvim')
+  let data_dir = stdpath('data') . '/site'
+elseif has("win16") || has("win32")
   set shell=pwsh
-  let vimplugdir = "$home/vimfiles/autoload/plug.vim"
+  let data_dir = "$home/vimfiles/autoload/plug.vim"
 elseif has("unix")
-  let vimplugdir = "~/.vim/autoload/plug.vim"
+  let data_dir = "~/.vim/autoload/plug.vim"
 endif
 
 " automated vim-plug download
-if empty(glob(vimplugdir))
+if empty(glob(data_dir))
   " `.` for string concatenation
-  execute 'silent !curl --create-dirs -fLo ' . vimplugdir . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  silent execute '!curl --create-dirs -fLo ' . data_dir . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 

@@ -111,7 +111,9 @@ catch
 endtry
 
 " transparent background
-hi Normal guibg=NONE ctermbg=NONE
+if has("unix")
+  hi Normal guibg=NONE ctermbg=NONE
+endif
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -179,4 +181,3 @@ if has("clipboard")
     set clipboard+=unnamedplus
   endif
 endif
-

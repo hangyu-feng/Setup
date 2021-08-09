@@ -42,7 +42,11 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " => Terminal Mode
 """""""""""""""""""""""""""""""
 " close terminal
-tnoremap <ESC> <C-w>:q!<CR>
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+else
+  tnoremap <ESC> <C-w>:q!<CR>
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -93,4 +97,3 @@ augroup end
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
