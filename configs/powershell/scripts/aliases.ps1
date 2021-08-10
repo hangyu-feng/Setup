@@ -17,8 +17,8 @@ Set-Alias -Name python3 -Value python
 Set-Alias -Name python2 -Value "C:\Python27\python.exe"
 Set-Alias -Name py2 -Value "C:\Python27\python.exe"
 
-function conda-activate {
-  pwsh -ExecutionPolicy ByPass -NoExit -Command "& 'C:\Users\VailG\miniconda3\shell\condabin\conda-hook.ps1' ; conda activate 'C:\Users\VailG\miniconda3' "
+function conda-activate($conda_env="C:\Users\VailG\miniconda3") {
+  pwsh -ExecutionPolicy ByPass -NoExit -Command "& 'C:\Users\VailG\miniconda3\shell\condabin\conda-hook.ps1' ; conda activate ${conda_env} ; Set-PoshPrompt pure "
 }
 
 function ffmpeg-download($url, $origin, $referer, $outpath) {
