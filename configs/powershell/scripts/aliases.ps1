@@ -44,16 +44,16 @@ function nvenc() {
   }
 }
 
-function leetcode($title, $ext='py') {
+function leetcode() {
   # convert leetcode title to filename
-  $trimmed = $title.trim()
+  $trimmed = "$args".trim()
   $textinfo = (get-culture).textinfo
-  $left = $title.split(' ')
+  $left = $trimmed.split(' ')
   $result = ""
   foreach ($word in $left) {
     $result += $textinfo.totitlecase($word)
   }
-  $result = "${result}.${ext}"
+  $result = "${result}.py"
   set-clipboard -Value $result
   return $result
 }
