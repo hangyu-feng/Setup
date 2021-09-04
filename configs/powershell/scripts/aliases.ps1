@@ -51,7 +51,7 @@ function leetcode($title, $ext='py') {
   $left = $title.split(' ')
   $result = ""
   foreach ($word in $left) {
-    $result += $textinfo.tototlecase($word)
+    $result += $textinfo.totitlecase($word)
   }
   return "${result}.${ext}"
 }
