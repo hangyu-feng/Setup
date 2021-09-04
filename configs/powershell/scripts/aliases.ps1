@@ -43,3 +43,15 @@ function nvenc() {
     }
   }
 }
+
+function leetcode($title, $ext='py') {
+  # convert leetcode title to filename
+  $trimmed = $title.trim()
+  $textinfo = (get-culture).textinfo
+  $left = $title.split(' ')
+  $result = ""
+  foreach ($word in $left) {
+    $result += $textinfo.tototlecase($word)
+  }
+  return "${result}.${ext}"
+}
