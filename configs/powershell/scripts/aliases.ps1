@@ -53,5 +53,7 @@ function leetcode($title, $ext='py') {
   foreach ($word in $left) {
     $result += $textinfo.totitlecase($word)
   }
-  return "${result}.${ext}"
+  $result = "${result}.${ext}"
+  set-clipboard -Value $result
+  return $result
 }
