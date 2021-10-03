@@ -6,6 +6,7 @@ Import-Module oh-my-posh
 
 # see https://ohmyposh.dev/
 
+# Set-PoshPrompt -Theme robbyrussel
 Set-PoshPrompt -Theme ~/setup/configs/powershell/themes/diu.omp.json  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
 # Set-PoshPrompt -Theme agnosterplus
 
