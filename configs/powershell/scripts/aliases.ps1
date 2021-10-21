@@ -56,7 +56,9 @@ function leetcode() {
   foreach ($word in $left) {
     $result += $textinfo.totitlecase($word)
   }
-  $result = "${result}.py"
-  set-clipboard -Value $result
-  return $result
+  $result = "./algorithms/${result}.py"
+
+  code $result
+  # set-clipboard -Value $result
+  # return $result
 }
