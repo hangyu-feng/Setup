@@ -62,3 +62,19 @@ function leetcode() {
   # set-clipboard -Value $result
   # return $result
 }
+
+function leetcode-c() {
+  # convert leetcode title to filename
+  $trimmed = "$args".trim()
+  $textinfo = (get-culture).textinfo
+  $left = $trimmed.split(' ')
+  $result = ""
+  foreach ($word in $left) {
+    $result += $textinfo.totitlecase($word)
+  }
+  $result = "./algorithms/${result}.c"
+
+  code $result
+  # set-clipboard -Value $result
+  # return $result
+}
