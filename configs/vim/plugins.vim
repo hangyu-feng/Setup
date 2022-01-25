@@ -79,8 +79,8 @@ Plug 'mhinz/vim-startify'
 " autocomplete
 Plug 'ackyshake/VimCompletesMe'
 
-Plug 'sirver/ultisnips'
-let g:UltiSnipsExpandTrigger="<c-s>"  " solving key conflict with VimCompletesMe, see https://github.com/ackyshake/VimCompletesMe/issues/33
+" Plug 'sirver/ultisnips'
+" let g:UltiSnipsExpandTrigger="<c-s>"  " solving key conflict with VimCompletesMe, see https://github.com/ackyshake/VimCompletesMe/issues/33
 
 " python
 " Plug 'tmhedberg/simpylfold'
