@@ -89,7 +89,7 @@ Plug 'vim-scripts/indentpython.vim'
 " Plug 'davidhalter/jedi-vim'  " powerful but little too much. useful when full-IDE experience needed. see https://github.com/davidhalter/jedi-vim
 
 " ruby on rails
-Plug 'vim-ruby/vim-ruby'
+" Plug 'vim-ruby/vim-ruby'
 " Plug 'tpope/vim-rails'
 " Plug 'tpope/vim-endwise'
 " Plug 'tpope/vim-cucumber'
@@ -97,16 +97,16 @@ Plug 'vim-ruby/vim-ruby'
 " Plug 'tpope/vim-bundler'
 
 " javascript and ember.js
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
 " Plug 'mustache/vim-mustache-handlebars'
 " Plug 'elzr/vim-json'
 " let g:vim_json_conceal=0
 
 " tmux
-Plug 'tmux-plugins/vim-tmux'
+" Plug 'tmux-plugins/vim-tmux'
 
 " markdown
-Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
+" Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
 " Uncomment to override defaults:
 " let g:instant_markdown_slow = 1
 " let g:instant_markdown_autostart = 0
@@ -120,7 +120,7 @@ Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
 " let g:instant_markdown_python = 1
 
 " Latex
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 
 
 Plug 'https://github.com/adelarsq/vim-matchit'
