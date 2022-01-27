@@ -47,7 +47,7 @@ if has('nvim')
 elseif has('terminal')
   tnoremap <ESC> <C-w>:q!<CR>
 endif
-
+map <leader>t :term ++close<cr>  " open terminal
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -60,10 +60,10 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+" map <leader>tn :tabnew<cr>
+" map <leader>to :tabonly<cr>
+" map <leader>tc :tabclose<cr>
+" map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
 " actions on buffers: next, delete
