@@ -45,10 +45,4 @@
   - To enable fzf.vim preview window scrolling: edit .vim/bundle/fzf.vim/bin/preview.sh
     - https://github.com/junegunn/fzf.vim/issues/1053
     - https://github.com/junegunn/fzf.vim/issues/751
-    - comment out L50-54:
-      ```sh
-      if [ -z "$CENTER" ]; then
-        CENTER=0
-      fi
-      ```
 
