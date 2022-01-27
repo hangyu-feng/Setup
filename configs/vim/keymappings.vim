@@ -44,7 +44,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " close terminal
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
-else
+elseif has('terminal')
   tnoremap <ESC> <C-w>:q!<CR>
 endif
 
