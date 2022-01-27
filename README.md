@@ -41,3 +41,14 @@
 ### Tricks and Techniques
 
   - [Job Control in ZSH and Bash](https://gist.github.com/CMCDragonkai/6084a504b6a7fee270670fc8f5887eb4)
+
+  - To enable fzf.vim preview window scrolling: edit .vim/bundle/fzf.vim/bin/preview.sh
+    - https://github.com/junegunn/fzf.vim/issues/1053
+    - https://github.com/junegunn/fzf.vim/issues/751
+    - comment out L50-54:
+      ```sh
+      if [ -z "$CENTER" ]; then
+        CENTER=0
+      fi
+      ```
+
