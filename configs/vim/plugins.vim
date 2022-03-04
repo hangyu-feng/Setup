@@ -23,6 +23,8 @@ Plug 'morhetz/gruvbox'
 " Plugin 'lifepillar/vim-gruvbox8'
 " junegunn/seoul256.vim
 
+Plug 'wincent/terminus'  " change cursor shape in modes
+
 " plugin on GitHub repo
 Plug 'tpope/vim-fugitive'
 
@@ -56,10 +58,14 @@ let g:NERDToggleCheckAllLines = 1
 Plug 'dense-analysis/ale'
 Plug 'vim-syntastic/syntastic'
 
+" debugger
+Plug 'puremourning/vimspector'
+let g:vimspector_enable_mappings = 'HUMAN'
+
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+" let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 " syntax highlighting for many languages
 Plug 'sheerun/vim-polyglot'

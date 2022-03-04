@@ -112,7 +112,7 @@ endtry
 
 " transparent background
 if has("unix")
-  hi Normal guibg=NONE ctermbg=NONE
+  " hi Normal guibg=NONE ctermbg=NONE
 endif
 
 " Enable 256 colors palette in Gnome Terminal
@@ -170,7 +170,6 @@ if has("autocmd")
   autocmd BufWritePre * :call CleanExtraSpaces()
 endif
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " yank to clipboard (this is not included in basic.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -178,6 +177,6 @@ endif
 if has("clipboard")
   set clipboard=unnamed " copy to the system clipboard
   if has("unnamedplus") " X11 support
-    set clipboard+=unnamedplus
+    set clipboard=unnamedplus
   endif
 endif

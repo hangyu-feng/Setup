@@ -55,7 +55,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <leader><cr> :noh<cr>
+map <silent> <leader><cr> :noh<cr>  " clear all highlights
+map <silent> <leader>r :redraw!<cr>  " force redraw
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -89,10 +90,12 @@ map <leader>s? z=
 " python F5 Compiling
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-augroup python
-  autocmd FileType python noremap <F5> :term python3 % <CR>
-  " autocmd BufNewFile,BufRead *.tex :VimtexCompile
-augroup end
+" Abandoned since I use vimspector
+
+" augroup python
+"   autocmd FileType python noremap <F5> :term python3 % <CR>
+"   " autocmd BufNewFile,BufRead *.tex :VimtexCompile
+" augroup end
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
