@@ -9,13 +9,13 @@ elseif has("unix")
 endif
 
 " automated vim-plug download
-if empty(glob(data_dir))
-  " `.` for string concatenation
-  silent execute '!curl --create-dirs -fLo ' . data_dir . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" if empty(glob(data_dir))
+"   " `.` for string concatenation
+"   silent execute '!curl --create-dirs -fLo ' . data_dir . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/vimfiles/plugged')
 
 Plug 'junegunn/vim-plug'
 
