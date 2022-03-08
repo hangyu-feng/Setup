@@ -78,3 +78,7 @@ function leetcode-c() {
   # set-clipboard -Value $result
   # return $result
 }
+
+function  remove-duplicate() {
+  ls * -recurse | get-filehash | group -property hash | where { $_.count -gt 1 } | % { $_.group | select -skip 1 } | del
+}
