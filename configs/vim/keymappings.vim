@@ -4,7 +4,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 map - <plug>NERDCommenterToggle
 
-nnoremap <silent> ; :FZF<CR>
+nnoremap <silent> ; :Files<CR>
 nnoremap <silent> ' :Rg<CR>
 
 
@@ -57,6 +57,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <silent> <leader><cr> :noh<cr>  " clear all highlights
 map <silent> <leader>r :redraw!<cr>  " force redraw
+
+nmap <home> ^
+imap <home> <esc>^i
 
 " Smart way to move between windows
 map <C-j> <C-W>j

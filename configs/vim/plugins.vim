@@ -27,6 +27,7 @@ Plug 'wincent/terminus'  " change cursor shape in modes
 
 " plugin on GitHub repo
 Plug 'tpope/vim-fugitive'
+let g:ft_man_open_mode = 'vert'
 
 " some defaults
 Plug 'tpope/vim-sensible'
@@ -65,7 +66,6 @@ let g:vimspector_enable_mappings = 'HUMAN'
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-" let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 " syntax highlighting for many languages
 Plug 'sheerun/vim-polyglot'
@@ -89,10 +89,13 @@ Plug 'ackyshake/VimCompletesMe'
 " let g:UltiSnipsExpandTrigger="<c-s>"  " solving key conflict with VimCompletesMe, see https://github.com/ackyshake/VimCompletesMe/issues/33
 
 " python
-" Plug 'tmhedberg/simpylfold'
+Plug 'tmhedberg/simpylfold'
+let g:SimpylFold_docstring_preview = 1
 Plug 'nvie/vim-flake8'
 Plug 'vim-scripts/indentpython.vim'
 " Plug 'davidhalter/jedi-vim'  " powerful but little too much. useful when full-IDE experience needed. see https://github.com/davidhalter/jedi-vim
+" let g:jedi#auto_initialization = 0
+" let g:jedi#use_splits_not_buffers = "left"
 
 " ruby on rails
 " Plug 'vim-ruby/vim-ruby'
