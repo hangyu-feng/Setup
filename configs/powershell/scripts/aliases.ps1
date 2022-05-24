@@ -98,5 +98,5 @@ function sendkeys([int]${sleeptime} = 1, [string]${key} = ' ') {
 }
 
 function phone() {
-  scrcpy --max-size 1200 -b 16M --turn-screen-off --stay-awake --print-fps
+  scrcpy --max-size 1200 -b 16M --turn-screen-off --stay-awake --print-fps --window-borderless
 }
