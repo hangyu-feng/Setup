@@ -170,6 +170,9 @@ if has("autocmd")
   autocmd BufWritePre * :call CleanExtraSpaces()
 endif
 
+autocmd FileType cpp setlocal fdm=syntax
+set foldlevelstart=20
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " yank to clipboard (this is not included in basic.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -97,6 +97,11 @@ Plug 'vim-scripts/indentpython.vim'
 " let g:jedi#auto_initialization = 0
 " let g:jedi#use_splits_not_buffers = "left"
 
+" C/C++
+Plug 'bfrg/vim-cpp-modern'
+Plug 'rhysd/vim-clang-format'
+let g:clang_format#code_style = "google"
+
 " ruby on rails
 " Plug 'vim-ruby/vim-ruby'
 " Plug 'tpope/vim-rails'

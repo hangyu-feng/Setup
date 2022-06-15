@@ -1,3 +1,7 @@
+
+" With a map leader it's possible to do extra key combinations
+let mapleader = " "
+
 " ============================= Plugin shortcuts ===============================
 
 map <C-n> :NERDTreeToggle<CR>
@@ -6,10 +10,6 @@ map - <plug>NERDCommenterToggle
 
 nnoremap <silent> ; :Files<CR>
 nnoremap <silent> ' :Rg<CR>
-
-
-" With a map leader it's possible to do extra key combinations
-let mapleader = " "
 
 " copy file path relative to current working directory.
 " see https://vim.fandom.com/wiki/Copy_filename_to_clipboard
@@ -22,13 +22,14 @@ augroup vimtex
   " autocmd BufNewFile,BufRead *.tex :VimtexCompile
 augroup end
 
+noremap <leader>f :ClangFormat<cr>
 
 " shift using Tab and Shift-Tab (disabled)
-" nnoremap <Tab> >>_
-" nnoremap <S-Tab> <<_
-" inoremap <S-Tab> <C-D>
-" vnoremap <Tab> >gv
-" vnoremap <S-Tab> <gv
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -106,3 +107,4 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
