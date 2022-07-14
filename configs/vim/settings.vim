@@ -104,11 +104,16 @@ endif
 " Enable syntax highlighting
 syntax enable
 
-try
-  colorscheme gruvbox
-  " hi Normal guibg=NONE ctermbg=NONE
-catch
-endtry
+colorscheme gruvbox
+" settings for everforest
+" let g:everforest_background = 'hard'
+" if exists('+termguicolors')
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"   set termguicolors
+" endif
+" colorscheme everforest
+" hi Normal guibg=NONE ctermbg=NONE
 
 " transparent background
 if has("unix")
@@ -116,8 +121,12 @@ if has("unix")
 endif
 
 " Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
+if !has('gui_running')
   set t_Co=256
+endif
+if exists('$TMUX')
+  " set termguicolors
+  " set term=xterm-256color
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language

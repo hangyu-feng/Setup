@@ -19,7 +19,12 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'junegunn/vim-plug'
 
+" Colorschemes, find more in https://vimcolorschemes.com/
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/everforest'
+let g:everforest_better_performance = 1
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/sonokai'
 " Plugin 'lifepillar/vim-gruvbox8'
 " junegunn/seoul256.vim
 
@@ -74,11 +79,15 @@ Plug 'yggdroot/indentline'
 let g:indentLine_setConceal = 0
 
 Plug 'vim-airline/vim-airline'
+" let g:airline_theme = 'everforest'
 let g:airline#extensions#tabline#enabled = 1
 " TODO: figure out how to show buffer number in tabline
 " go to https://github.com/vim-airline/vim-airline#smarter-tab-line for all formatters
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
+
+" Plug 'itchyny/lightline.vim'
+" set laststatus=2
 
 Plug 'mhinz/vim-startify'
 
