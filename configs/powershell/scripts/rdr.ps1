@@ -18,7 +18,6 @@ function rdoDisable() {
 }
 
 function rdoEnable() {
-  $rulename = $(rdoRuleName)
   Enable-NetFirewallRule -Name $(rdoRuleName)
   rdoStatus
 }
@@ -36,8 +35,8 @@ function rdoToggle() {
 }
 
 function rdoSuspend() {
-  $psPath = "C:/Users/VailG/PSTools"
-  $rdoProcess = get-process -name "RDR2"
+  ${psPath} = "C:/Users/VailG/PSTools"
+  ${rdoProcess} = get-process -name "RDR2"
   & "${psPath}/pssuspend.exe" ${rdoProcess}.id
   Start-Sleep -s 10
   & "${psPath}/pssuspend.exe" -r ${rdoProcess}.id
@@ -49,13 +48,13 @@ function rdoSolo() {
   rdoEnable
 }
 
-function rdo($command) {
-  switch ($command) {
+function rdo(${command}) {
+  switch (${command}) {
     "status" { rdoStatus }
     "solo" { rdoSolo }
     "enable" { rdoEnable }
     "disable" { rdoDisable }
-    "suspend" {rdoSuspend}
+    "suspend" { rdoSuspend }
     Default { Write-Output "Usage: rdo help|status|solo|enable|disable|suspend" }
   }
 }
