@@ -1,13 +1,14 @@
 # To use this profile, dot source it in $profile like this:
 # . ~/setup/configs/powershell/Microsoft.PowerShell_profile.ps1
 
-Import-Module posh-git
-Import-Module oh-my-posh
+# Import-Module posh-git
+# Import-Module oh-my-posh
 
 # see https://ohmyposh.dev/
 
 # Set-PoshPrompt -Theme robbyrussel
-Set-PoshPrompt -Theme ~/setup/configs/powershell/themes/diu.omp.json  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
+oh-my-posh init pwsh --config ~/setup/configs/powershell/themes/diu.omp.json | Invoke-Expression
+# Set-PoshPrompt -Theme ~/setup/configs/powershell/themes/diu.omp.json  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
 # Set-PoshPrompt -Theme agnosterplus
 
 Set-PSReadLineOption -Colors @{
