@@ -16,8 +16,8 @@ Set-PSReadLineOption -Colors @{
   Operator = 'Cyan'
 }
 
-. $PSScriptRoot/scripts/git_alias.ps1
+. "${PSScriptRoot}/scripts/git_alias.ps1"
 
-. $PSScriptRoot/scripts/aliases.ps1
+. "${PSScriptRoot}/scripts/aliases.ps1"
 
-. $PSScriptRoot/scripts/rdr.ps1
+. "${PSScriptRoot}/scripts/red_dead_online.ps1"
