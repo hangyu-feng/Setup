@@ -6,13 +6,14 @@ function rdoCreateFirewallRule(){
   # port 6672 (local and remote) appears to be Social Club or the friends list.
   # Consider blocking it too: "6672, 10000-65535"
   # check https://www.reddit.com/r/RedDeadOnline/comments/gesgub/since_rdo_is_still_broken_and_ridden_with/
+  $rulename = $(rdoRuleName)
   New-NetFirewallRule `
     -DisplayName "Red Dead Online Port Blocking" `
-    -Name "$(rdoRuleName)" `
+    -Name "${rulename}" `
     -Program 'D:\SteamLibrary\steamapps\common\Red Dead Redemption 2\RDR2.exe' `
     -Protocol "UDP" `
-    -LocalPort "10000-65535" `
-    -RemotePort "10000-65535" `
+    -LocalPort 6672,10000-65535 `
+    -RemotePort 6672,10000-65535 `
     -Action Block
 }
 
