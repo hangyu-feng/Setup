@@ -10,7 +10,7 @@ function rdoCreateFirewallRule(){
   New-NetFirewallRule `
     -DisplayName "Red Dead Online Port Blocking" `
     -Name "${rulename}" `
-    -Program 'D:\SteamLibrary\steamapps\common\Red Dead Redemption 2\RDR2.exe' `
+    -Program 'D:/SteamLibrary/steamapps/common/Red Dead Redemption 2/RDR2.exe' `
     -Protocol "UDP" `
     -LocalPort 6672,10000-65535 `
     -RemotePort 6672,10000-65535 `
