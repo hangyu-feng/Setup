@@ -8,12 +8,12 @@ elseif has("unix")
   let data_dir = "~/.vim/autoload/plug.vim"
 endif
 
-" automated vim-plug download
-" if empty(glob(data_dir))
-"   " `.` for string concatenation
-"   silent execute '!curl --create-dirs -fLo ' . data_dir . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-" endif
+"  automated vim-plug download
+if empty(glob(data_dir))
+ " `.` for string concatenation
+ silent execute '!curl --create-dirs -fLo ' . data_dir . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 call plug#begin('~/vimfiles/plugged')
 
