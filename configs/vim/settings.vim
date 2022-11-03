@@ -104,15 +104,19 @@ endif
 " Enable syntax highlighting
 syntax enable
 
+if exists('$TMUX')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
 colorscheme gruvbox
 " settings for everforest
-" let g:everforest_background = 'hard'
-" if exists('+termguicolors')
-"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"   set termguicolors
-" endif
-" colorscheme everforest
+set termguicolors
+set background=dark
+let &t_ZH="[3m"  " for italic
+let &t_ZR="[23m"  " for italic
+let g:everforest_background = 'hard'
+colorscheme everforest
 " hi Normal guibg=NONE ctermbg=NONE
 
 " transparent background
@@ -123,10 +127,6 @@ endif
 " Enable 256 colors palette in Gnome Terminal
 if !has('gui_running')
   set t_Co=256
-endif
-if exists('$TMUX')
-  " set termguicolors
-  " set term=xterm-256color
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -146,6 +146,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on
 " Use spaces instead of tabs
 set expandtab
 

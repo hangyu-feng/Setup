@@ -37,6 +37,7 @@ let g:ft_man_open_mode = 'vert'
 " some defaults
 Plug 'tpope/vim-sensible'
 runtime! 'plugin/sensible.vim'  " run this plugin earlier to override settings
+Plug 'tpope/vim-surround'
 
 " Plugin 'zivyangll/git-blame.vim'
 
@@ -93,6 +94,13 @@ Plug 'mhinz/vim-startify'
 
 " autocomplete
 Plug 'ackyshake/VimCompletesMe'
+set completeopt=longest,menuone  "  so that Vim's popup menu doesn't select the first completion item, but rather just inserts the longest common text of all matches
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"  " select popup using Enter
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " Plug 'sirver/ultisnips'
 " let g:UltiSnipsExpandTrigger="<c-s>"  " solving key conflict with VimCompletesMe, see https://github.com/ackyshake/VimCompletesMe/issues/33
@@ -146,6 +154,7 @@ let g:clang_format#code_style = "google"
 " Plug 'lervag/vimtex'
 
 
-Plug 'https://github.com/adelarsq/vim-matchit'
+" Plug 'https://github.com/adelarsq/vim-matchit'
+Plug 'andymass/vim-matchup'
 
 call plug#end()
