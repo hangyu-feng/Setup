@@ -105,7 +105,7 @@ endif
 syntax enable
 
 try
-  colorscheme gruvbox
+  " colorscheme gruvbox
   " hi Normal guibg=NONE ctermbg=NONE
 catch
 endtry
@@ -119,6 +119,7 @@ endif
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
+set t_Co=256
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8

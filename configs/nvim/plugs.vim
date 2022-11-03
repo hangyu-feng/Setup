@@ -31,19 +31,20 @@ Plug 'mhinz/vim-startify'
 
 Plug 'ackyshake/VimCompletesMe'
 
-Plug 'lervag/vimtex'
+"  Plug 'lervag/vimtex'
 
-Plug 'https://github.com/adelarsq/vim-matchit'
+"  Plug 'https://github.com/adelarsq/vim-matchit'
+Plug 'andymass/vim-matchup'
 
 " ======================== Language Plugins ========================
 
 " python
-Plug 'nvie/vim-flake8'
-Plug 'vim-scripts/indentpython.vim'
-if has('python3')
-  Plug 'sirver/ultisnips'
-  let g:UltiSnipsExpandTrigger="<c-s>"
-endif
+"  Plug 'nvie/vim-flake8'
+"  Plug 'vim-scripts/indentpython.vim'
+"  if has('python3')
+"    Plug 'sirver/ultisnips'
+"    let g:UltiSnipsExpandTrigger="<c-s>"
+"  endif
 
 
 

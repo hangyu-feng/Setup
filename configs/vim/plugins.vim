@@ -22,6 +22,7 @@ Plug 'junegunn/vim-plug'
 Plug 'morhetz/gruvbox'
 " Plugin 'lifepillar/vim-gruvbox8'
 " junegunn/seoul256.vim
+Plug 'arcticicestudio/nord-vim'
 
 Plug 'wincent/terminus'  " change cursor shape in modes
 
