@@ -104,11 +104,20 @@ endif
 " Enable syntax highlighting
 syntax enable
 
-try
-  " colorscheme gruvbox
-  " hi Normal guibg=NONE ctermbg=NONE
-catch
-endtry
+if exists('$TMUX')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+colorscheme gruvbox
+" settings for everforest
+set termguicolors
+set background=dark
+let &t_ZH="[3m"  " for italic
+let &t_ZR="[23m"  " for italic
+let g:everforest_background = 'hard'
+colorscheme everforest
+" hi Normal guibg=NONE ctermbg=NONE
 
 " transparent background
 if has("unix")
@@ -116,7 +125,7 @@ if has("unix")
 endif
 
 " Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
+if !has('gui_running')
   set t_Co=256
 endif
 set t_Co=256
@@ -151,6 +160,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on
 " Use spaces instead of tabs
 set expandtab
 
@@ -183,6 +193,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 if has("autocmd")
   autocmd BufWritePre * :call CleanExtraSpaces()
 endif
+
+autocmd FileType cpp setlocal fdm=syntax
+set foldlevelstart=20
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " yank to clipboard (this is not included in basic.vim

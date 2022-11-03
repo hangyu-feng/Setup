@@ -19,6 +19,7 @@ Set-Alias -Name py2 -Value "C:\Python27\python.exe"
 
 Set-Alias -Name emulator -Value "C:\Users\VailG\AppData\Local\Android\Sdk\emulator\emulator.exe"
 Set-Alias -Name adb -Value "C:\Users\VailG\AppData\Local\Android\Sdk\platform-tools\adb.exe"
+Set-Alias -Name rgf -Value 'rg --files | rg'
 
 function conda-activate($conda_env="C:\Users\VailG\miniconda3") {
   pwsh -ExecutionPolicy ByPass -NoExit -Command "& 'C:\Users\VailG\miniconda3\shell\condabin\conda-hook.ps1' ; conda activate ${conda_env} ; Set-PoshPrompt pure "
@@ -77,4 +78,8 @@ function leetcode-c() {
   code $result
   # set-clipboard -Value $result
   # return $result
+}
+
+function  remove-duplicate() {
+  ls * -recurse | get-filehash | group -property hash | where { $_.count -gt 1 } | % { $_.group | select -skip 1 } | del
 }
