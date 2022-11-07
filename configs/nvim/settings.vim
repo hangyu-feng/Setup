@@ -155,5 +155,5 @@ endif
 
 " ============================== Terminal ================================
 if has("win16") || has("win32")
-  set shell=pwsh
+  "  set shell=pwsh
 endif

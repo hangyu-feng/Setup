@@ -18,3 +18,6 @@ Set-PSReadLineOption -Colors @{
 . $PSScriptRoot/scripts/git_alias.ps1
 
 . $PSScriptRoot/scripts/aliases.ps1
+
+$env:http_proxy="http://proxy-chain.intel.com:911"
+$env:https_proxy="https://proxy-chain.intel.com:912"
