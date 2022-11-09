@@ -11,6 +11,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'junegunn/vim-plug'
 
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/everforest'
 
 Plug 'tpope/vim-fugitive'
 
