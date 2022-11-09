@@ -63,7 +63,8 @@ let g:NERDToggleCheckAllLines = 1
 " linter
 " w0rp has renamed himself to dense-analysis
 Plug 'dense-analysis/ale'
-Plug 'vim-syntastic/syntastic'
+" use ALE instead
+" Plug 'vim-syntastic/syntastic'
 
 " debugger
 Plug 'puremourning/vimspector'
