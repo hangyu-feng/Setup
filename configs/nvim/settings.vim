@@ -100,6 +100,7 @@ set ruler
 
 syntax enable
 set termguicolors
+set cursorline
 
 try
   colorscheme gruvbox
@@ -155,5 +156,5 @@ endif
 
 " ============================== Terminal ================================
 if has("win16") || has("win32")
-  set shell=pwsh
+  "  set shell=pwsh
 endif

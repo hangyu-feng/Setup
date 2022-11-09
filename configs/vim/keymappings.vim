@@ -1,15 +1,15 @@
+
+" With a map leader it's possible to do extra key combinations
+let mapleader = " "
+
 " ============================= Plugin shortcuts ===============================
 
 map <C-n> :NERDTreeToggle<CR>
 
 map - <plug>NERDCommenterToggle
 
-nnoremap <silent> ; :FZF<CR>
+nnoremap <silent> ; :Files<CR>
 nnoremap <silent> ' :Rg<CR>
-
-
-" With a map leader it's possible to do extra key combinations
-let mapleader = " "
 
 " copy file path relative to current working directory.
 " see https://vim.fandom.com/wiki/Copy_filename_to_clipboard
@@ -22,13 +22,14 @@ augroup vimtex
   " autocmd BufNewFile,BufRead *.tex :VimtexCompile
 augroup end
 
+noremap <leader>f :ClangFormat<cr>
 
 " shift using Tab and Shift-Tab (disabled)
-" nnoremap <Tab> >>_
-" nnoremap <S-Tab> <<_
-" inoremap <S-Tab> <C-D>
-" vnoremap <Tab> >gv
-" vnoremap <S-Tab> <gv
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -49,14 +50,17 @@ elseif has('terminal')
 endif
 
 if has('terminal')
-  map <leader>t :term ++close<cr>
+  map <leader>t :term ++close<cr>  " open terminal
 endif
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <leader><cr> :noh<cr>
+map <silent> <leader><cr> :noh<cr>  " clear all highlights
+map <silent> <leader>r :redraw!<cr>  " force redraw
+
+nmap <home> ^
+imap <home> <esc>^i
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -64,10 +68,10 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+" map <leader>tn :tabnew<cr>
+" map <leader>to :tabonly<cr>
+" map <leader>tc :tabclose<cr>
+" map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
 " actions on buffers: next, delete
@@ -90,10 +94,12 @@ map <leader>s? z=
 " python F5 Compiling
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-augroup python
-  autocmd FileType python noremap <F5> :term python3 % <CR>
-  " autocmd BufNewFile,BufRead *.tex :VimtexCompile
-augroup end
+" Abandoned since I use vimspector
+
+" augroup python
+"   autocmd FileType python noremap <F5> :term python3 % <CR>
+"   " autocmd BufNewFile,BufRead *.tex :VimtexCompile
+" augroup end
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -101,3 +107,4 @@ augroup end
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+

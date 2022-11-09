@@ -104,27 +104,50 @@ endif
 " Enable syntax highlighting
 syntax enable
 
-try
-  colorscheme gruvbox
-  " hi Normal guibg=NONE ctermbg=NONE
-catch
-endtry
+if exists('$TMUX')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+colorscheme gruvbox
+" settings for everforest
+set termguicolors
+set background=dark
+let &t_ZH="[3m"  " for italic
+let &t_ZR="[23m"  " for italic
+let g:everforest_background = 'hard'
+colorscheme everforest
+" hi Normal guibg=NONE ctermbg=NONE
 
 " transparent background
 if has("unix")
-  hi Normal guibg=NONE ctermbg=NONE
+  " hi Normal guibg=NONE ctermbg=NONE
 endif
 
 " Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
+if !has('gui_running')
   set t_Co=256
 endif
+set t_Co=256
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    set guifont=Cascadia_Mono_PL:h12:cANSI:qDRAFT
+  endif
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -137,6 +160,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on
 " Use spaces instead of tabs
 set expandtab
 
@@ -170,6 +194,8 @@ if has("autocmd")
   autocmd BufWritePre * :call CleanExtraSpaces()
 endif
 
+autocmd FileType cpp setlocal fdm=syntax
+set foldlevelstart=20
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " yank to clipboard (this is not included in basic.vim
@@ -178,6 +204,6 @@ endif
 if has("clipboard")
   set clipboard=unnamed " copy to the system clipboard
   if has("unnamedplus") " X11 support
-    set clipboard+=unnamedplus
+    set clipboard=unnamedplus
   endif
 endif

@@ -2,7 +2,7 @@
 " Automated Vim-Plug installation
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  silent execute '!curl -fLo ' . data_dir . '/autoload/plug.vim --create-dirs -x http://proxy-chain.intel.com:911 "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -31,20 +31,22 @@ Plug 'mhinz/vim-startify'
 
 Plug 'ackyshake/VimCompletesMe'
 
-Plug 'lervag/vimtex'
+"  Plug 'lervag/vimtex'
 
-Plug 'https://github.com/adelarsq/vim-matchit'
+"  Plug 'https://github.com/adelarsq/vim-matchit'
+Plug 'andymass/vim-matchup'
 
 " ======================== Language Plugins ========================
 
 " python
-Plug 'nvie/vim-flake8'
-Plug 'vim-scripts/indentpython.vim'
-if has('python3')
-  Plug 'sirver/ultisnips'
-  let g:UltiSnipsExpandTrigger="<c-s>"
-endif
+"  Plug 'nvie/vim-flake8'
+"  Plug 'vim-scripts/indentpython.vim'
+"  if has('python3')
+"    Plug 'sirver/ultisnips'
+"    let g:UltiSnipsExpandTrigger="<c-s>"
+"  endif
 
-
+" markdown
+Plug 'gabrielelana/vim-markdown'
 
 call plug#end()
