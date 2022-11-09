@@ -46,6 +46,7 @@ Plug 'andymass/vim-matchup'
 "    let g:UltiSnipsExpandTrigger="<c-s>"
 "  endif
 
-
+" markdown
+Plug 'gabrielelana/vim-markdown'
 
 call plug#end()
