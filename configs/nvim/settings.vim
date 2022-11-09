@@ -100,6 +100,7 @@ set ruler
 
 syntax enable
 set termguicolors
+set cursorline
 
 try
   colorscheme gruvbox
