@@ -6,10 +6,10 @@
 
 # see https://ohmyposh.dev/
 
-# Set-PoshPrompt -Theme robbyrussel
-oh-my-posh init pwsh --config ~/setup/configs/powershell/themes/diu.omp.json | Invoke-Expression
+Set-PoshPrompt -Theme robbyrussel
+# oh-my-posh init pwsh --config ~/setup/configs/powershell/themes/diu.omp.json | Invoke-Expression
 # Set-PoshPrompt -Theme ~/setup/configs/powershell/themes/diu.omp.json  # More themes at https://github.com/JanDeDobbeleer/oh-my-posh#themes
-# Set-PoshPrompt -Theme agnosterplus
+# Set-PoshPrompt -Theme hotstick.minimal
 
 Set-PSReadLineOption -Colors @{
   Parameter = 'Cyan'  # parameters were unreadable for Nord colorscheme
