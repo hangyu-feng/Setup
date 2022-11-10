@@ -12,7 +12,6 @@ set splitright
 
 " Set to auto read when a file is changed from the outside
 set autoread
-set autochdir
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
