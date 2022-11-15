@@ -101,6 +101,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" https://vimcolorschemes.com/ for more colors
+
 " Enable syntax highlighting
 syntax enable
 
@@ -109,7 +111,6 @@ if exists('$TMUX')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-colorscheme gruvbox
 " settings for everforest
 set termguicolors
 set background=dark
@@ -117,7 +118,13 @@ let &t_ZH="[3m"  " for italic
 let &t_ZR="[23m"  " for italic
 let g:everforest_background = 'hard'
 colorscheme everforest
+
+" colorscheme gruvbox
+
 " hi Normal guibg=NONE ctermbg=NONE
+
+" highlight line number
+set cursorline
 
 " transparent background
 if has("unix")

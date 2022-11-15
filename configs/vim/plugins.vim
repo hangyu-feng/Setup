@@ -43,8 +43,10 @@ Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdtree'
 let NERDTreeShowHidden=1
+map <C-n> :NERDTreeToggle<CR>
 
 Plug 'scrooloose/nerdcommenter'
+map - <plug>NERDCommenterToggle
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
@@ -60,19 +62,41 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
-" linter
-" w0rp has renamed himself to dense-analysis
+" lsp
 Plug 'dense-analysis/ale'
-" use ALE instead
-" Plug 'vim-syntastic/syntastic'
+let g:ale_completion_enabled = 1
+set omnifunc=ale#completion#OmniFunc
+function! SmartInsertCompletion() abort
+  " Use the default CTRL-N in completion menus
+  if pumvisible()
+    return "\<C-n>"
+  endif
+  " Exit and re-enter insert mode, and use insert completion
+  return "\<C-c>a\<C-n>"
+endfunction
+inoremap <silent> <TAB> <C-R>=SmartInsertCompletion()<CR>
+" inoremap <silent> <TAB> <C-\><C-O>:ALEComplete<CR>
+let g:ale_fixers = {
+\ 'python': ['black'],
+\ 'sh': ['shfmt'],
+\ 'cpp': ['clang-format'],
+\}
+" nmap <leader>f <Plug>(ale_fix)
+nmap <F8> <Plug>(ale_fix)
 
 " debugger
 Plug 'puremourning/vimspector'
-let g:vimspector_enable_mappings = 'HUMAN'
+" let g:vimspector_enable_mappings = 'HUMAN'
+nmap <F5> <Plug>VimspectorContinue
+nmap <F3> <Plug>VimspectorStop
+nmap <F9> <Plug>VimspectorToggleBreakpoint
+nmap <F10> <Plug>VimspectorStepOver
 
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+nnoremap <silent> ; :Files<CR>
+nnoremap <silent> ' :Rg<CR>
 
 " syntax highlighting for many languages
 Plug 'sheerun/vim-polyglot'
@@ -87,6 +111,7 @@ let g:airline#extensions#tabline#enabled = 1
 " go to https://github.com/vim-airline/vim-airline#smarter-tab-line for all formatters
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 
 " Plug 'itchyny/lightline.vim'
 " set laststatus=2
@@ -94,31 +119,35 @@ let g:airline_powerline_fonts = 1
 Plug 'mhinz/vim-startify'
 
 " autocomplete
-Plug 'ackyshake/VimCompletesMe'
-set completeopt=longest,menuone  "  so that Vim's popup menu doesn't select the first completion item, but rather just inserts the longest common text of all matches
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"  " select popup using Enter
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" Plug 'ackyshake/VimCompletesMe'
+" so that Vim's popup menu doesn't select the first completion item, but rather just inserts the longest common text of all matches
+" set completeopt=longest,menuone
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+"   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+"
+" inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+"   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " Plug 'sirver/ultisnips'
-" let g:UltiSnipsExpandTrigger="<c-s>"  " solving key conflict with VimCompletesMe, see https://github.com/ackyshake/VimCompletesMe/issues/33
+" let g:UltiSnipsExpandTrigger="<c-s>"
+" solving key conflict with VimCompletesMe, see https://github.com/ackyshake/VimCompletesMe/issues/33
 
 " python
 Plug 'tmhedberg/simpylfold'
 let g:SimpylFold_docstring_preview = 1
-Plug 'nvie/vim-flake8'
+" Plug 'nvie/vim-flake8'
 Plug 'vim-scripts/indentpython.vim'
-" Plug 'davidhalter/jedi-vim'  " powerful but little too much. useful when full-IDE experience needed. see https://github.com/davidhalter/jedi-vim
+" Plug 'davidhalter/jedi-vim'
+" powerful but little too much. useful when full-IDE experience needed. see https://github.com/davidhalter/jedi-vim
 " let g:jedi#auto_initialization = 0
 " let g:jedi#use_splits_not_buffers = "left"
 
 " C/C++
-Plug 'bfrg/vim-cpp-modern'
-Plug 'rhysd/vim-clang-format'
-let g:clang_format#code_style = "google"
+" syntax highlighting
+" Plug 'bfrg/vim-cpp-modern'
+" Plug 'rhysd/vim-clang-format'
+" let g:clang_format#code_style = "google"
 
 " ruby on rails
 " Plug 'vim-ruby/vim-ruby'
@@ -159,3 +188,4 @@ let g:clang_format#code_style = "google"
 Plug 'andymass/vim-matchup'
 
 call plug#end()
+
