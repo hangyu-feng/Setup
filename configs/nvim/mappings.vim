@@ -1,6 +1,6 @@
 " ============================= Plugin shortcuts ===============================
 
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NvimTreeToggle<CR>
 
 map - <plug>NERDCommenterToggle
 
