@@ -80,6 +80,7 @@ let g:ale_fixers = {
 \ 'python': ['black'],
 \ 'sh': ['shfmt'],
 \ 'cpp': ['clang-format'],
+\ 'perl': ['perltidy'],
 \}
 " nmap <leader>f <Plug>(ale_fix)
 nmap <F8> <Plug>(ale_fix)
