@@ -32,7 +32,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 -- empty setup using defaults
-require("nvim-tree").setup()
+-- require("nvim-tree").setup()
 
 -- OR setup with some options
 require("nvim-tree").setup({
@@ -47,10 +47,18 @@ require("nvim-tree").setup({
   },
   renderer = {
     group_empty = true,
+    icons = {
+      show = {
+        file = false,
+        folder = false,
+        folder_arrow = false,
+      }
+    }
   },
   filters = {
     dotfiles = true,
   },
+  
 })
 EOF
 
