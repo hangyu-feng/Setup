@@ -20,11 +20,11 @@ call plug#begin('~/.vim/bundle')
 Plug 'junegunn/vim-plug'
 
 " Colorschemes, find more in https://vimcolorschemes.com/
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 Plug 'sainnhe/everforest'
 let g:everforest_better_performance = 1
-Plug 'sainnhe/gruvbox-material'
-Plug 'sainnhe/sonokai'
+" Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/sonokai'
 " Plugin 'lifepillar/vim-gruvbox8'
 " junegunn/seoul256.vim
 
@@ -37,7 +37,7 @@ let g:ft_man_open_mode = 'vert'
 " some defaults
 Plug 'tpope/vim-sensible'
 runtime! 'plugin/sensible.vim'  " run this plugin earlier to override settings
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
 
 " Plugin 'zivyangll/git-blame.vim'
 
@@ -77,13 +77,14 @@ endfunction
 inoremap <silent> <TAB> <C-R>=SmartInsertCompletion()<CR>
 " inoremap <silent> <TAB> <C-\><C-O>:ALEComplete<CR>
 let g:ale_fixers = {
-\ 'python': ['black'],
+\ 'python': ['black', 'isort'],
 \ 'sh': ['shfmt'],
 \ 'cpp': ['clang-format'],
 \ 'perl': ['perltidy'],
 \}
 " nmap <leader>f <Plug>(ale_fix)
 nmap <F8> <Plug>(ale_fix)
+let g:ale_perl_perltidy_options = ' -ce -nsfs -isbc -olc '
 
 " debugger
 Plug 'puremourning/vimspector'
@@ -92,6 +93,7 @@ nmap <F5> <Plug>VimspectorContinue
 nmap <F3> <Plug>VimspectorStop
 nmap <F9> <Plug>VimspectorToggleBreakpoint
 nmap <F10> <Plug>VimspectorStepOver
+
 
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf'
