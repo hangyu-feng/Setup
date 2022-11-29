@@ -63,28 +63,44 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 " lsp
-Plug 'dense-analysis/ale'
-let g:ale_completion_enabled = 1
-set omnifunc=ale#completion#OmniFunc
-function! SmartInsertCompletion() abort
-  " Use the default CTRL-N in completion menus
-  if pumvisible()
-    return "\<C-n>"
-  endif
-  " Exit and re-enter insert mode, and use insert completion
-  return "\<C-c>a\<C-n>"
+" Plug 'dense-analysis/ale'
+" " let g:ale_completion_enabled = 1
+" set omnifunc=ale#completion#OmniFunc
+" function! SmartInsertCompletion() abort
+"   " Use the default CTRL-N in completion menus
+"   if pumvisible()
+"     return "\<C-n>"
+"   endif
+"   " Exit and re-enter insert mode, and use insert completion
+"   return "\<C-c>a\<C-n>"
+" endfunction
+" " inoremap <silent> <TAB> <C-R>=SmartInsertCompletion()<CR>
+" " inoremap <silent> <TAB> <C-\><C-O>:ALEComplete<CR>
+" let g:ale_fixers = {
+" \ 'python': ['black', 'isort'],
+" \ 'sh': ['shfmt'],
+" \ 'cpp': ['clang-format'],
+" \ 'perl': ['perltidy'],
+" \}
+" " nmap <leader>f <Plug>(ale_fix)
+" nmap <F8> <Plug>(ale_fix)
+" let g:ale_perl_perltidy_options = ' -ce -nsfs -isbc -olc '
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" use <tab> for trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <silent> <TAB> <C-R>=SmartInsertCompletion()<CR>
-" inoremap <silent> <TAB> <C-\><C-O>:ALEComplete<CR>
-let g:ale_fixers = {
-\ 'python': ['black', 'isort'],
-\ 'sh': ['shfmt'],
-\ 'cpp': ['clang-format'],
-\ 'perl': ['perltidy'],
-\}
-" nmap <leader>f <Plug>(ale_fix)
-nmap <F8> <Plug>(ale_fix)
-let g:ale_perl_perltidy_options = ' -ce -nsfs -isbc -olc '
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+" You have to remap <cr> to make it confirms completion.
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" so that Vim's popup menu doesn't select the first completion item, but rather just inserts the longest common text of all matches
+" set completeopt=menuone,preview,noinsert
 
 " debugger
 Plug 'puremourning/vimspector'
@@ -102,7 +118,7 @@ nnoremap <silent> ; :Files<CR>
 nnoremap <silent> ' :Rg<CR>
 
 " syntax highlighting for many languages
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 Plug 'yggdroot/indentline'
 let g:indentLine_setConceal = 0
@@ -123,8 +139,6 @@ Plug 'mhinz/vim-startify'
 
 " autocomplete
 " Plug 'ackyshake/VimCompletesMe'
-" so that Vim's popup menu doesn't select the first completion item, but rather just inserts the longest common text of all matches
-" set completeopt=longest,menuone
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 "   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
@@ -137,10 +151,10 @@ Plug 'mhinz/vim-startify'
 " solving key conflict with VimCompletesMe, see https://github.com/ackyshake/VimCompletesMe/issues/33
 
 " python
-Plug 'tmhedberg/simpylfold'
-let g:SimpylFold_docstring_preview = 1
+" Plug 'tmhedberg/simpylfold'
+" let g:SimpylFold_docstring_preview = 1
 " Plug 'nvie/vim-flake8'
-Plug 'vim-scripts/indentpython.vim'
+" Plug 'vim-scripts/indentpython.vim'
 " Plug 'davidhalter/jedi-vim'
 " powerful but little too much. useful when full-IDE experience needed. see https://github.com/davidhalter/jedi-vim
 " let g:jedi#auto_initialization = 0
