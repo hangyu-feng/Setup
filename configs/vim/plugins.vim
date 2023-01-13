@@ -38,6 +38,7 @@ let g:ft_man_open_mode = 'vert'
 Plug 'tpope/vim-sensible'
 runtime! 'plugin/sensible.vim'  " run this plugin earlier to override settings
 " Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'  " detect indentation
 
 " Plugin 'zivyangll/git-blame.vim'
 
@@ -100,7 +101,27 @@ inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 " You have to remap <cr> to make it confirms completion.
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " so that Vim's popup menu doesn't select the first completion item, but rather just inserts the longest common text of all matches
-" set completeopt=menuone,preview,noinsert
+set completeopt=menuone,preview,noinsert,noselect
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+nmap <F8> :Format<cr>
+" Apply the most preferred quickfix action to fix diagnostic on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 
 " debugger
 Plug 'puremourning/vimspector'
@@ -120,8 +141,8 @@ nnoremap <silent> ' :Rg<CR>
 " syntax highlighting for many languages
 " Plug 'sheerun/vim-polyglot'
 
-Plug 'yggdroot/indentline'
-let g:indentLine_setConceal = 0
+" Plug 'yggdroot/indentline'
+" let g:indentLine_setConceal = 0
 
 Plug 'vim-airline/vim-airline'
 " let g:airline_theme = 'everforest'
@@ -151,10 +172,10 @@ Plug 'mhinz/vim-startify'
 " solving key conflict with VimCompletesMe, see https://github.com/ackyshake/VimCompletesMe/issues/33
 
 " python
-" Plug 'tmhedberg/simpylfold'
+Plug 'tmhedberg/simpylfold'
 " let g:SimpylFold_docstring_preview = 1
 " Plug 'nvie/vim-flake8'
-" Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-scripts/indentpython.vim'
 " Plug 'davidhalter/jedi-vim'
 " powerful but little too much. useful when full-IDE experience needed. see https://github.com/davidhalter/jedi-vim
 " let g:jedi#auto_initialization = 0
@@ -173,6 +194,9 @@ Plug 'mhinz/vim-startify'
 " Plug 'tpope/vim-cucumber'
 " Plug 'tpope/vim-rake'
 " Plug 'tpope/vim-bundler'
+
+" Perl
+Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 
 " javascript and ember.js
 " Plug 'pangloss/vim-javascript'

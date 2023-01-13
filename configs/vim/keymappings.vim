@@ -16,7 +16,7 @@ map <leader>p :let @*=expand("%:p")<cr>
 " shift using Tab and Shift-Tab (disabled)
 nnoremap <Tab> >>_
 nnoremap <S-Tab> <<_
-inoremap <S-Tab> <C-D>
+" inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 

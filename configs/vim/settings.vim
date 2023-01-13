@@ -51,6 +51,9 @@ endif
 " Always show current position
 set ruler
 
+" folding by mouse
+set foldcolumn=4
+
 " Height of the command bar
 set cmdheight=1
 
