@@ -3,6 +3,7 @@ from pathlib import Path
 import chardet
 from time import time
 from joblib import Parallel, delayed
+import argparse
 
 
 def convert_to_encoding(filepath, output_encoding, output_filename):
@@ -26,9 +27,8 @@ def convert_to_encoding(filepath, output_encoding, output_filename):
     return True
 
 
-def main():
-
-    folder = Path(r'C:\Users\VailG\OneDrive\桌面\h小说合集1密码cysj').absolute()
+def convert_folder(directory):
+    folder = Path(directory).absolute()
     output_folder = Path(folder / 'utf8')
     output_folder.mkdir(exist_ok=True)
 
@@ -40,21 +40,25 @@ def main():
         if not convert_to_encoding(filepath, "utf8", output_filename):
             return filepath
 
-    starttime = time()
-
     failed = Parallel(n_jobs=16)(
         delayed(convert)(filepath) for filepath in all_text_files
     )
-    print(f"total time: {round(time() - starttime, 1)}")
-
-    print("===========================")
-    print("         failed")
-    print("===========================")
-
-    failed = [str(filename.relative_to(folder)) for filename in failed if filename is not None]
+    failed = [str(f.relative_to(folder)) for f in failed if f is not None]
     with open(output_folder / 'failed.txt', 'w') as failed_txt:
         pprint(failed, failed_txt)
+    pp("failed:")
     pp(failed)
+
+def main():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-d", "--directory", help="root directory to convert all text files")
+    args = parser.parse_args()
+
+    starttime = time()
+    convert_folder(args.directory)
+
+    print(f"total time: {round(time() - starttime, 1)}")
 
 if __name__ == "__main__":
     main()
