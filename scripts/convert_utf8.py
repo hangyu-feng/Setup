@@ -36,11 +36,11 @@ def convert_folder(directory):
 
     def convert(filepath):
         output_filename = output_folder / filepath.relative_to(folder)
-        output_filename.parent.mkdir(exist_ok=True)
+        output_filename.parent.mkdir(parents=True, exist_ok=True)
         if not convert_to_encoding(filepath, "utf8", output_filename):
             return filepath
 
-    failed = Parallel(n_jobs=16)(
+    failed = Parallel(n_jobs=8)(
         delayed(convert)(filepath) for filepath in all_text_files
     )
     failed = [str(f.relative_to(folder)) for f in failed if f is not None]
