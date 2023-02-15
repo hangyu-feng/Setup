@@ -44,6 +44,7 @@ Plug 'tpope/vim-sleuth'  " detect indentation
 
 Plug 'scrooloose/nerdtree'
 let NERDTreeShowHidden=1
+" map <C-n> :NERDTreeFind<CR>
 map <C-n> :NERDTreeToggle<CR>
 
 Plug 'scrooloose/nerdcommenter'
