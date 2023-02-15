@@ -1,21 +1,13 @@
 
-if has('nvim')
-  let data_dir = stdpath('data') . '/site'
-elseif has("win16") || has("win32")
-  set shell=pwsh
-  let data_dir = "$home/vimfiles/autoload/plug.vim"
-elseif has("unix")
-  let data_dir = "~/.vim/autoload/plug.vim"
-endif
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 
 " automated vim-plug download
-if empty(glob(data_dir))
-  " `.` for string concatenation
-  silent execute '!curl --create-dirs -fLo ' . data_dir . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/bundle')
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 Plug 'junegunn/vim-plug'
 
@@ -23,10 +15,6 @@ Plug 'junegunn/vim-plug'
 " Plug 'morhetz/gruvbox'
 Plug 'sainnhe/everforest'
 let g:everforest_better_performance = 1
-" Plug 'sainnhe/gruvbox-material'
-" Plug 'sainnhe/sonokai'
-" Plugin 'lifepillar/vim-gruvbox8'
-" junegunn/seoul256.vim
 
 Plug 'wincent/terminus'  " change cursor shape in modes
 
@@ -34,18 +22,11 @@ Plug 'wincent/terminus'  " change cursor shape in modes
 Plug 'tpope/vim-fugitive'
 let g:ft_man_open_mode = 'vert'
 
-" some defaults
-Plug 'tpope/vim-sensible'
-runtime! 'plugin/sensible.vim'  " run this plugin earlier to override settings
 " Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'  " detect indentation
 
 " Plugin 'zivyangll/git-blame.vim'
 
-Plug 'scrooloose/nerdtree'
-let NERDTreeShowHidden=1
-" map <C-n> :NERDTreeFind<CR>
-map <C-n> :NERDTreeToggle<CR>
 
 Plug 'scrooloose/nerdcommenter'
 map - <plug>NERDCommenterToggle
@@ -64,65 +45,7 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
-" lsp
-" Plug 'dense-analysis/ale'
-" " let g:ale_completion_enabled = 1
-" set omnifunc=ale#completion#OmniFunc
-" function! SmartInsertCompletion() abort
-"   " Use the default CTRL-N in completion menus
-"   if pumvisible()
-"     return "\<C-n>"
-"   endif
-"   " Exit and re-enter insert mode, and use insert completion
-"   return "\<C-c>a\<C-n>"
-" endfunction
-" " inoremap <silent> <TAB> <C-R>=SmartInsertCompletion()<CR>
-" " inoremap <silent> <TAB> <C-\><C-O>:ALEComplete<CR>
-" let g:ale_fixers = {
-" \ 'python': ['black', 'isort'],
-" \ 'sh': ['shfmt'],
-" \ 'cpp': ['clang-format'],
-" \ 'perl': ['perltidy'],
-" \}
-" " nmap <leader>f <Plug>(ale_fix)
-" nmap <F8> <Plug>(ale_fix)
-" let g:ale_perl_perltidy_options = ' -ce -nsfs -isbc -olc '
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" use <tab> for trigger completion and navigate to the next complete item
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
-" You have to remap <cr> to make it confirms completion.
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-" so that Vim's popup menu doesn't select the first completion item, but rather just inserts the longest common text of all matches
-set completeopt=menuone,preview,noinsert,noselect
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocActionAsync('format')
-nmap <F8> :Format<cr>
-" Apply the most preferred quickfix action to fix diagnostic on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call ShowDocumentation()<CR>
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
 
 " debugger
 Plug 'puremourning/vimspector'
@@ -159,75 +82,29 @@ let g:airline#extensions#ale#enabled = 1
 
 Plug 'mhinz/vim-startify'
 
-" autocomplete
-" Plug 'ackyshake/VimCompletesMe'
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-"   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-"
-" inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-"   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
-" Plug 'sirver/ultisnips'
-" let g:UltiSnipsExpandTrigger="<c-s>"
-" solving key conflict with VimCompletesMe, see https://github.com/ackyshake/VimCompletesMe/issues/33
 
 " python
 Plug 'tmhedberg/simpylfold'
 " let g:SimpylFold_docstring_preview = 1
 " Plug 'nvie/vim-flake8'
 Plug 'vim-scripts/indentpython.vim'
-" Plug 'davidhalter/jedi-vim'
-" powerful but little too much. useful when full-IDE experience needed. see https://github.com/davidhalter/jedi-vim
-" let g:jedi#auto_initialization = 0
-" let g:jedi#use_splits_not_buffers = "left"
-
-" C/C++
-" syntax highlighting
-" Plug 'bfrg/vim-cpp-modern'
-" Plug 'rhysd/vim-clang-format'
-" let g:clang_format#code_style = "google"
-
-" ruby on rails
-" Plug 'vim-ruby/vim-ruby'
-" Plug 'tpope/vim-rails'
-" Plug 'tpope/vim-endwise'
-" Plug 'tpope/vim-cucumber'
-" Plug 'tpope/vim-rake'
-" Plug 'tpope/vim-bundler'
-
-" Perl
-Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
-
-" javascript and ember.js
-" Plug 'pangloss/vim-javascript'
-" Plug 'mustache/vim-mustache-handlebars'
-" Plug 'elzr/vim-json'
-" let g:vim_json_conceal=0
-
-" tmux
-" Plug 'tmux-plugins/vim-tmux'
-
-" markdown
-" Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
-" Uncomment to override defaults:
-" let g:instant_markdown_slow = 1
-" let g:instant_markdown_autostart = 0
-" let g:instant_markdown_open_to_the_world = 1
-" let g:instant_markdown_allow_unsafe_content = 1
-" let g:instant_markdown_allow_external_content = 0
-" let g:instant_markdown_mathjax = 1
-" let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
-" let g:instant_markdown_autoscroll = 0
-" let g:instant_markdown_port = 8888
-" let g:instant_markdown_python = 1
-
-" Latex
-" Plug 'lervag/vimtex'
-
 
 " Plug 'https://github.com/adelarsq/vim-matchit'
 Plug 'andymass/vim-matchup'
+
+
+if has('nvim')
+  Plug 'nvim-tree/nvim-tree.lua'
+  map <C-n> :NvimTreeToggle<CR>
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+else
+  " some defaults
+  Plug 'tpope/vim-sensible'
+  runtime! 'plugin/sensible.vim'  " run this plugin earlier to override settings
+  Plug 'scrooloose/nerdtree'
+  let NERDTreeShowHidden=1
+  map <C-n> :NERDTreeToggle<CR>
+endif
 
 call plug#end()
 

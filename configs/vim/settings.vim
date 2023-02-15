@@ -25,10 +25,12 @@ set so=7
 
 " mouse support!
 set mouse=a
-if has("mouse_sgr")
-  set ttymouse=sgr  " SGR protocol
-else
-  set ttymouse=xterm2
+if !has('nvim')
+  if has("mouse_sgr")
+    set ttymouse=sgr  " SGR protocol
+  else
+    set ttymouse=xterm2
+  endif
 endif
 
 " Avoid garbled characters in Chinese language windows OS
