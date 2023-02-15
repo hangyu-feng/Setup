@@ -22,8 +22,25 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'scrooloose/nerdcommenter'
 
 " linters
-Plug 'dense-analysis/ale'
-Plug 'vim-syntastic/syntastic'
+"  Plug 'dense-analysis/ale'
+" Plug 'vim-syntastic/syntastic'
+
+" LSP
+"  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" use <tab> for trigger completion and navigate to the next complete item
+"  function! CheckBackspace() abort
+"    let col = col('.') - 1
+"    return !col || getline('.')[col - 1]  =~# '\s'
+"  endfunction
+"  inoremap <silent><expr> <Tab>
+"        \ coc#pum#visible() ? coc#pum#next(1) :
+"        \ CheckBackspace() ? "\<Tab>" :
+"        \ coc#refresh()
+"  inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+" You have to remap <cr> to make it confirms completion.
+"  inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
