@@ -40,7 +40,7 @@ Plug 'scrooloose/nerdcommenter'
 " You have to remap <cr> to make it confirms completion.
 "  inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
