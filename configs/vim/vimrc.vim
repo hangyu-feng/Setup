@@ -1,8 +1,24 @@
 set nocompatible  " be iMproved, required
 
 let vimrcDir = "~/setup/configs/vim"
+" With a map leader it's possible to do extra key combinations
+let mapleader = " "
 
-execute "source " . vimrcDir . "/plugins.vim"
-execute "source " . vimrcDir . "/keymappings.vim"
-execute "source " . vimrcDir . "/helpers.vim"
-execute "source " . vimrcDir . "/settings.vim"
+for filename in [
+        \ "plugins.vim",
+        \ "coc.vim",
+        \ "keymappings.vim",
+        \ "helpers.vim",
+        \ "settings.vim",
+        \ ]
+  exec "source " . vimrcDir . "/" . filename
+endfor
+
+if has('nvim')
+  for lua_file in [
+        \ "nvim_tree.lua",
+        \ ]
+    exec "luafile " . vimrcDir . "/lua/" . lua_file
+  endfor
+endif
+

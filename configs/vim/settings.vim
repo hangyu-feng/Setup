@@ -25,10 +25,12 @@ set so=7
 
 " mouse support!
 set mouse=a
-if has("mouse_sgr")
-  set ttymouse=sgr  " SGR protocol
-else
-  set ttymouse=xterm2
+if !has('nvim')
+  if has("mouse_sgr")
+    set ttymouse=sgr  " SGR protocol
+  else
+    set ttymouse=xterm2
+  endif
 endif
 
 " Avoid garbled characters in Chinese language windows OS
@@ -50,6 +52,9 @@ endif
 
 " Always show current position
 set ruler
+
+" folding by mouse
+set foldcolumn=4
 
 " Height of the command bar
 set cmdheight=1
@@ -101,6 +106,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" https://vimcolorschemes.com/ for more colors
+
 " Enable syntax highlighting
 syntax enable
 
@@ -109,7 +116,6 @@ if exists('$TMUX')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-colorscheme gruvbox
 " settings for everforest
 set termguicolors
 set background=dark
@@ -117,7 +123,13 @@ let &t_ZH="[3m"  " for italic
 let &t_ZR="[23m"  " for italic
 let g:everforest_background = 'hard'
 colorscheme everforest
+
+" colorscheme gruvbox
+
 " hi Normal guibg=NONE ctermbg=NONE
+
+" highlight line number
+set cursorline
 
 " transparent background
 if has("unix")

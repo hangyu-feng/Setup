@@ -1,15 +1,6 @@
 
-" With a map leader it's possible to do extra key combinations
-let mapleader = " "
-
 " ============================= Plugin shortcuts ===============================
 
-map <C-n> :NERDTreeToggle<CR>
-
-map - <plug>NERDCommenterToggle
-
-nnoremap <silent> ; :Files<CR>
-nnoremap <silent> ' :Rg<CR>
 
 " copy file path relative to current working directory.
 " see https://vim.fandom.com/wiki/Copy_filename_to_clipboard
@@ -17,17 +8,15 @@ map <leader>c :let @*=expand("%")<cr>
 map <leader>p :let @*=expand("%:p")<cr>
 
 " Latex autocompile
-augroup vimtex
-  autocmd FileType tex noremap <F5> :VimtexCompile<CR>
+" augroup vimtex
+"   autocmd FileType tex noremap <F5> :VimtexCompile<CR>
   " autocmd BufNewFile,BufRead *.tex :VimtexCompile
-augroup end
-
-noremap <leader>f :ClangFormat<cr>
+" augroup end
 
 " shift using Tab and Shift-Tab (disabled)
 nnoremap <Tab> >>_
 nnoremap <S-Tab> <<_
-inoremap <S-Tab> <C-D>
+" inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
