@@ -71,14 +71,6 @@ nnoremap <silent> ' :Rg<CR>
 " Plug 'yggdroot/indentline'
 " let g:indentLine_setConceal = 0
 
-Plug 'vim-airline/vim-airline'
-" let g:airline_theme = 'everforest'
-let g:airline#extensions#tabline#enabled = 1
-" TODO: figure out how to show buffer number in tabline
-" go to https://github.com/vim-airline/vim-airline#smarter-tab-line for all formatters
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
 
 " Plug 'itchyny/lightline.vim'
 " set laststatus=2
@@ -99,14 +91,29 @@ Plug 'vim-scripts/indentpython.vim'
 if has('nvim')
   Plug 'nvim-tree/nvim-tree.lua'
   map <C-n> :NvimTreeToggle<CR>
+
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+  Plug 'nvim-lualine/lualine.nvim'
+
 else
   " some defaults
   Plug 'tpope/vim-sensible'
   runtime! 'plugin/sensible.vim'  " run this plugin earlier to override settings
+
   Plug 'scrooloose/nerdtree'
   let NERDTreeShowHidden=1
   map <C-n> :NERDTreeToggle<CR>
+
+  Plug 'vim-airline/vim-airline'
+  " let g:airline_theme = 'everforest'
+  let g:airline#extensions#tabline#enabled = 1
+  " TODO: figure out how to show buffer number in tabline
+  " go to https://github.com/vim-airline/vim-airline#smarter-tab-line for all formatters
+  let g:airline#extensions#tabline#formatter = 'unique_tail'
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#ale#enabled = 1
+
 endif
 
 call plug#end()
