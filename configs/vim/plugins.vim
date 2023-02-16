@@ -1,4 +1,7 @@
 
+" profile startup time: https://github.com/bchretien/vim-profiler
+
+
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 
 " automated vim-plug download
