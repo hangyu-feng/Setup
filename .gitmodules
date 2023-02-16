@@ -1,0 +1,3 @@
+[submodule "vim-profiler"]
+	path = vim-profiler
+	url = https://github.com/bchretien/vim-profiler.git

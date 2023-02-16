@@ -93,7 +93,7 @@ Plug 'tmhedberg/simpylfold'
 Plug 'vim-scripts/indentpython.vim'
 
 " Plug 'https://github.com/adelarsq/vim-matchit'
-Plug 'andymass/vim-matchup'
+" Plug 'andymass/vim-matchup'
 
 
 if has('nvim')
