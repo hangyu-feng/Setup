@@ -1,3 +1,6 @@
 [submodule "vim-profiler"]
 	path = vim-profiler
 	url = https://github.com/bchretien/vim-profiler.git
+[submodule "vim-plugins-profile"]
+	path = vim-plugins-profile
+	url = https://github.com/hyiltiz/vim-plugins-profile.git
