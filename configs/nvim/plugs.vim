@@ -15,7 +15,7 @@ Plug 'sainnhe/everforest'
 
 Plug 'tpope/vim-fugitive'
 
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 
 Plug 'scrooloose/nerdcommenter'
 
