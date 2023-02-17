@@ -16,6 +16,7 @@ endfor
 
 if has('nvim')
   for lua_file in [
+        \ "init.lua",
         \ "nvim_tree.lua",
         \ ]
     exec "luafile " . vimrcDir . "/lua/" . lua_file

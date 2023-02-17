@@ -96,6 +96,8 @@ if has('nvim')
 
   Plug 'nvim-lualine/lualine.nvim'
 
+  Plug 'kdheepak/tabline.nvim'
+
 else
   " some defaults
   Plug 'tpope/vim-sensible'
