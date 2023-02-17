@@ -122,7 +122,8 @@ set background=dark
 let &t_ZH="[3m"  " for italic
 let &t_ZR="[23m"  " for italic
 let g:everforest_background = 'hard'
-colorscheme everforest
+let g:gruvbox_material_background = 'hard'
+colorscheme gruvbox-material
 
 " colorscheme gruvbox
 

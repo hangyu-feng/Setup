@@ -18,6 +18,8 @@ Plug 'junegunn/vim-plug'
 " Plug 'morhetz/gruvbox'
 Plug 'sainnhe/everforest'
 let g:everforest_better_performance = 1
+Plug 'sainnhe/gruvbox-material'
+let g:gruvbox_material_better_performance = 1
 
 Plug 'wincent/terminus'  " change cursor shape in modes
 
@@ -119,4 +121,3 @@ else
 endif
 
 call plug#end()
-
