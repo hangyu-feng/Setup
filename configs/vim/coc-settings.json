@@ -4,5 +4,6 @@
     "formatting": {
       "provider": "black"
     }
-  }
+  },
+  "diagnostic.checkCurrentLine": true
 }
