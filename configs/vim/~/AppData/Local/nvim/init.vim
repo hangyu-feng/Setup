@@ -1,0 +1,1 @@
+source C:/Users/VailG/setup/configs/vim/init.vim
