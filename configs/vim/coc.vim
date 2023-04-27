@@ -7,6 +7,7 @@ let g:coc_global_extensions = [
   \ 'coc-perl',
   \ 'coc-pyright',
   \ 'coc-clangd',
+  \ 'coc-yaml',
   \ ]
 
 " use <tab> for trigger completion and navigate to the next complete item
@@ -29,6 +30,18 @@ set completeopt=menuone,preview,noinsert,noselect
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
 nmap <F8> :Format<cr>
+
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s)
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
 " Apply the most preferred quickfix action to fix diagnostic on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
