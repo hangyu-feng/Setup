@@ -64,7 +64,7 @@ function leetcode() {
   # return $result
 }
 
-function  remove-duplicate() {
+function remove-duplicate() {
   ls * -recurse | get-filehash | group -property hash | where { $_.count -gt 1 } | % { $_.group | select -skip 1 } | del
 }
 
@@ -84,4 +84,10 @@ function sendkeys([int]${sleeptime} = 1, [string]${key} = ' ') {
 
 function phone() {
   scrcpy --max-size 1200 -b 16M --turn-screen-off --stay-awake
+}
+
+function scribd() {
+  foreach ($arg in $args) {
+    echo "https://www.scribd.com/embeds/${arg}/content"
+  }
 }
