@@ -1,9 +1,6 @@
 {
   "suggest.noselect": true,
-  "python": {
-    "formatting": {
-      "provider": "black"
-    }
-  },
-  "diagnostic.checkCurrentLine": true
+  "python.formatting.provider": "black",
+  "diagnostic.checkCurrentLine": true,
+  "yaml.format.enable": true
 }

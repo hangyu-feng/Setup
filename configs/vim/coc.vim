@@ -8,6 +8,8 @@ let g:coc_global_extensions = [
   \ 'coc-pyright',
   \ 'coc-clangd',
   \ 'coc-yaml',
+  \ 'coc-prettier',
+  \ 'coc-markdownlint',
   \ ]
 
 " use <tab> for trigger completion and navigate to the next complete item
