@@ -2,11 +2,18 @@
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "actions": [],
+    "alwaysShowNotificationIcon": false,
     "alwaysShowTabs": true,
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "initialCols": 160,
     "initialRows": 50,
+    "newTabMenu":
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
     "profiles":
     {
         "defaults":
@@ -16,11 +23,18 @@
             "cursorShape": "bar",
             "font":
             {
-                "face": "CaskaydiaCove NFM",
-                "size": 10
+                "face": "CaskaydiaCove Nerd Font Mono",
+                "features":
+                {
+                    "calt": 0,
+                    "clig": 0,
+                    "dlig": 0,
+                    "salt": 1
+                },
+                "size": 10.0
             },
             "historySize": 9001,
-            "opacity": 88,
+            "opacity": 92,
             "padding": "10, 6",
             "snapOnInput": true,
             "useAcrylic": true
@@ -36,14 +50,51 @@
                 "startingDirectory": "%USERPROFILE%"
             },
             {
+                "commandline": "pwsh -Command ssh proxmox",
+                "guid": "{81b7e960-b582-41ca-907c-ee32825f330f}",
+                "hidden": false,
+                "icon": "https://avatars.githubusercontent.com/u/2678585?s=200&v=4",
+                "name": "Proxmox"
+            },
+            {
+                "commandline": "pwsh -Command ssh -t proxmox \"pct enter 101\"",
+                "guid": "{d86e7581-8b61-4e0f-9746-44d0b94af0c5}",
+                "hidden": false,
+                "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Transmission_Icon.svg/1200px-Transmission_Icon.svg.png",
+                "name": "Downloader"
+            },
+            {
+                "commandline": "pwsh -Command ssh omv",
+                "guid": "{0308f6fa-d0b4-40f9-b7c3-b3ba0f453e65}",
+                "hidden": false,
+                "icon": "https://avatars.githubusercontent.com/u/1897994?s=200&v=4",
+                "name": "OpenMediaVault"
+            },
+            {
+                "commandline": "pwsh -Command ssh -t proxmox \"pct enter 100\"",
+                "guid": "{52711be3-5b4e-4266-a6b9-7fc8d3d4aae2}",
+                "hidden": false,
+                "icon": "https://f-droid.org/repo/org.jellyfin.mobile/en-US/icon_Y46m-eV538ASL9vG0piH5BI4dC1PHilt0tKyKCVp_F0=.png",
+                "name": "Jellyfin"
+            },
+            {
+                "commandline": "pwsh -Command ssh root@wireguard.server",
+                "guid": "{bd1d5659-d988-4f39-b748-ff25e5041697}",
+                "hidden": false,
+                "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/ff/ac/78/ffac78a3-0634-81fa-fd12-b105f7af1915/AppIcon-85-220-0-4-2x.png/1200x630bb.png",
+                "name": "WireGuard"
+            },
+            {
                 "commandline": "wsl.exe ~ -d Ubuntu -e ssh fenghang@teach.cs.toronto.edu",
                 "guid": "{0a0403ef-0b42-4188-932a-9c6f49d3b478}",
+                "hidden": true,
                 "icon": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1280px-Utoronto_coa.svg.png",
                 "name": "Teaching Lab"
             },
             {
                 "commandline": "wsl.exe ~ -d Ubuntu -e ssh root@47.103.13.7",
                 "guid": "{1fb20b7a-88d9-41ef-8aeb-27e4ca60d47e}",
+                "hidden": true,
                 "icon": "https://avatars0.githubusercontent.com/u/941070?s=400&v=4",
                 "name": "Ali Cloud: Silvia Dev"
             },
@@ -75,19 +126,57 @@
             {
                 "commandline": "wsl.exe ~ -d Ubuntu -e ssh -i ~/codes/talky/.ssh/oracle/ssh-key-2021-03-16.key opc@129.146.246.9",
                 "guid": "{c1ca1673-660a-493c-a472-567a1cb16ab3}",
-                "hidden": false,
+                "hidden": true,
                 "icon": "https://external-content.duckduckgo.com/ip3/cloud.oracle.com.ico",
                 "name": "Oracle Cloud"
             },
             {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Windows PowerShell"
             },
             {
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "Command Prompt"
+            },
+            {
+                "guid": "{3803ae7b-2bb8-5b1e-a8e1-39697c15b6bf}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{9ccc7b90-ac95-51c7-b518-be2d67e8d104}",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{17bf3de4-5353-5709-bcf9-835bd952a95e}",
+                "hidden": true,
+                "name": "Ubuntu-22.04",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "commandline": "pwsh -Command ~/rcon-0.10.3-win64/rcon.exe -a 192.168.2.37:27015 -p 123",
+                "guid": "{2c9587de-7c33-439f-b048-4167b6bf52da}",
+                "hidden": false,
+                "icon": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/108600/b8036444b2a8889663bc232c142ac888e8353415.ico",
+                "name": "Project Zomboid RCON",
+                "startingDirectory": "%USERPROFILE%"
+            },
+            {
+                "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
+                "hidden": false,
+                "name": "Debian",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "guid": "{e5a83caa-4c73-52b3-ae6b-bc438d721ef9}",
+                "hidden": false,
+                "name": "Ubuntu 22.04.3 LTS",
+                "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc"
             }
         ]
     },
@@ -646,6 +735,29 @@
             "yellow": "#C2A86C"
         },
         {
+            "background": "#300A24",
+            "black": "#171421",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#08458F",
+            "brightCyan": "#2C9FB3",
+            "brightGreen": "#26A269",
+            "brightPurple": "#A347BA",
+            "brightRed": "#C01C28",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#A2734C",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#26A269",
+            "name": "Ubuntu-22.04-ColorScheme",
+            "purple": "#881798",
+            "red": "#C21A23",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#A2734C"
+        },
+        {
             "background": "#000000",
             "black": "#000000",
             "blue": "#000080",
@@ -718,5 +830,7 @@
     "showTabsInTitlebar": true,
     "showTerminalTitleInTitlebar": true,
     "theme": "dark",
+    "themes": [],
+    "useAcrylicInTabRow": true,
     "wordDelimiters": " ./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}~?\u2502"
 }
