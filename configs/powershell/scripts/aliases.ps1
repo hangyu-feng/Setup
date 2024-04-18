@@ -12,10 +12,13 @@ function rename-ext {
 
 Set-Alias -Name vi -Value vim
 
-Set-Alias -Name python3 -Value python
+
 
 Set-Alias -Name python2 -Value "C:\Python27\python.exe"
 Set-Alias -Name py2 -Value "C:\Python27\python.exe"
+Set-Alias -Name python3 -Value "C:\Users\VailG\defaultenv\Scripts\python.exe"
+Set-Alias -Name py3 -Value "C:\Users\VailG\defaultenv\Scripts\python.exe"
+Set-Alias -Name pip3 -Value "C:\Users\VailG\defaultenv\Scripts\pip3.exe"
 
 Set-Alias -Name emulator -Value "C:\Users\VailG\AppData\Local\Android\Sdk\emulator\emulator.exe"
 Set-Alias -Name adb -Value "C:\Users\VailG\AppData\Local\Android\Sdk\platform-tools\adb.exe"
