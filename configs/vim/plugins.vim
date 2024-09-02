@@ -92,6 +92,7 @@ Plug 'mhinz/vim-startify'
 if has('nvim')
   Plug 'echasnovski/mini.files'
   map <C-n> :lua MiniFiles.open()<CR>
+  Plug 'echasnovski/mini.icons'
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
