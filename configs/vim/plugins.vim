@@ -52,14 +52,13 @@ Plug 'tpope/vim-sleuth'  " detect indentation
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" debugger
-Plug 'puremourning/vimspector'
-" let g:vimspector_enable_mappings = 'HUMAN'
-nmap <F5> <Plug>VimspectorContinue
-nmap <F3> <Plug>VimspectorStop
-nmap <F9> <Plug>VimspectorToggleBreakpoint
-nmap <F10> <Plug>VimspectorStepOver
-
+"" debugger
+"Plug 'puremourning/vimspector'
+"" let g:vimspector_enable_mappings = 'HUMAN'
+"nmap <F5> <Plug>VimspectorContinue
+"nmap <F3> <Plug>VimspectorStop
+"nmap <F9> <Plug>VimspectorToggleBreakpoint
+"nmap <F10> <Plug>VimspectorStepOver
 
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf'
@@ -81,24 +80,22 @@ Plug 'mhinz/vim-startify'
 
 
 " python
-Plug 'tmhedberg/simpylfold'
+"Plug 'tmhedberg/simpylfold'
 " let g:SimpylFold_docstring_preview = 1
 " Plug 'nvie/vim-flake8'
-Plug 'vim-scripts/indentpython.vim'
+"Plug 'vim-scripts/indentpython.vim'
 
 " Plug 'https://github.com/adelarsq/vim-matchit'
 " Plug 'andymass/vim-matchup'
 
 
 if has('nvim')
-  Plug 'nvim-tree/nvim-tree.lua'
-  map <C-n> :NvimTreeToggle<CR>
+  Plug 'echasnovski/mini.files'
+  map <C-n> :lua MiniFiles.open()<CR>
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   Plug 'nvim-lualine/lualine.nvim'
-
-  Plug 'kdheepak/tabline.nvim'
 
 else
   " some defaults
