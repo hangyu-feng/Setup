@@ -21,6 +21,7 @@ if has('nvim')
         \ 'init.lua',
         \ 'lualine.lua',
         "\ 'oil.lua',
+        \ 'mini.lua',
         \ ]
     exec 'luafile ' . vimrcDir . '/lua/' . filename
   endfor
