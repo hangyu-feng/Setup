@@ -21,6 +21,7 @@ Set-Alias -Name defaultpy -Value "C:\Users\VailG\defaultenv\Scripts\python.exe"
 Set-Alias -Name emulator -Value "C:\Users\VailG\AppData\Local\Android\Sdk\emulator\emulator.exe"
 Set-Alias -Name adb -Value "C:\Users\VailG\AppData\Local\Android\Sdk\platform-tools\adb.exe"
 Set-Alias -Name mail -Value "Send-MailMessage"
+Set-Alias -Name rcon -Value "C:\Users\VailG\rcon-0.10.3-win64\rcon.exe"
 function act_default { ~/default/Scripts/activate.ps1 }
 
 function conda-activate($conda_env = "C:\Users\VailG\miniconda3") {
@@ -92,4 +93,9 @@ function scribd() {
   foreach ($arg in $args) {
     echo "https://www.scribd.com/embeds/${arg}/content"
   }
+}
+function refresh-path {
+  $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") +
+    ";" +
+    [System.Environment]::GetEnvironmentVariable("Path","User")
 }
