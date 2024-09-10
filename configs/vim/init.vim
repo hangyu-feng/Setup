@@ -7,7 +7,7 @@ let mapleader = " "
 
 for filename in [
         \ "plugins.vim",
-        \ "coc.vim",
+        "\ 'coc.vim',  " stop using it since it depends on node.js
         \ "keymappings.vim",
         \ "helpers.vim",
         \ "settings.vim",
@@ -23,6 +23,7 @@ if has('nvim')
         "\ 'oil.lua',
         \ 'mini.lua',
         \ 'treesitter.lua',
+        \ 'lsp-zero.lua',
         \ ]
     exec 'luafile ' . vimrcDir . '/lua/' . filename
   endfor

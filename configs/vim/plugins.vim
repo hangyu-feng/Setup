@@ -50,7 +50,7 @@ Plug 'tpope/vim-sleuth'  " detect indentation
 " " Enable NERDCommenterToggle to check all selected lines is commented or not
 " let g:NERDToggleCheckAllLines = 1
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "" debugger
 "Plug 'puremourning/vimspector'
@@ -97,6 +97,13 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   Plug 'nvim-lualine/lualine.nvim'
+
+  " ====== lsp-zero ======
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v4.x'}
+  " ======================
 
 else
   " some defaults
