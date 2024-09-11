@@ -100,7 +100,7 @@ install_packages() {
   if [[ ${no_package_install} == true ]]; then
     packages=( zsh )
   elif [[ $pm =~ "apt" ]]; then
-    packages+=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep fonts-powerline )
+    packages+=( curl wget zsh git vim-gtk3 fzf silversearcher-ag ripgrep fonts-powerline unzip tar gzip)
   else  # using brew
     packages+=( curl wget zsh git vim fzf the_silver_searcher ripgrep )
     casks+=( visual-studio-code iterm2 homebrew/cask-fonts/font-fira-mono-for-powerline )

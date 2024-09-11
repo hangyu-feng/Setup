@@ -26,6 +26,12 @@ lsp_zero.extend_lspconfig({
 })
 
 
+------ mason --------------------------------------------
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = { "pylyzer" },
+}
+
 ------ nvim-lspconfig -----------------------------------
 require'lspconfig'.pylyzer.setup{}
 
@@ -46,5 +52,6 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({}),
 })
+
 
 
