@@ -39,7 +39,7 @@ require("mason-lspconfig").setup {
 ------ nvim-lspconfig -----------------------------------
 require'lspconfig'.pylyzer.setup{}
 require'lspconfig'.vimls.setup{}
-require'lspconfig''lua_ls'.setup{}
+require'lspconfig'.lua_ls.setup{}
 -- You would add this setup function after calling lsp_zero.extend_lspconfig()
 
 ------ nvim-cmp -----------------------------------------
