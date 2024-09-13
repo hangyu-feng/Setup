@@ -29,7 +29,11 @@ lsp_zero.extend_lspconfig({
 ------ mason --------------------------------------------
 require("mason").setup()
 require("mason-lspconfig").setup {
-  ensure_installed = { "pylyzer" },
+  ensure_installed = {
+    'pylyzer',
+    'vimls',
+    'lua_ls',
+  },
 }
 
 ------ nvim-lspconfig -----------------------------------
@@ -39,19 +43,57 @@ require'lspconfig'.pylyzer.setup{}
 
 ------ nvim-cmp -----------------------------------------
 local cmp = require('cmp')
+local cmp_action = lsp_zero.cmp_action()
 
 cmp.setup({
   sources = {
     {name = 'nvim_lsp'},
+    { name = 'buffer' },
   },
   snippet = {
+    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      -- You need Neovim v0.10 to use vim.snippet
-      vim.snippet.expand(args.body)
+      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
     end,
   },
-  mapping = cmp.mapping.preset.insert({}),
+  mapping = cmp.mapping.preset.insert({
+    -- `Enter` key to confirm completion
+    ['<CR>'] = cmp.mapping.confirm({select = true}),
+
+    -- Ctrl+Space to trigger completion menu
+    ['<C-Space>'] = cmp.mapping.complete(),
+
+    -- Tab to scroll down and S-Tab to scroll up
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+	cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+	luasnip.expand_or_jump()
+      else
+	fallback()
+      end
+    end, {"i", "s"}),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+	cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+	luasnip.jump(-1)
+      else
+	fallback()
+      end
+    end, {"i", "s"}),
+
+    -- Navigate between snippet placeholder
+    ['<C-f>'] = cmp_action.vim_snippet_jump_forward(),
+    ['<C-b>'] = cmp_action.vim_snippet_jump_backward(),
+
+    -- Scroll up and down in the completion documentation
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+  }),
 })
-
-
-
