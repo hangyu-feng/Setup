@@ -37,8 +37,8 @@ def convert_folder(directory):
         failed = executor.map(convert, all_text_files)
 
     failed = [str(f.relative_to(folder)) for f in failed if f is not None]
-    with open(output_folder / 'failed.txt', 'w') as failed_txt:
-        pprint(failed, failed_txt)
+    # with open(output_folder / 'failed.txt', 'w') as failed_txt:
+    #     pprint(failed, failed_txt)
     pp("failed:")
     pp(failed)
 
