@@ -1,28 +1,21 @@
 from pprint import pprint, pp
 from pathlib import Path
-import chardet
+# charset-normalizer can increase UnicodeDammit accuracy
+import charset_normalizer
+from bs4 import UnicodeDammit
 from time import time
-from joblib import Parallel, delayed
+from concurrent import futures
 import argparse
 
 
 def convert_to_encoding(filepath, output_encoding, output_filename):
     with open(filepath, "rb") as f:
         rawdata = f.read()
-    detect_result = chardet.detect(rawdata)
-    old_encoding = detect_result["encoding"]
-
-    try:
-        text = rawdata.decode(encoding=old_encoding)
-    except:
-        try:
-            text = rawdata.decode(encoding='mbcs')  # windows only ANSI codepage
-        except UnicodeDecodeError:
-            return False
+    dammit = UnicodeDammit(rawdata, ['Big5', 'GB2312', 'EUC-TW', 'HZ-GB-2312', 'ISO-2022-CN', 'GBK', 'GB18030', 'UTF-8'])
 
     with open(output_filename, "w", encoding=output_encoding) as newfile:
-        # text = rawdata.decode(old_encoding, errors='ignore')
-        newfile.write(text)
+
+        newfile.write(dammit.unicode_markup)
 
     return True
 
@@ -40,9 +33,9 @@ def convert_folder(directory):
         if not convert_to_encoding(filepath, "utf8", output_filename):
             return filepath
 
-    failed = Parallel(n_jobs=8)(
-        delayed(convert)(filepath) for filepath in all_text_files
-    )
+    with futures.ThreadPoolExecutor(max_workers=8) as executor:
+        failed = executor.map(convert, all_text_files)
+
     failed = [str(f.relative_to(folder)) for f in failed if f is not None]
     with open(output_folder / 'failed.txt', 'w') as failed_txt:
         pprint(failed, failed_txt)

@@ -8,7 +8,7 @@
 
 # oh-my-posh init pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/hotstick.minimal.omp.json" | Invoke-Expression
 
-oh-my-posh init pwsh --config "https://github.com/JanDeDobbeleer/oh-my-posh/raw/main/themes/material.omp.json" | Invoke-Expression
+# oh-my-posh init pwsh --config "https://github.com/JanDeDobbeleer/oh-my-posh/raw/main/themes/material.omp.json" | Invoke-Expression
 
 # oh-my-posh init pwsh --config "https://github.com/JanDeDobbeleer/oh-my-posh/raw/main/themes/huvix.omp.json" | Invoke-Expression
 # oh-my-posh init pwsh --config "https://github.com/JanDeDobbeleer/oh-my-posh/raw/main/themes/robbyrussell.omp.json" | Invoke-Expression
