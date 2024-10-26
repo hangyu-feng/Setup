@@ -12,8 +12,6 @@ function rename-ext {
 
 Set-Alias -Name vi -Value vim
 
-
-
 Set-Alias -Name python2 -Value "C:\Python27\python.exe"
 Set-Alias -Name py2 -Value "C:\Python27\python.exe"
 
