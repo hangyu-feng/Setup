@@ -32,3 +32,5 @@ Set-PSReadLineOption -Colors @{
 . "${PSScriptRoot}/scripts/aliases.ps1"
 
 . "${PSScriptRoot}/scripts/red_dead_online.ps1"
+
+defpy
