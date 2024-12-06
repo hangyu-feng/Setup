@@ -19,7 +19,11 @@ Set-Alias -Name emulator -Value "C:\Users\VailG\AppData\Local\Android\Sdk\emulat
 Set-Alias -Name adb -Value "C:\Users\VailG\AppData\Local\Android\Sdk\platform-tools\adb.exe"
 Set-Alias -Name mail -Value "Send-MailMessage"
 Set-Alias -Name rcon -Value "C:\Users\VailG\rcon-0.10.3-win64\rcon.exe"
-function defpy { ~/def_env/Scripts/activate.ps1 }
+function defpy {
+  if (Test-Path -Path ~/def_env) {
+    ~/def_env/Scripts/activate.ps1
+  }
+}
 
 function conda-activate($conda_env = "C:\Users\VailG\miniconda3") {
   pwsh -ExecutionPolicy ByPass -NoExit -Command "& 'C:\Users\VailG\miniconda3\shell\condabin\conda-hook.ps1' ; conda activate ${conda_env} ; Set-PoshPrompt pure "
